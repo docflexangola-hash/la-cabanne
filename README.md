@@ -154,3 +154,6 @@ privado da gerência.
 
 Os documentos internos de produto (`prd.md`, `ESPECIFICACAO.md` e `IMAGENS.md`)
 ficam fora deste repositório público.
+
+Veja `PLANO.md` para o estado actual, o plano das fases 3 a 6, os bloqueios
+que dependem do cliente e o checklist de lançamento.
