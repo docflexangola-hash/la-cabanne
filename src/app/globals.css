@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   La Cabanne — "Editorial de Mesa"
+   Tokens estáticos da marca.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-ivory: #f8f6f0;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f6f8;
+
+  --color-ink: #202832;
+  --color-ink-2: #5f6b75;
+  --color-decor: #8a949c;
+
+  --color-line: #e5e9ed;
+
+  --color-blue: #2474b5;
+  --color-blue-700: #1b5c91;
+  --color-blue-tint: #eef4fa;
+
+  --color-deep: #123e64;
+
+  --color-sand: #efebe2;
+  --color-sand-line: #e3dcce;
+
+  --color-danger: #b4472f;
+  --color-ok: #2e7d5b;
+
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-display: var(--font-cormorant), "Times New Roman", Georgia, serif;
+
+  --radius-tile: 0.625rem;
+  --radius-card: 1rem;
+
+  --ease-editorial: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   Variáveis consumidas pelos componentes shadcn/ui.
+--------------------------------------------------------------------------- */
+:root {
+  --background: #f8f6f0;
+  --foreground: #202832;
+
+  --card: #ffffff;
+  --card-foreground: #202832;
+
+  --popover: #ffffff;
+  --popover-foreground: #202832;
+
+  --primary: #2474b5;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f4f6f8;
+  --secondary-foreground: #123e64;
+
+  --muted: #eef1f4;
+  --muted-foreground: #5f6b75;
+
+  --accent: #eef4fa;
+  --accent-foreground: #123e64;
+
+  --destructive: #b4472f;
+  --destructive-foreground: #ffffff;
+
+  --border: #e5e9ed;
+  --input: #e5e9ed;
+  --ring: #2474b5;
+
+  --chart-1: #2474b5;
+  --chart-2: #123e64;
+  --chart-3: #5f6b75;
+  --chart-4: #8a949c;
+  --chart-5: #c9b79a;
+
+  --radius: 0.625rem;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #202832;
+  --sidebar-primary: #2474b5;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef4fa;
+  --sidebar-accent-foreground: #123e64;
+  --sidebar-border: #e5e9ed;
+  --sidebar-ring: #2474b5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-blue);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+  }
+
+  /* Números de preço e indicadores sempre alinhados. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  /* Textura de papel a 4% — aplicar sobre o fundo marfim. */
+  .texture-paper {
+    background-image: url("/brand/06-textura-papel.jpg");
+    background-repeat: repeat;
+    background-size: 512px 512px;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Sheets e modais (elemento <dialog> nativo, com foco e ESC gratuitos)
+--------------------------------------------------------------------------- */
+@layer components {
+  .menu-sheet {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .menu-sheet[open] {
+    display: flex;
+  }
+
+  .menu-sheet::backdrop {
+    background: rgba(18, 62, 100, 0.32);
+  }
+
+  .menu-sheet-panel {
+    width: 100%;
+    max-height: 92dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -20px 60px rgba(18, 62, 100, 0.18);
+    animation: menu-sheet-in 240ms var(--ease-editorial);
+  }
+
+  @media (min-width: 1024px) {
+    .menu-sheet {
+      align-items: center;
+      padding: 24px;
+    }
+
+    .menu-sheet-panel {
+      width: 880px;
+      max-height: 88dvh;
+      border-radius: 20px;
+      box-shadow: 0 30px 80px rgba(18, 62, 100, 0.25);
+    }
+  }
+
+  @keyframes menu-sheet-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
