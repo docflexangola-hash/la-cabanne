@@ -59,7 +59,8 @@ supabase db reset      # aplica migrations + seed
 ```
 
 Num projecto remoto, aplica os ficheiros SQL pela consola do Supabase, por ordem.
-A região prevista é `eu-central-1`.
+O projecto actual está em `eu-west-1` (Irlanda). Sem Docker local, as migrations
+podem ser aplicadas com `supabase db push --db-url <connection-string> --include-seed`.
 
 ## Criar o primeiro administrador
 
