@@ -1,11 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useTranslation } from '@/lib/i18n/i18n-context';
+
 export function HeroWelcome() {
+  const { t } = useTranslation();
+
   return (
     <section className="relative isolate min-h-[78svh] overflow-hidden md:min-h-[88svh]">
       <Image
-        src="/images/la-cabanne/hero-piscina-resort.png"
+        src="/images/la-cabanne/hero-piscina-resort.webp"
         alt="Piscina do Resort La Cabanne ao entardecer"
         fill
         priority
@@ -16,7 +20,7 @@ export function HeroWelcome() {
       <div className="relative z-10 mx-auto flex min-h-[78svh] w-full max-w-[1100px] items-center px-4 sm:px-6 md:min-h-[88svh]">
         <div className="w-full max-w-xl">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.32em] text-ivory/90 sm:text-sm">
-            Bem-vindo ao
+            {t('bem_vindo_ao')}
           </p>
           <Image
             src="/brand/01-logo-cor.svg"
@@ -31,7 +35,7 @@ export function HeroWelcome() {
               href="#menu"
               className="inline-flex h-11 items-center rounded-sm bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-blue-700"
             >
-              Ver cardápio
+              {t('ver_menu')}
             </Link>
           </div>
         </div>

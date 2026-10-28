@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import Script from 'next/script';
 
 import { getSiteUrl } from '@/lib/env';
+import { I18nProvider } from '@/lib/i18n/i18n-context';
 
 import './globals.css';
 
@@ -99,10 +100,27 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body className="min-h-dvh bg-ivory text-ink">
         <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+              try {
+                const pref = localStorage.getItem('lc-theme') || 'auto';
+                let theme = 'light';
+                if (pref === 'dark') theme = 'dark';
+                else if (pref === 'light') theme = 'light';
+                else {
+                  const h = new Date().getHours();
+                  theme = (h >= 18 || h < 6) ? 'dark' : 'light';
+                }
+                document.documentElement.setAttribute('data-theme', theme);
+              } catch {}
+            })();`,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <I18nProvider>{children}</I18nProvider>
         {process.env.NEXT_PUBLIC_VERCEL ? (
           <Script
             src="https://va.vercel-scripts.com/v1/script.debug.js"

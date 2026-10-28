@@ -1,6 +1,6 @@
 'use client';
 
-import { Info } from 'lucide-react';
+import { Info, Moon, Sun } from 'lucide-react';
 import Image from 'next/image';
 import {
   useCallback,
@@ -19,9 +19,11 @@ import { InfoDialog } from '@/components/menu/info-dialog';
 import { MonogramPlaceholder } from '@/components/menu/monogram-placeholder';
 import { ProductDialog } from '@/components/menu/product-dialog';
 import { ProductRow } from '@/components/menu/product-row';
+import { useTranslation } from '@/lib/i18n/i18n-context';
 import { formatKz, normalizeSearch } from '@/lib/menu/format';
 import { getOpenState } from '@/lib/menu/hours';
 import { getStartingPrice } from '@/lib/menu/pricing';
+import { useTheme } from '@/lib/theme/use-theme';
 import { useIsClient } from '@/lib/use-is-client';
 import { cn } from '@/lib/utils';
 import type { MenuCategory, MenuGroup, MenuProduct, RestaurantSettings } from '@/types/menu';
@@ -92,6 +94,8 @@ export function MenuExperience({
   const [product, setProduct] = useState<MenuProduct | null>(null);
   const [infoOpen, setInfoOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const { preference, resolved, toggle: toggleTheme } = useTheme();
+  const { locale, toggle: toggleLang, t } = useTranslation();
   const isClient = useIsClient();
 
   const didReadUrl = useRef(false);
@@ -217,7 +221,6 @@ export function MenuExperience({
 
     setCategorySlug(slug);
     syncUrl(activeGroup.slug, slug);
-    scrollToTop();
   }
 
   function jumpTo(groupSlugToOpen: string, categorySlugToOpen: string) {
@@ -249,16 +252,37 @@ export function MenuExperience({
           <div className="mx-auto flex h-14 w-full max-w-[1100px] items-center justify-between px-4 sm:px-6">
             <BrandLogo priority />
 
-            {settings ? (
+            <div className="flex items-center gap-1">
               <button
                 type="button"
-                onClick={() => setInfoOpen(true)}
-                aria-label="Informações do restaurante"
-                className="flex size-10 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
+                onClick={toggleTheme}
+                aria-label="Alternar tema"
+                className="flex h-9 items-center gap-1 rounded-full px-2 text-xs text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
               >
-                <Info aria-hidden="true" className="size-5" />
+                {resolved === 'dark' ? <Moon className="size-4" /> : <Sun className="size-4" />}
+                <span className="hidden sm:inline">
+                  {preference === 'auto' ? t('theme_auto') : resolved === 'dark' ? t('theme_dark') : t('theme_light')}
+                </span>
               </button>
-            ) : null}
+              <button
+                type="button"
+                onClick={toggleLang}
+                aria-label="Alternar idioma"
+                className="flex h-9 items-center rounded-full px-2 text-xs font-medium text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
+              >
+                {locale === 'pt' ? t('lang_en') : t('lang_pt')}
+              </button>
+              {settings ? (
+                <button
+                  type="button"
+                  onClick={() => setInfoOpen(true)}
+                  aria-label={t('info_aria')}
+                  className="flex size-9 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
+                >
+                  <Info aria-hidden="true" className="size-5" />
+                </button>
+              ) : null}
+            </div>
           </div>
         </header>
 
@@ -413,16 +437,18 @@ export function MenuExperience({
             ) : (
               <>
                 <div className="lg:hidden">
-                  <GroupTabs
-                    groups={groups}
-                    activeSlug={activeGroup.slug}
-                    onChange={selectGroup}
-                  />
-                  <CategoryChips
-                    categories={activeGroup.categories}
-                    activeSlug={activeCategory.slug}
-                    onChange={selectCategory}
-                  />
+                  <div className="sticky top-14 z-20 -mx-4 border-b border-line bg-ivory/95 backdrop-blur-md px-4 sm:-mx-6 sm:px-6">
+                    <GroupTabs
+                      groups={groups}
+                      activeSlug={activeGroup.slug}
+                      onChange={selectGroup}
+                    />
+                    <CategoryChips
+                      categories={activeGroup.categories}
+                      activeSlug={activeCategory.slug}
+                      onChange={selectCategory}
+                    />
+                  </div>
                 </div>
 
                 <section aria-live="polite" className="pt-1 lg:pt-7">
@@ -473,20 +499,20 @@ export function MenuExperience({
 
                 <section className="mt-10 border-t border-line pt-8 text-center">
                   <p className="text-[11px] font-semibold tracking-[0.16em] text-decor uppercase">
-                    Ajude-nos a melhorar !
+                    {t('feedback_title_small')}
                   </p>
                   <h3 className="mt-2 font-display text-2xl text-deep">
-                    Fale sobre o nosso atendimento
+                    {t('feedback_title')}
                   </h3>
                   <p className="mt-2 text-sm text-ink-2">
-                    O seu feedback é privado e ajuda-nos a melhorar continuamente.
+                    {t('feedback_subtitle')}
                   </p>
                   <button
                     type="button"
                     onClick={() => setFeedbackOpen(true)}
                     className="mt-5 inline-flex h-11 items-center rounded-sm bg-deep px-6 text-sm font-medium text-ivory transition-colors hover:bg-blue-700"
                   >
-                    Deixar avaliação
+                    {t('leave_review')}
                   </button>
                 </section>
               </>
@@ -496,8 +522,8 @@ export function MenuExperience({
 
         <footer className="border-t border-line">
           <div className="mx-auto flex w-full max-w-[1100px] flex-col gap-1 px-4 py-6 text-xs text-ink-2 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-            <p>La Cabanne · Restaurante &amp; Lounge</p>
-            <p>Benguela, Angola</p>
+            <p>{t('footer_rights')}</p>
+            <p>{t('footer_location')}</p>
           </div>
         </footer>
       </div>
