@@ -1,0 +1,2189 @@
+[
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Tábua de Enchidos",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Tábua de Queijos",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Azeitonas ao Alho",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Pão ao Alho",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Tremoços",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Tempura de Choco",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Chouriço na Brasa",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Camarão al pil pil",
+    "preco_kz": 14900,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Buffalo Wings",
+    "preco_kz": 8900,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Ostras Frescas",
+    "preco_kz": 6500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Pica-Pau de Novilho",
+    "preco_kz": 8000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Couvert",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Sanduíche Mista",
+    "preco_kz": 4000,
+    "descricao": "Fiambre, queijo, alface e tomate.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Entradas/Aperitivos",
+    "produto": "Tosta Mista",
+    "preco_kz": 5000,
+    "descricao": "Fiambre e queijo.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Snacks",
+    "produto": "Prego no Prato",
+    "preco_kz": 12800,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Snacks",
+    "produto": "Omelete de Camarão",
+    "preco_kz": 7500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Snacks",
+    "produto": "Omelete Especial",
+    "preco_kz": 11000,
+    "descricao": "Chouriço, queijo, fiambre e batata frita.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Snacks",
+    "produto": "Sanduíche à La Cabane",
+    "preco_kz": 8000,
+    "descricao": "Bacon, ovo, peito de frango, alface, tomate, queijo e batatas fritas.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Snacks",
+    "produto": "Sanduíche de Atum",
+    "preco_kz": 4000,
+    "descricao": "Pasta de atum, alface e tomate.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Snacks",
+    "produto": "Prego no Pão Composto",
+    "preco_kz": 9000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Pastas",
+    "produto": "Tagliatelle de Garoupa à La Cabane",
+    "preco_kz": 20000,
+    "descricao": "Lombo de garoupa com tagliatelle, coentros, malagueta e natas.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Pastas",
+    "produto": "Esparguete à Bolonhesa",
+    "preco_kz": 13000,
+    "descricao": "Carne moída, queijo e molho de tomate.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Pastas",
+    "produto": "Esparguete à Carbonara",
+    "preco_kz": 15000,
+    "descricao": "Bacon, fiambre, queijo e natas.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Pastas",
+    "produto": "Tagliatelle Frutos do Mar",
+    "preco_kz": 18000,
+    "descricao": "Tagliatelle com choco, camarão, mexilhões, amêijoas e molho de tomate.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Peixes",
+    "produto": "Bacalhau à Lagareiro",
+    "preco_kz": 27000,
+    "descricao": "Com batata ao murro e molho de alho.",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Peixes",
+    "produto": "Bacalhau Cozido",
+    "preco_kz": 27000,
+    "descricao": "Bacalhau com batata cozida, grão-de-bico, ovos e legumes.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Peixes",
+    "produto": "Garoupa na Brasa",
+    "preco_kz": 16500,
+    "descricao": "Acompanhada de batata doce assada e legumes salteados.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Peixes",
+    "produto": "Lombo de Garoupa à La Cabane",
+    "preco_kz": 18000,
+    "descricao": "Lombo de garoupa com puré de batata e brócolos salteados.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Peixes",
+    "produto": "Curvina na Brasa",
+    "preco_kz": 15000,
+    "descricao": "Curvina grelhada com batata doce, pepino, cenoura, cebola e beringela, tudo na brasa.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "Picanha à Moda La Cabane",
+    "preco_kz": 18000,
+    "descricao": "Picanha no maçarico, com batata frita, arroz, feijão-preto, couve mineira, banana-pão e ananás assado.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "T-Bone à Moda La Cabane",
+    "preco_kz": 18000,
+    "descricao": "Corte especial grelhado, acompanhado de legumes salteados.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "Bife às Três Pimentas",
+    "preco_kz": 15000,
+    "descricao": "Bife com molho cremoso de pimentas, servido com legumes salteados e batata frita.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "Bife à Portuguesa",
+    "preco_kz": 15000,
+    "descricao": "Batata chips, ovo e presunto.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "Tomahawk à Moda La Cabane",
+    "preco_kz": 22000,
+    "descricao": "Servidas com batata frita e salada mista.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "Churrasco de Galinha Nacional",
+    "preco_kz": 12000,
+    "descricao": "Galinha grelhada na brasa, com batata frita e salada.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "Lombo de Porco Grelhado",
+    "preco_kz": 17500,
+    "descricao": "Acompanhado de batata frita e salada.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "Grelhada Terra e Mar",
+    "preco_kz": 80000,
+    "descricao": "Selecção de carnes grelhadas e selecção de mariscos e peixes, com arroz de feijão, batata doce frita e salada.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "Tábua Mista",
+    "preco_kz": 40000,
+    "descricao": "Carnes variadas grelhadas, servidas com arroz, feijão, batata frita e salada.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Carnes",
+    "produto": "Tiras de Porco/Vaca grelhadas",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Mariscos / Frutos do Mar",
+    "produto": "Lagosta Grelhada",
+    "preco_kz": 35000,
+    "descricao": "Lagosta fresca grelhada, servida com batata frita e salada.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Mariscos / Frutos do Mar",
+    "produto": "Lagosta Gratinada",
+    "preco_kz": 45000,
+    "descricao": "Lagosta ao forno com molho de natas e queijo gratinado.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Mariscos / Frutos do Mar",
+    "produto": "Choco Grelhado à Lagareiro",
+    "preco_kz": 12000,
+    "descricao": "Choco grelhado com batata ao murro e molho de alho.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Mariscos / Frutos do Mar",
+    "produto": "Gambas Grelhadas",
+    "preco_kz": 20000,
+    "descricao": "Gambas frescas grelhadas com batata frita e salada.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Mariscos / Frutos do Mar",
+    "produto": "Arroz de Frutos do Mar à Moda La Cabane",
+    "preco_kz": 25000,
+    "descricao": "Arroz de mariscos variados em molho de tomate, pimentos e coentros.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Mariscos / Frutos do Mar",
+    "produto": "Arroz de Lagosta à Moda La Cabane",
+    "preco_kz": 30000,
+    "descricao": "Arroz cremoso com lagosta e especiarias.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Mariscos / Frutos do Mar",
+    "produto": "Tábua de Frutos do Mar à Moda La Cabane",
+    "preco_kz": 60000,
+    "descricao": "Selecção especial de lagosta, gambas, mexilhões, choco e amêijoas.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Mariscos / Frutos do Mar",
+    "produto": "Gambas ao Alho",
+    "preco_kz": 20000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Mariscos / Frutos do Mar",
+    "produto": "Risoto de Camarão",
+    "preco_kz": 18000,
+    "descricao": "Arroz cremoso com camarão, creme de marisco e queijo ralado.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Batata Cozida Rena",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Batata Frita Rena",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Batata Cozida Doce",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Batata Frita Doce",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Arroz Branco",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Arroz de Feijão",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Feijão Preto",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Legumes Salteados",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Legumes Cozidos",
+    "preco_kz": 1500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Funge de Bombó",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Guarnições",
+    "produto": "Funge Misto",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Sobremesas",
+    "produto": "Pavê de Bolacha",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Sobremesas",
+    "produto": "Petit Gâteau com Gelado",
+    "preco_kz": 7000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Sobremesas",
+    "produto": "Mousse de Chocolate",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Sobremesas",
+    "produto": "Mousse de Maracujá",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Sobremesas",
+    "produto": "Brownie de Chocolate",
+    "preco_kz": 5000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Sobremesas",
+    "produto": "Pudim",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Refeições",
+    "categoria": "Sobremesas",
+    "produto": "Fruta Laminada",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Entradas",
+    "produto": "Shiitake",
+    "preco_kz": 8500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Entradas",
+    "produto": "Tempura de Camarão (6 und)",
+    "preco_kz": 9000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Entradas",
+    "produto": "Tempura Especial (6 und)",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Entradas",
+    "produto": "Kimuchi",
+    "preco_kz": 12500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Entradas",
+    "produto": "Ceviche de Salmão",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Entradas",
+    "produto": "Carpaccio (mix de peixe)",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Gunkans",
+    "produto": "5 Peças Salmão",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Gunkans",
+    "produto": "5 Peças Salmão Braseado",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Gunkans",
+    "produto": "5 Peças Atum",
+    "preco_kz": 8000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Gunkans",
+    "produto": "5 Peças Atum Braseado",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Sashimi",
+    "produto": "5 peças Salmão",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Sashimi",
+    "produto": "5 peças Salmão Braseado",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Sashimi",
+    "produto": "5 peças Atum",
+    "preco_kz": 8000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Sashimi",
+    "produto": "5 peças Atum Braseado",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Temakis",
+    "produto": "Temaki Salmão",
+    "preco_kz": 13000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Temakis",
+    "produto": "Temaki Atum (tuna)",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Temakis",
+    "produto": "Temaki Philadelphia",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Temakis",
+    "produto": "Temaki Camarão",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Temakis",
+    "produto": "Temaki Hot",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Quentes / Hot Roll",
+    "produto": "Hot Philadelphia (5 peças)",
+    "preco_kz": 7500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Quentes / Hot Roll",
+    "produto": "Hot La Cabane (10 peças)",
+    "preco_kz": 18000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Quentes / Hot Roll",
+    "produto": "Hot Bolinho La Cabane (10 peças)",
+    "preco_kz": 17000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Quentes / Hot Roll",
+    "produto": "Hot Especial (10 peças)",
+    "preco_kz": 22000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Quentes / Hot Roll",
+    "produto": "Hot Vegetariano (10 peças)",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Quentes / Hot Roll",
+    "produto": "Hot + Fry (8 peças)",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Quentes / Hot Roll",
+    "produto": "Hot IU (6 peças)",
+    "preco_kz": 10500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Uramaki",
+    "produto": "Uramaki Salmão (8 peças)",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Uramaki",
+    "produto": "Uramaki Califórnia (8 peças)",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Uramaki",
+    "produto": "Uramaki Spicy Tuna (8 peças)",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Uramaki",
+    "produto": "Uramaki Skin (8 peças)",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Uramaki",
+    "produto": "Uramaki Ebi Especial (8 peças)",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Uramaki",
+    "produto": "Uramaki Ebi Ten (8 peças)",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Combinados",
+    "produto": "Combo La Cabane (15 peças)",
+    "preco_kz": 20000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Combinados",
+    "produto": "Combinado (20 peças)",
+    "preco_kz": 30000,
+    "descricao": "Só salmão.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Combinados",
+    "produto": "Combinado (40 peças)",
+    "preco_kz": 60000,
+    "descricao": "Só salmão.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Combinados",
+    "produto": "Combinado (50 peças)",
+    "preco_kz": 75000,
+    "descricao": "Só salmão.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Combinados",
+    "produto": "Combinado (100 peças)",
+    "preco_kz": 135000,
+    "descricao": "Só salmão.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Massas – Yakissoba",
+    "produto": "Yakissoba de Carne",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Massas – Yakissoba",
+    "produto": "Yakissoba de Frango",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Massas – Yakissoba",
+    "produto": "Yakissoba de Camarão",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Massas – Yakissoba",
+    "produto": "Yakissoba Vegetariana",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Sushi",
+    "categoria": "Massas – Yakissoba",
+    "produto": "Yakissoba Mista",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cafés & Chás",
+    "produto": "Café Expresso",
+    "preco_kz": 1500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cafés & Chás",
+    "produto": "Café com Cheirinho",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cafés & Chás",
+    "produto": "Galão",
+    "preco_kz": 3000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cafés & Chás",
+    "produto": "Chá",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Águas",
+    "produto": "Água Chela 500ml",
+    "preco_kz": 750,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Águas",
+    "produto": "Água Chela 1,5 L",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Águas",
+    "produto": "Água com Gás Castelo",
+    "preco_kz": 2500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Águas",
+    "produto": "Água com Gás das Pedras",
+    "preco_kz": 2500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Águas",
+    "produto": "Água Tónica Top",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Refrigerantes e Bebidas Energéticas",
+    "produto": "Pepsi",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Refrigerantes e Bebidas Energéticas",
+    "produto": "7Up",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Refrigerantes e Bebidas Energéticas",
+    "produto": "Mirinda",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Refrigerantes e Bebidas Energéticas",
+    "produto": "Bebida Energética XXL",
+    "preco_kz": 1500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Refrigerantes e Bebidas Energéticas",
+    "produto": "Bebida Energética Red Bull",
+    "preco_kz": 3000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Compal Manga Ita",
+    "preco_kz": 1500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Sumol Ita",
+    "preco_kz": 1500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Sumo Natural de Melancia",
+    "preco_kz": 3000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Sumo Natural de Limão",
+    "preco_kz": 3000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Sumo Natural de Ananás",
+    "preco_kz": 3000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Sumo Natural de Maracujá",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Sumo Natural de Laranja",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Sumo Natural Tropical",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Sumo natural de frutos vermelhos",
+    "preco_kz": 6000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Sumos",
+    "produto": "Sumol Garrafa",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cervejas",
+    "produto": "Cuca Garrafa",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cervejas",
+    "produto": "Cuca Lata",
+    "preco_kz": 1500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cervejas",
+    "produto": "Eka Garrafa",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cervejas",
+    "produto": "Eka Lata",
+    "preco_kz": 1500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cervejas",
+    "produto": "Nocal Garrafa",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cervejas",
+    "produto": "N'Gola Garrafa",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cervejas",
+    "produto": "Booster Garrafa",
+    "preco_kz": 1000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cervejas",
+    "produto": "Booster Lata",
+    "preco_kz": 1500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bebidas",
+    "categoria": "Cervejas",
+    "produto": "Heineken",
+    "preco_kz": 2000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Caipirinha",
+    "preco_kz": 3500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Caipirinha de Maracujá",
+    "preco_kz": 5000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Caipirinha Black",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Caipirinha Love",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Mojito",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Pina Colada",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Margarita",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Cuba Libre",
+    "preco_kz": 4000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Coquetel à Moda do Chefe",
+    "preco_kz": 6000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Cocktails e Bebidas Mistas",
+    "produto": "Granizado",
+    "preco_kz": 5000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Whisky e Brandy",
+    "produto": "Whisky Jameson",
+    "preco_kz": 50000,
+    "descricao": "",
+    "preco_dose_kz": 3500,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Whisky e Brandy",
+    "produto": "Whisky Jameson Black",
+    "preco_kz": 65000,
+    "descricao": "",
+    "preco_dose_kz": 5000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Whisky e Brandy",
+    "produto": "Ballantine's",
+    "preco_kz": 35000,
+    "descricao": "",
+    "preco_dose_kz": 3000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Whisky e Brandy",
+    "produto": "1920",
+    "preco_kz": 20000,
+    "descricao": "",
+    "preco_dose_kz": 3000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Whisky e Brandy",
+    "produto": "Royal Brand",
+    "preco_kz": 23000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar_categoria_preco"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Whisky e Brandy",
+    "produto": "Macieira Cream",
+    "preco_kz": 30000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar_categoria_preco"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Whisky e Brandy",
+    "produto": "Presidente",
+    "preco_kz": 100000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar_categoria_preco"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Whisky e Brandy",
+    "produto": "Fundador Supremo",
+    "preco_kz": 100000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar_categoria_preco"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Whisky e Brandy",
+    "produto": "Royal Salute",
+    "preco_kz": 250000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Gin tónico",
+    "preco_kz": 4500,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Inverroche Classic",
+    "preco_kz": 50000,
+    "descricao": "",
+    "preco_dose_kz": 6000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Inverroche Amber",
+    "preco_kz": 60000,
+    "descricao": "",
+    "preco_dose_kz": 8000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Beefeater 24 Super Premium",
+    "preco_kz": 42000,
+    "descricao": "",
+    "preco_dose_kz": 4000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Beefeater Pink",
+    "preco_kz": 20000,
+    "descricao": "",
+    "preco_dose_kz": 4000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Beefeater London Dry Gin",
+    "preco_kz": 20000,
+    "descricao": "",
+    "preco_dose_kz": 4000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Playmont",
+    "preco_kz": 32000,
+    "descricao": "",
+    "preco_dose_kz": 4000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Vodka Absolut",
+    "preco_kz": 20000,
+    "descricao": "Green, Black, White, Blue [dose 2.500 Kz].",
+    "preco_dose_kz": 2500,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Vodka Wyborowa Garrafa",
+    "preco_kz": 18000,
+    "descricao": "",
+    "preco_dose_kz": 2500,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Cîroc",
+    "preco_kz": 30000,
+    "descricao": "",
+    "preco_dose_kz": 3500,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Gin Gordons",
+    "preco_kz": 20000,
+    "descricao": "",
+    "preco_dose_kz": 2000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Gin e Vodka",
+    "produto": "Gin Tónico de frutos vermelhos",
+    "preco_kz": 5000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Licores e Vermutes",
+    "produto": "Malibu Garrafa",
+    "preco_kz": 24000,
+    "descricao": "",
+    "preco_dose_kz": 3000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Licores e Vermutes",
+    "produto": "Amarula Garrafa",
+    "preco_kz": 30000,
+    "descricao": "",
+    "preco_dose_kz": 3750,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Licores e Vermutes",
+    "produto": "Licor Beirão Garrafa",
+    "preco_kz": 30000,
+    "descricao": "",
+    "preco_dose_kz": 3750,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Licores e Vermutes",
+    "produto": "Martini Rosso Garrafa",
+    "preco_kz": 40000,
+    "descricao": "",
+    "preco_dose_kz": 4000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Licores e Vermutes",
+    "produto": "Martini Bianco Garrafa",
+    "preco_kz": 40000,
+    "descricao": "",
+    "preco_dose_kz": 4000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Aguardentes",
+    "produto": "CRF",
+    "preco_kz": 85000,
+    "descricao": "",
+    "preco_dose_kz": 8000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Aguardentes",
+    "produto": "Antiqua",
+    "preco_kz": 85000,
+    "descricao": "",
+    "preco_dose_kz": 8000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Aguardentes",
+    "produto": "Aliança Velha",
+    "preco_kz": 85000,
+    "descricao": "",
+    "preco_dose_kz": 8000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Aguardentes",
+    "produto": "Cachaça",
+    "preco_kz": 30000,
+    "descricao": "",
+    "preco_dose_kz": 3500,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Aguardentes",
+    "produto": "São Domingos",
+    "preco_kz": 85000,
+    "descricao": "",
+    "preco_dose_kz": 8000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Brandes",
+    "produto": "Royal Brand Garrafa",
+    "preco_kz": 23000,
+    "descricao": "",
+    "preco_dose_kz": 3500,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Brandes",
+    "produto": "Macieira Cream Garrafa",
+    "preco_kz": 30000,
+    "descricao": "",
+    "preco_dose_kz": 3500,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Brandes",
+    "produto": "Presidente",
+    "preco_kz": 90000,
+    "descricao": "",
+    "preco_dose_kz": 9000,
+    "status_revisao": "confirmar_categoria_preco"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Brandes",
+    "produto": "Fundador Supremo",
+    "preco_kz": 90000,
+    "descricao": "",
+    "preco_dose_kz": 9000,
+    "status_revisao": "confirmar_categoria_preco"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Runs",
+    "produto": "Havana Club Garrafa",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": 3500,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Runs",
+    "produto": "Bumbu Original Rum Garrafa",
+    "preco_kz": 60000,
+    "descricao": "",
+    "preco_dose_kz": 4000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Runs",
+    "produto": "Bumbu Cremel Garrafa",
+    "preco_kz": 65000,
+    "descricao": "",
+    "preco_dose_kz": 4000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Runs",
+    "produto": "Bacardi",
+    "preco_kz": 65000,
+    "descricao": "",
+    "preco_dose_kz": 5500,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Tequilas",
+    "produto": "Olmeca Branco Silver Garrafa",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": 2000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Tequilas",
+    "produto": "Olmeca Chocolate Garrafa",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": 2000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Tequilas",
+    "produto": "Dom Júlio",
+    "preco_kz": 100000,
+    "descricao": "",
+    "preco_dose_kz": 12000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Tequilas",
+    "produto": "Camino",
+    "preco_kz": 100000,
+    "descricao": "",
+    "preco_dose_kz": 12000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Conhaques",
+    "produto": "Monnet",
+    "preco_kz": 120000,
+    "descricao": "",
+    "preco_dose_kz": 12000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Conhaques",
+    "produto": "Davidoff",
+    "preco_kz": 120000,
+    "descricao": "",
+    "preco_dose_kz": 12000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Conhaques",
+    "produto": "Courvoisier",
+    "preco_kz": 180000,
+    "descricao": "",
+    "preco_dose_kz": 18000,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Sangrias",
+    "produto": "Sangria Jarra 1,5L (tinto ou branco)",
+    "preco_kz": 20000,
+    "descricao": "Tinto ou branco.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Sangrias",
+    "produto": "Sangria Jarra 1,5L (frutos vermelhos)",
+    "preco_kz": 25000,
+    "descricao": "Frutos vermelhos.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Sangrias",
+    "produto": "Sangria Jarra 1,5L (só morangos)",
+    "preco_kz": 35000,
+    "descricao": "Só morangos.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Sangrias",
+    "produto": "Sangria Belaire",
+    "preco_kz": 70000,
+    "descricao": "Frutos vermelhos.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Sangrias",
+    "produto": "Sangria Moët Chandon Nectar",
+    "preco_kz": 150000,
+    "descricao": "Frutos vermelhos e morangos.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Sangrias",
+    "produto": "Sangria Moët Chandon Ice",
+    "preco_kz": 170000,
+    "descricao": "Frutos vermelhos e morangos.",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Loios",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Alumia Reserva",
+    "preco_kz": 12000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Alabastro",
+    "preco_kz": 16000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Pouca Roupa",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Marquês de Borba Garrafa",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Paulo Laureano",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Paulo Laureano Clássico",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Flor de Castro",
+    "preco_kz": 35000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Mariana",
+    "preco_kz": 28000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Amicone",
+    "preco_kz": 50000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Papa Figos",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Caves da Murça do Porto",
+    "preco_kz": 48000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Silk Space (Garrafa)",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Meandro",
+    "preco_kz": 48000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Duas Quintas",
+    "preco_kz": 38700,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Trincas Bolotas",
+    "preco_kz": 20000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Vinho Grande Douro",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Quinta dos Carvalhais",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Esteva Douro",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Nederburg",
+    "preco_kz": 35000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Merlot",
+    "preco_kz": 100000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Baltazar",
+    "preco_kz": 60000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Tintos",
+    "produto": "Quinta da Bacalhôa",
+    "preco_kz": 42700,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Brancos e Verdes",
+    "produto": "Loios Branco",
+    "preco_kz": 14000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Brancos e Verdes",
+    "produto": "Planalto",
+    "preco_kz": 17000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Brancos e Verdes",
+    "produto": "Gazela",
+    "preco_kz": 10000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Brancos e Verdes",
+    "produto": "Casal Garcia",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Brancos e Verdes",
+    "produto": "Baltazar",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Brancos e Verdes",
+    "produto": "Marquês de Borba Branco",
+    "preco_kz": 23000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Brancos e Verdes",
+    "produto": "Silk Space",
+    "preco_kz": 25000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Brancos e Verdes",
+    "produto": "Azevedo",
+    "preco_kz": 15000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "confirmar"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Rosé",
+    "produto": "Mateus Rosé",
+    "preco_kz": 13000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Vinhos Rosé",
+    "produto": "Baltazar Rosé",
+    "preco_kz": 14000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Champanhes e Espumantes",
+    "produto": "Moscato",
+    "preco_kz": 40000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Champanhes e Espumantes",
+    "produto": "Moët & Chandon Ice",
+    "preco_kz": 200000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Champanhes e Espumantes",
+    "produto": "Moët & Chandon Nectar",
+    "preco_kz": 170000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Champanhes e Espumantes",
+    "produto": "Ruinart",
+    "preco_kz": 250000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Champanhes e Espumantes",
+    "produto": "Louis Roederer",
+    "preco_kz": 350000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Champanhes e Espumantes",
+    "produto": "Dom Pérignon",
+    "preco_kz": 600000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  },
+  {
+    "grupo": "Bar & Lounge",
+    "categoria": "Champanhes e Espumantes",
+    "produto": "Armand de Brignac",
+    "preco_kz": 800000,
+    "descricao": "",
+    "preco_dose_kz": null,
+    "status_revisao": "transcrito"
+  }
+]

@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "admin:create": "node --env-file=.env.local scripts/create-admin.mjs"
+    "admin:create": "node --env-file=.env.local scripts/create-admin.mjs",
+    "menu:import": "node --env-file=.env.local scripts/import-menu.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

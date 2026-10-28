@@ -78,7 +78,13 @@ export function ProductDialog({
               className="object-cover"
             />
           ) : (
-            <MonogramPlaceholder name={product.name} />
+            <Image
+              src="/images/placeholder.svg"
+              alt={product.imageAlt ?? product.name}
+              fill
+              sizes="(min-width: 1024px) 440px, 100vw"
+              className="object-cover"
+            />
           )}
         </div>
 

@@ -1,0 +1,3 @@
+grupo,categoria,produto,descricao,preco_kz,nota_preco,variantes,tags,alergenios,doses,imagem,imagem_alt
+# Exemplo comentado (remover esta linha ao preencher o ficheiro real):
+# refeicoes,peixes,"Garoupa Grelhada","Grelhada ao carvão com azeite de ervas",12500,,"Dose:Meia=7500;Inteira=12500","Recomendado;Especialidade","Peixe","1 a 2 pessoas","peixes/garoupa.webp","Prato de garoupa grelhada com batatas e legumes"

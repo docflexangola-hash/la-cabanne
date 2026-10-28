@@ -91,45 +91,57 @@ export function AdminShell({
       </div>
 
       <nav className="flex-1 overflow-y-auto px-3 py-5" aria-label="Navegação principal">
-        {NAV_SECTIONS.map((section) => (
-          <div key={section.label} className="mb-5">
-            <p className="px-3 pb-2 text-[10px] font-semibold tracking-[0.16em] text-decor uppercase">
-              {section.label}
-            </p>
-            <ul className="space-y-0.5">
-              {section.items.map((item) => {
-                const active =
-                  pathname === item.href || pathname.startsWith(`${item.href}/`);
-                const Icon = item.icon;
+        {NAV_SECTIONS.map((section) => {
+          const items = section.items.filter((item) => {
+            if (item.href === '/admin/users' && staff.role !== 'admin') {
+              return false;
+            }
+            if (item.href === '/admin/audit' && staff.role !== 'admin') {
+              return false;
+            }
+            return true;
+          });
+          if (items.length === 0) return null;
+          return (
+            <div key={section.label} className="mb-5">
+              <p className="px-3 pb-2 text-[10px] font-semibold tracking-[0.16em] text-decor uppercase">
+                {section.label}
+              </p>
+              <ul className="space-y-0.5">
+                {items.map((item) => {
+                  const active =
+                    pathname === item.href || pathname.startsWith(`${item.href}/`);
+                  const Icon = item.icon;
 
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      aria-current={active ? 'page' : undefined}
-                      className={cn(
-                        'flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm transition-colors',
-                        active
-                          ? 'bg-blue-tint font-medium text-deep'
-                          : 'text-ink-2 hover:bg-surface-2 hover:text-ink',
-                      )}
-                    >
-                      <Icon
-                        aria-hidden="true"
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        aria-current={active ? 'page' : undefined}
                         className={cn(
-                          'size-4 shrink-0',
-                          active ? 'text-blue' : 'text-decor',
+                          'flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm transition-colors',
+                          active
+                            ? 'bg-blue-tint font-medium text-deep'
+                            : 'text-ink-2 hover:bg-surface-2 hover:text-ink',
                         )}
-                      />
-                      <span className="truncate">{item.label}</span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ))}
+                      >
+                        <Icon
+                          aria-hidden="true"
+                          className={cn(
+                            'size-4 shrink-0',
+                            active ? 'text-blue' : 'text-decor',
+                          )}
+                        />
+                        <span className="truncate">{item.label}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })}
       </nav>
 
       <div className="border-t border-line px-4 py-4">

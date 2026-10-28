@@ -33,16 +33,27 @@ export function ProductRow({
         unavailable && 'opacity-60',
       )}
     >
-      {product.imageUrl ? (
-        <Image
-          src={product.imageUrl}
-          alt=""
-          width={112}
-          height={112}
-          sizes="56px"
-          className="size-14 shrink-0 rounded-[10px] object-cover"
-        />
-      ) : null}
+      <div className="size-14 shrink-0 overflow-hidden rounded-[10px] bg-surface-2">
+        {product.imageUrl ? (
+          <Image
+            src={product.imageUrl}
+            alt=""
+            width={112}
+            height={112}
+            sizes="56px"
+            className="size-14 object-cover"
+          />
+        ) : (
+          <Image
+            src="/images/placeholder.svg"
+            alt=""
+            width={112}
+            height={112}
+            sizes="56px"
+            className="size-14 object-cover"
+          />
+        )}
+      </div>
 
       <span className="min-w-0 flex-1">
         <span className="flex items-baseline justify-between gap-3">

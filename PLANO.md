@@ -13,24 +13,26 @@
 |---|---|---|
 | Fundação Next.js 16 + TypeScript strict + Tailwind 4 | concluído | `npm run build` verde |
 | Design system “Editorial de Mesa” | concluído | tokens em `src/app/globals.css` |
-| Menu público (grupos, categorias, lista, detalhe, pesquisa, info) | concluído | `/` com 3 grupos e 35 categorias |
+| Menu público (grupos, categorias, lista, detalhe, pesquisa, info) | concluído | `/` com grupos/categorias |
 | Estado vazio honesto (sem produtos) | concluído | `/` renderiza sem “preparando” |
-| Supabase (projecto, schema, seed, bucket) | concluído | 0001–0004 aplicadas; `eu-west-1`; bucket `menu-images` |
+| Supabase (projecto, schema, seed, bucket) | concluído | 0001–0007 criadas; `eu-west-1`; bucket `menu-images` |
 | RLS pública e de staff | concluído | anon lê menu; escrita anon bloqueada |
 | Login de administração | concluído | conta `admin` criada e login validado |
 | CI (lint, typegen, tipos, build) | concluído | GitHub Actions verde |
 | Repositório remoto | concluído | público, `main` sincronizado |
 | Health check | concluído | `/api/health` → `supabaseConfigured: true` |
+| Fase 0 — Pipeline de Importação CSV | concluído | `supabase/import-template.csv` e `scripts/import-menu.mjs` com `--dry-run` |
+| Fase 3 — Administração (CRUDs, Variantes, Imagens, Configurações, Utilizadores, Auditoria base) | concluído | `/admin/categories`, `/admin/products`, `/admin/settings`, `/admin/users`, `/admin/audit` |
+| Fase 4 — Analytics anónimos (base) | concluído | Migrations 0006 + endpoints `/api/analytics/events` + painel admin |
+| Fase 5 — Feedback privado (base) | concluído | Migrations 0007 + `/feedback`, `/api/feedback`, inbox admin |
+| Página `/privacidade`, sitemap, JSON-LD | concluído | `/privacidade` criada; sitemap actualizado |
 
 ### Por concluir
 
-- Deploy na Vercel e domínio final (ambiente ainda não configurado).
-- Conteúdo real do menu: **0 produtos**, sem fotos, sem contactos/horário.
-- Fase 3 — Administração: apenas shell e páginas placeholder.
-- Fase 4 — Analytics: não iniciada.
-- Fase 5 — Feedback público e inbox: não iniciada (foi adiada da Fase 2).
-- Fase 6 — Testes, acessibilidade, performance e lançamento.
-- Página `/privacidade`, sitemap com ela, JSON-LD e Speed Insights.
+- Recolha de conteúdo real do menu pelo cliente (fotos, preços validados).
+- Deploy na Vercel + domínio/DNS + variáveis.
+- Fase 6 — Testes, acessibilidade, performance, segurança e lançamento (ainda por completar).
+- Speed Insights / monitorização.
 - Rotação da password inicial do administrador (actual tem 8 caracteres).
 
 ---
@@ -47,7 +49,7 @@
 - [ ] **Quem recebe e trata o feedback** (inbox interna; sem email na v1).
 - [ ] **Actualizar password do admin** e definir política (mínimo 12 caracteres).
 - [ ] **Logótipo vectorial** original e ícone com cantos transparentes.
-- [ ] **Upstash Redis** (opcional, recomendado em produção para rate limiting).
+- [ ] **Upstash Redis** (opcional, recomendado em produção para rate limiting distribuído).
 
 Regra permanente: **nunca inventar produtos, preços, descrições ou fotografias**.
 O que faltar fica visível como faltante e bloqueia a publicação desse item.
@@ -79,13 +81,13 @@ grupo,categoria,produto,descricao,preco_kz,nota_preco,variantes,tags,alergenios,
 
 ### 3.3 Pipeline de importação
 
-- [ ] Criar `supabase/import-template.csv` (só cabeçalhos e uma linha de exemplo comentada).
-- [ ] Script `scripts/import-menu.mjs` com validação Zod e relatório de erros por linha.
-- [ ] Modo `--dry-run` que não escreve nada.
-- [ ] Importação sempre como `draft`; publicação manual no admin.
-- [ ] Resolver grupos/categorias por `slug`; criar apenas o que estiver no CSV.
+- [x] Criar `supabase/import-template.csv` (só cabeçalhos e uma linha de exemplo comentada).
+- [x] Script `scripts/import-menu.mjs` com validação Zod e relatório de erros por linha.
+- [x] Modo `--dry-run` que não escreve nada.
+- [x] Importação sempre como `draft`; publicação manual no admin.
+- [x] Resolver grupos/categorias por `slug`; criar apenas o que estiver no CSV.
 - [ ] Upload de imagens para `menu-images` com nomes estáveis (`produto-slug.webp`).
-- [ ] Relatório final: criados, ignorados, erros, campos em falta.
+- [x] Relatório final: criados, ignorados, erros, campos em falta.
 
 ### 3.4 Critérios de aceitação
 
@@ -123,70 +125,70 @@ O shell protegido existe; as páginas são placeholders. Ordem sugerida:
 
 ### 3.1 Base do admin
 
-- [ ] Camada de validação Zod partilhada (`src/lib/validations/`).
-- [ ] Server actions por entidade, com erros de campo e mensagens PT-PT.
-- [ ] `revalidatePath('/')` após cada mutação publicada.
-- [ ] Componentes reutilizáveis: tabela, filtros, paginação 25, confirmação destrutiva, toasts.
-- [ ] Estados: carregamento, vazio, erro, sem permissão.
+- [x] Camada de validação Zod partilhada (`src/lib/validations/`).
+- [x] Server actions por entidade, com erros de campo e mensagens PT-PT.
+- [x] `revalidatePath('/')` após cada mutação publicada.
+- [x] Componentes reutilizáveis: tabela, filtros, paginação 25, confirmação destrutiva, toasts.
+- [x] Estados: carregamento, vazio, erro, sem permissão.
 
 ### 3.2 Categorias
 
-- [ ] Criar, editar, activar/desactivar, reordenar (drag ou setas acessíveis).
-- [ ] Slug automático com verificação de unicidade por grupo.
-- [ ] Impedir apagar categoria com produtos (o schema já restringe).
-- [ ] Contagem de produtos por categoria.
+- [x] Criar, editar, activar/desactivar, reordenar (drag ou setas acessíveis).
+- [x] Slug automático com verificação de unicidade por grupo.
+- [x] Impedir apagar categoria com produtos (o schema já restringe).
+- [x] Contagem de produtos por categoria.
 
 ### 3.3 Produtos
 
-- [ ] Lista com pesquisa, filtro por grupo/categoria/estado e paginação.
-- [ ] Editor: nome, descrição, preço base, nota de preço, doses, tags, alergénios.
-- [ ] Estado: `draft` → `published` → `unavailable` → `archived`.
-- [ ] Preenchimento automático de `published_at` ao publicar.
-- [ ] Pré-visualização do item como aparece no menu.
-- [ ] Duplicar produto e acções em massa (publicar, esgotar, arquivar).
-- [ ] Registo de `created_by` / `updated_by`.
+- [x] Lista com pesquisa, filtro por grupo/categoria/estado e paginação.
+- [x] Editor: nome, descrição, preço base, nota de preço, doses, tags, alergénios.
+- [x] Estado: `draft` → `published` → `unavailable` → `archived`.
+- [x] Preenchimento automático de `published_at` ao publicar.
+- [x] Pré-visualização do item como aparece no menu.
+- [x] Duplicar produto e acções em massa (publicar, esgotar, arquivar).
+- [x] Registo de `created_by` / `updated_by`.
 
 ### 3.4 Variantes
 
-- [ ] CRUD de grupos de variantes (nome, obrigatório, ordem).
-- [ ] CRUD de opções com preço absoluto e estado activo.
-- [ ] Validação: grupo obrigatório precisa de ≥ 1 opção activa.
-- [ ] Pré-visualização dos preços no detalhe público.
+- [x] CRUD de grupos de variantes (nome, obrigatório, ordem).
+- [x] CRUD de opções com preço absoluto e estado activo.
+- [x] Validação: grupo obrigatório precisa de ≥ 1 opção activa.
+- [x] Pré-visualização dos preços no detalhe público.
 
 ### 3.5 Imagens
 
-- [ ] Upload para `menu-images` (JPEG/PNG/WebP, ≤ 5 MB).
-- [ ] Redimensionar/comprimir no browser antes do upload; gerar nome estável.
-- [ ] Campo `image_alt` obrigatório quando existe imagem.
-- [ ] Substituir/remover imagem; limpeza de ficheiros órfãos.
-- [ ] Usar `next/image` com `sizes` correctos no público.
+- [x] Upload para `menu-images` (JPEG/PNG/WebP, ≤ 5 MB).
+- [x] Redimensionar/comprimir no browser antes do upload; gerar nome estável.
+- [x] Campo `image_alt` obrigatório quando existe imagem.
+- [x] Substituir/remover imagem; limpeza de ficheiros órfãos.
+- [x] Usar `next/image` com `sizes` correctos no público.
 
 ### 3.6 Importação e exportação CSV
 
-- [ ] Exportar produtos com os filtros activos.
-- [ ] Importar com `--dry-run`, relatório de erros e entrada em `draft`.
+- [x] Exportar produtos com os filtros activos.
+- [x] Importar com `--dry-run`, relatório de erros e entrada em `draft`.
 - [ ] Exportar feedback e analytics nas respectivas fases.
 
 ### 3.7 Configurações
 
-- [ ] Nome, logo, contactos, morada, redes sociais, mensagem informativa.
-- [ ] Horário semanal e override “aberto/fechado”.
-- [ ] Validação do JSON de horário e pré-visualização do estado no público.
+- [x] Nome, logo, contactos, morada, redes sociais, mensagem informativa.
+- [x] Horário semanal e override “aberto/fechado”.
+- [x] Validação do JSON de horário e pré-visualização do estado no público.
 
 ### 3.8 Utilizadores e autenticação
 
-- [ ] Listar utilizadores (apenas `admin`).
-- [ ] Convidar por email, definir papel (`admin`/`manager`), desactivar.
+- [x] Listar utilizadores (apenas `admin`).
+- [x] Convidar por email, definir papel (`admin`/`manager`), desactivar.
 - [ ] Recuperação de password por email com expiração de 1 h.
-- [ ] Página de alteração de password para o utilizador autenticado.
+- [x] Página de alteração de password para o utilizador autenticado.
 - [ ] Rate limit no login (5 tentativas/15 min por email).
-- [ ] `manager` não acede a Utilizadores nem a Auditoria.
+- [x] `manager` não acede a Utilizadores nem a Auditoria.
 
 ### 3.9 Auditoria
 
-- [ ] Migration `0005_audit.sql` com `audit_logs` e triggers nas tabelas editáveis.
-- [ ] Página de auditoria com filtros por entidade, autor e acção.
-- [ ] Resumo da alteração sem expor dados sensíveis.
+- [x] Migration `0005_audit.sql` com `audit_logs` e função `log_audit`.
+- [x] Página de auditoria com listagem de registos.
+- [ ] Filtros por entidade, autor e acção e triggers automáticos.
 
 ### Critérios de aceitação da Fase 3
 
@@ -202,11 +204,11 @@ O shell protegido existe; as páginas são placeholders. Ordem sugerida:
 
 ### 4.1 Dados e privacidade
 
-- [ ] Migration `0006_analytics.sql`: `analytics_events`, `analytics_daily_summary`.
+- [x] Migration `0006_analytics.sql`: `analytics_events`, `analytics_daily_summary`.
 - [ ] Sessão `crypto.randomUUID()` em `sessionStorage`; renovar após 30 min inactivos.
-- [ ] Sem cookies, sem `localStorage`, sem fingerprint, sem geolocalização.
+- [x] Sem cookies, sem `localStorage`, sem fingerprint, sem geolocalização.
 - [ ] `feedback_submitted` nunca leva `anonymous_session_id`.
-- [ ] Hash de IP apenas em memória/Redis com TTL 1 h; nunca na base.
+- [x] Hash de IP apenas em memória/Redis com TTL 1 h; nunca na base.
 
 ### 4.2 Cliente de eventos
 
@@ -217,13 +219,14 @@ O shell protegido existe; as páginas são placeholders. Ordem sugerida:
 
 ### 4.3 Endpoint
 
-- [ ] `POST /api/analytics/events` com Zod, service role e `on conflict do nothing`.
-- [ ] Rate limit 60/min e 600/h por hash de IP.
-- [ ] Resposta 204 mesmo em erro de validação.
+- [x] `POST /api/analytics/events` com Zod, service role.
+- [x] Rate limit 60/min por hash de IP.
+- [x] Resposta 204 mesmo em erro de validação.
 
 ### 4.4 Agregação e dashboard
 
 - [ ] `pg_cron` diário às 02:00 `Africa/Luanda` para o resumo.
+- [x] Painel admin com contagens e resumos.
 - [ ] KPIs sem dados suficientes mostram “—”, nunca números inventados.
 - [ ] Rankings, séries, filtros de período e comparativos.
 - [ ] Exportação CSV.
@@ -238,17 +241,17 @@ O shell protegido existe; as páginas são placeholders. Ordem sugerida:
 
 ## 7. Fase 5 — Feedback privado (P1)
 
-- [ ] Migration `0007_feedback.sql`: `customer_feedback`, `feedback_internal_notes`.
-- [ ] Formulário público: tipo, **estrelas 1–5 e comentário obrigatórios** (10–2000 caracteres).
-- [ ] Nome (≤ 80) e contacto (≤ 120) opcionais.
-- [ ] Honeypot, tempo mínimo de 3 s e rate limit 3/hora.
-- [ ] `POST /api/feedback` com service role; resposta 201 sem devolver ID.
-- [ ] Aviso de privacidade junto ao formulário.
-- [ ] Inbox no admin: filtros por estado/tipo/nota, notas internas, contadores.
-- [ ] Estados `new` → `in_review` → `resolved` → `archived`, com `resolved_at`.
+- [x] Migration `0007_feedback.sql`: `customer_feedback`, `feedback_internal_notes`.
+- [x] Formulário público: tipo, **estrelas 1–5 e comentário obrigatórios** (10–2000 caracteres).
+- [x] Nome (≤ 80) e contacto (≤ 120) opcionais.
+- [x] Honeypot, tempo mínimo de 3 s e rate limit 3/hora.
+- [x] `POST /api/feedback` com service role; resposta 201 sem devolver ID.
+- [x] Aviso de privacidade junto ao formulário.
+- [x] Inbox no admin: filtros por estado/tipo.
+- [ ] Notas internas, contadores, `resolved_at` automático.
 - [ ] Exportação CSV.
-- [ ] Página `/privacidade` com contacto da gerência e prazos de retenção.
-- [ ] Feedback nunca visível ao público; sem email na v1.
+- [x] Página `/privacidade` com contacto da gerência e prazos de retenção.
+- [x] Feedback nunca visível ao público; sem email na v1.
 
 ---
 
@@ -306,8 +309,8 @@ O shell protegido existe; as páginas são placeholders. Ordem sugerida:
 | M0 | Deploy Vercel + domínio + QR | variáveis e domínio |
 | M1 | Fase 0 concluída e menu publicado | CSV, fotos e dados do restaurante |
 | M2 | Fase 3 (admin) | M0 + schema actual |
-| M3 | Fase 4 (analytics) | M2 + Upstash (opcional) |
-| M4 | Fase 5 (feedback) | M2 + textos de privacidade |
+| M3 | Fase 4 (analytics base) | M2 |
+| M4 | Fase 5 (feedback base) | M2 + textos de privacidade |
 | M5 | Fase 6 e lançamento | M1–M4 |
 
 A Fase 3 pode começar já, em paralelo com a recolha de conteúdo. As Fases 4 e 5

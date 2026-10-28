@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import type { ReactNode } from 'react';
+import Script from 'next/script';
 
 import { getSiteUrl } from '@/lib/env';
 
@@ -76,13 +77,39 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Restaurant',
+    name: 'La Cabanne',
+    description,
+    url: siteUrl,
+    servesCuisine: ['Portuguesa', 'Sushi', 'Bebidas'],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Benguela',
+      addressCountry: 'AO',
+    },
+  };
+
   return (
     <html
       lang="pt-PT"
       data-scroll-behavior="smooth"
       className={`${cormorant.variable} ${dmSans.variable}`}
     >
-      <body className="min-h-dvh bg-ivory text-ink">{children}</body>
+      <body className="min-h-dvh bg-ivory text-ink">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+        {process.env.NEXT_PUBLIC_VERCEL ? (
+          <Script
+            src="https://va.vercel-scripts.com/v1/script.debug.js"
+            strategy="afterInteractive"
+          />
+        ) : null}
+      </body>
     </html>
   );
 }

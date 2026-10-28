@@ -1,0 +1,244 @@
+﻿grupo,categoria,produto,preco_kz,descricao,preco_dose_kz,status_revisao
+Refeições,Entradas/Aperitivos,Tábua de Enchidos,12000,,,transcrito
+Refeições,Entradas/Aperitivos,Tábua de Queijos,15000,,,transcrito
+Refeições,Entradas/Aperitivos,Azeitonas ao Alho,2000,,,transcrito
+Refeições,Entradas/Aperitivos,Pão ao Alho,2000,,,transcrito
+Refeições,Entradas/Aperitivos,Tremoços,2000,,,transcrito
+Refeições,Entradas/Aperitivos,Tempura de Choco,10000,,,transcrito
+Refeições,Entradas/Aperitivos,Chouriço na Brasa,10000,,,transcrito
+Refeições,Entradas/Aperitivos,Camarão al pil pil,14900,,,transcrito
+Refeições,Entradas/Aperitivos,Buffalo Wings,8900,,,confirmar
+Refeições,Entradas/Aperitivos,Ostras Frescas,6500,,,transcrito
+Refeições,Entradas/Aperitivos,Pica-Pau de Novilho,8000,,,transcrito
+Refeições,Entradas/Aperitivos,Couvert,4000,,,transcrito
+Refeições,Entradas/Aperitivos,Sanduíche Mista,4000,"Fiambre, queijo, alface e tomate.",,transcrito
+Refeições,Entradas/Aperitivos,Tosta Mista,5000,Fiambre e queijo.,,transcrito
+Refeições,Snacks,Prego no Prato,12800,,,confirmar
+Refeições,Snacks,Omelete de Camarão,7500,,,transcrito
+Refeições,Snacks,Omelete Especial,11000,"Chouriço, queijo, fiambre e batata frita.",,transcrito
+Refeições,Snacks,Sanduíche à La Cabane,8000,"Bacon, ovo, peito de frango, alface, tomate, queijo e batatas fritas.",,transcrito
+Refeições,Snacks,Sanduíche de Atum,4000,"Pasta de atum, alface e tomate.",,transcrito
+Refeições,Snacks,Prego no Pão Composto,9000,,,transcrito
+Refeições,Pastas,Tagliatelle de Garoupa à La Cabane,20000,"Lombo de garoupa com tagliatelle, coentros, malagueta e natas.",,transcrito
+Refeições,Pastas,Esparguete à Bolonhesa,13000,"Carne moída, queijo e molho de tomate.",,transcrito
+Refeições,Pastas,Esparguete à Carbonara,15000,"Bacon, fiambre, queijo e natas.",,transcrito
+Refeições,Pastas,Tagliatelle Frutos do Mar,18000,"Tagliatelle com choco, camarão, mexilhões, amêijoas e molho de tomate.",,transcrito
+Refeições,Peixes,Bacalhau à Lagareiro,27000,Com batata ao murro e molho de alho.,,confirmar
+Refeições,Peixes,Bacalhau Cozido,27000,"Bacalhau com batata cozida, grão-de-bico, ovos e legumes.",,transcrito
+Refeições,Peixes,Garoupa na Brasa,16500,Acompanhada de batata doce assada e legumes salteados.,,transcrito
+Refeições,Peixes,Lombo de Garoupa à La Cabane,18000,Lombo de garoupa com puré de batata e brócolos salteados.,,transcrito
+Refeições,Peixes,Curvina na Brasa,15000,"Curvina grelhada com batata doce, pepino, cenoura, cebola e beringela, tudo na brasa.",,transcrito
+Refeições,Carnes,Picanha à Moda La Cabane,18000,"Picanha no maçarico, com batata frita, arroz, feijão-preto, couve mineira, banana-pão e ananás assado.",,transcrito
+Refeições,Carnes,T-Bone à Moda La Cabane,18000,"Corte especial grelhado, acompanhado de legumes salteados.",,transcrito
+Refeições,Carnes,Bife às Três Pimentas,15000,"Bife com molho cremoso de pimentas, servido com legumes salteados e batata frita.",,transcrito
+Refeições,Carnes,Bife à Portuguesa,15000,"Batata chips, ovo e presunto.",,transcrito
+Refeições,Carnes,Tomahawk à Moda La Cabane,22000,Servidas com batata frita e salada mista.,,transcrito
+Refeições,Carnes,Churrasco de Galinha Nacional,12000,"Galinha grelhada na brasa, com batata frita e salada.",,transcrito
+Refeições,Carnes,Lombo de Porco Grelhado,17500,Acompanhado de batata frita e salada.,,transcrito
+Refeições,Carnes,Grelhada Terra e Mar,80000,"Selecção de carnes grelhadas e selecção de mariscos e peixes, com arroz de feijão, batata doce frita e salada.",,transcrito
+Refeições,Carnes,Tábua Mista,40000,"Carnes variadas grelhadas, servidas com arroz, feijão, batata frita e salada.",,transcrito
+Refeições,Carnes,Tiras de Porco/Vaca grelhadas,12000,,,transcrito
+Refeições,Mariscos / Frutos do Mar,Lagosta Grelhada,35000,"Lagosta fresca grelhada, servida com batata frita e salada.",,transcrito
+Refeições,Mariscos / Frutos do Mar,Lagosta Gratinada,45000,Lagosta ao forno com molho de natas e queijo gratinado.,,transcrito
+Refeições,Mariscos / Frutos do Mar,Choco Grelhado à Lagareiro,12000,Choco grelhado com batata ao murro e molho de alho.,,transcrito
+Refeições,Mariscos / Frutos do Mar,Gambas Grelhadas,20000,Gambas frescas grelhadas com batata frita e salada.,,transcrito
+Refeições,Mariscos / Frutos do Mar,Arroz de Frutos do Mar à Moda La Cabane,25000,"Arroz de mariscos variados em molho de tomate, pimentos e coentros.",,transcrito
+Refeições,Mariscos / Frutos do Mar,Arroz de Lagosta à Moda La Cabane,30000,Arroz cremoso com lagosta e especiarias.,,transcrito
+Refeições,Mariscos / Frutos do Mar,Tábua de Frutos do Mar à Moda La Cabane,60000,"Selecção especial de lagosta, gambas, mexilhões, choco e amêijoas.",,transcrito
+Refeições,Mariscos / Frutos do Mar,Gambas ao Alho,20000,,,transcrito
+Refeições,Mariscos / Frutos do Mar,Risoto de Camarão,18000,"Arroz cremoso com camarão, creme de marisco e queijo ralado.",,transcrito
+Refeições,Guarnições,Batata Cozida Rena,2000,,,transcrito
+Refeições,Guarnições,Batata Frita Rena,2000,,,transcrito
+Refeições,Guarnições,Batata Cozida Doce,2000,,,transcrito
+Refeições,Guarnições,Batata Frita Doce,2000,,,transcrito
+Refeições,Guarnições,Arroz Branco,2000,,,transcrito
+Refeições,Guarnições,Arroz de Feijão,2000,,,transcrito
+Refeições,Guarnições,Feijão Preto,2000,,,transcrito
+Refeições,Guarnições,Legumes Salteados,2000,,,transcrito
+Refeições,Guarnições,Legumes Cozidos,1500,,,transcrito
+Refeições,Guarnições,Funge de Bombó,2000,,,transcrito
+Refeições,Guarnições,Funge Misto,2000,,,transcrito
+Refeições,Sobremesas,Pavê de Bolacha,4000,,,transcrito
+Refeições,Sobremesas,Petit Gâteau com Gelado,7000,,,transcrito
+Refeições,Sobremesas,Mousse de Chocolate,4000,,,transcrito
+Refeições,Sobremesas,Mousse de Maracujá,4000,,,transcrito
+Refeições,Sobremesas,Brownie de Chocolate,5000,,,transcrito
+Refeições,Sobremesas,Pudim,4000,,,transcrito
+Refeições,Sobremesas,Fruta Laminada,4000,,,transcrito
+Sushi,Entradas,Shiitake,8500,,,transcrito
+Sushi,Entradas,Tempura de Camarão (6 und),9000,,,transcrito
+Sushi,Entradas,Tempura Especial (6 und),12000,,,transcrito
+Sushi,Entradas,Kimuchi,12500,,,transcrito
+Sushi,Entradas,Ceviche de Salmão,15000,,,transcrito
+Sushi,Entradas,Carpaccio (mix de peixe),12000,,,transcrito
+Sushi,Gunkans,5 Peças Salmão,10000,,,transcrito
+Sushi,Gunkans,5 Peças Salmão Braseado,12000,,,transcrito
+Sushi,Gunkans,5 Peças Atum,8000,,,transcrito
+Sushi,Gunkans,5 Peças Atum Braseado,10000,,,transcrito
+Sushi,Sashimi,5 peças Salmão,10000,,,transcrito
+Sushi,Sashimi,5 peças Salmão Braseado,12000,,,transcrito
+Sushi,Sashimi,5 peças Atum,8000,,,transcrito
+Sushi,Sashimi,5 peças Atum Braseado,10000,,,transcrito
+Sushi,Temakis,Temaki Salmão,13000,,,transcrito
+Sushi,Temakis,Temaki Atum (tuna),10000,,,transcrito
+Sushi,Temakis,Temaki Philadelphia,12000,,,transcrito
+Sushi,Temakis,Temaki Camarão,12000,,,transcrito
+Sushi,Temakis,Temaki Hot,12000,,,transcrito
+Sushi,Quentes / Hot Roll,Hot Philadelphia (5 peças),7500,,,transcrito
+Sushi,Quentes / Hot Roll,Hot La Cabane (10 peças),18000,,,transcrito
+Sushi,Quentes / Hot Roll,Hot Bolinho La Cabane (10 peças),17000,,,confirmar
+Sushi,Quentes / Hot Roll,Hot Especial (10 peças),22000,,,transcrito
+Sushi,Quentes / Hot Roll,Hot Vegetariano (10 peças),15000,,,transcrito
+Sushi,Quentes / Hot Roll,Hot + Fry (8 peças),12000,,,transcrito
+Sushi,Quentes / Hot Roll,Hot IU (6 peças),10500,,,transcrito
+Sushi,Uramaki,Uramaki Salmão (8 peças),12000,,,transcrito
+Sushi,Uramaki,Uramaki Califórnia (8 peças),10000,,,transcrito
+Sushi,Uramaki,Uramaki Spicy Tuna (8 peças),10000,,,transcrito
+Sushi,Uramaki,Uramaki Skin (8 peças),10000,,,transcrito
+Sushi,Uramaki,Uramaki Ebi Especial (8 peças),12000,,,transcrito
+Sushi,Uramaki,Uramaki Ebi Ten (8 peças),10000,,,transcrito
+Sushi,Combinados,Combo La Cabane (15 peças),20000,,,transcrito
+Sushi,Combinados,Combinado (20 peças),30000,Só salmão.,,transcrito
+Sushi,Combinados,Combinado (40 peças),60000,Só salmão.,,transcrito
+Sushi,Combinados,Combinado (50 peças),75000,Só salmão.,,transcrito
+Sushi,Combinados,Combinado (100 peças),135000,Só salmão.,,transcrito
+Sushi,Massas – Yakissoba,Yakissoba de Carne,12000,,,transcrito
+Sushi,Massas – Yakissoba,Yakissoba de Frango,12000,,,transcrito
+Sushi,Massas – Yakissoba,Yakissoba de Camarão,12000,,,transcrito
+Sushi,Massas – Yakissoba,Yakissoba Vegetariana,10000,,,transcrito
+Sushi,Massas – Yakissoba,Yakissoba Mista,15000,,,transcrito
+Bebidas,Cafés & Chás,Café Expresso,1500,,,transcrito
+Bebidas,Cafés & Chás,Café com Cheirinho,2000,,,transcrito
+Bebidas,Cafés & Chás,Galão,3000,,,transcrito
+Bebidas,Cafés & Chás,Chá,1000,,,transcrito
+Bebidas,Águas,Água Chela 500ml,750,,,transcrito
+Bebidas,Águas,"Água Chela 1,5 L",2000,,,transcrito
+Bebidas,Águas,Água com Gás Castelo,2500,,,transcrito
+Bebidas,Águas,Água com Gás das Pedras,2500,,,transcrito
+Bebidas,Águas,Água Tónica Top,1000,,,transcrito
+Bebidas,Refrigerantes e Bebidas Energéticas,Pepsi,1000,,,transcrito
+Bebidas,Refrigerantes e Bebidas Energéticas,7Up,1000,,,transcrito
+Bebidas,Refrigerantes e Bebidas Energéticas,Mirinda,1000,,,transcrito
+Bebidas,Refrigerantes e Bebidas Energéticas,Bebida Energética XXL,1500,,,transcrito
+Bebidas,Refrigerantes e Bebidas Energéticas,Bebida Energética Red Bull,3000,,,transcrito
+Bebidas,Sumos,Compal Manga Ita,1500,,,transcrito
+Bebidas,Sumos,Sumol Ita,1500,,,transcrito
+Bebidas,Sumos,Sumo Natural de Melancia,3000,,,transcrito
+Bebidas,Sumos,Sumo Natural de Limão,3000,,,transcrito
+Bebidas,Sumos,Sumo Natural de Ananás,3000,,,transcrito
+Bebidas,Sumos,Sumo Natural de Maracujá,4000,,,transcrito
+Bebidas,Sumos,Sumo Natural de Laranja,4000,,,transcrito
+Bebidas,Sumos,Sumo Natural Tropical,4000,,,transcrito
+Bebidas,Sumos,Sumo natural de frutos vermelhos,6000,,,transcrito
+Bebidas,Sumos,Sumol Garrafa,1000,,,transcrito
+Bebidas,Cervejas,Cuca Garrafa,1000,,,transcrito
+Bebidas,Cervejas,Cuca Lata,1500,,,transcrito
+Bebidas,Cervejas,Eka Garrafa,1000,,,transcrito
+Bebidas,Cervejas,Eka Lata,1500,,,transcrito
+Bebidas,Cervejas,Nocal Garrafa,1000,,,transcrito
+Bebidas,Cervejas,N'Gola Garrafa,1000,,,transcrito
+Bebidas,Cervejas,Booster Garrafa,1000,,,transcrito
+Bebidas,Cervejas,Booster Lata,1500,,,transcrito
+Bebidas,Cervejas,Heineken,2000,,,transcrito
+Bar & Lounge,Cocktails e Bebidas Mistas,Caipirinha,3500,,,transcrito
+Bar & Lounge,Cocktails e Bebidas Mistas,Caipirinha de Maracujá,5000,,,transcrito
+Bar & Lounge,Cocktails e Bebidas Mistas,Caipirinha Black,4000,,,transcrito
+Bar & Lounge,Cocktails e Bebidas Mistas,Caipirinha Love,4000,,,transcrito
+Bar & Lounge,Cocktails e Bebidas Mistas,Mojito,4000,,,confirmar
+Bar & Lounge,Cocktails e Bebidas Mistas,Pina Colada,4000,,,confirmar
+Bar & Lounge,Cocktails e Bebidas Mistas,Margarita,4000,,,transcrito
+Bar & Lounge,Cocktails e Bebidas Mistas,Cuba Libre,4000,,,transcrito
+Bar & Lounge,Cocktails e Bebidas Mistas,Coquetel à Moda do Chefe,6000,,,transcrito
+Bar & Lounge,Cocktails e Bebidas Mistas,Granizado,5000,,,transcrito
+Bar & Lounge,Whisky e Brandy,Whisky Jameson,50000,,3500,transcrito
+Bar & Lounge,Whisky e Brandy,Whisky Jameson Black,65000,,5000,transcrito
+Bar & Lounge,Whisky e Brandy,Ballantine's,35000,,3000,transcrito
+Bar & Lounge,Whisky e Brandy,1920,20000,,3000,transcrito
+Bar & Lounge,Whisky e Brandy,Royal Brand,23000,,,confirmar_categoria_preco
+Bar & Lounge,Whisky e Brandy,Macieira Cream,30000,,,confirmar_categoria_preco
+Bar & Lounge,Whisky e Brandy,Presidente,100000,,,confirmar_categoria_preco
+Bar & Lounge,Whisky e Brandy,Fundador Supremo,100000,,,confirmar_categoria_preco
+Bar & Lounge,Whisky e Brandy,Royal Salute,250000,,,transcrito
+Bar & Lounge,Gin e Vodka,Gin tónico,4500,,,transcrito
+Bar & Lounge,Gin e Vodka,Inverroche Classic,50000,,6000,transcrito
+Bar & Lounge,Gin e Vodka,Inverroche Amber,60000,,8000,transcrito
+Bar & Lounge,Gin e Vodka,Beefeater 24 Super Premium,42000,,4000,transcrito
+Bar & Lounge,Gin e Vodka,Beefeater Pink,20000,,4000,transcrito
+Bar & Lounge,Gin e Vodka,Beefeater London Dry Gin,20000,,4000,transcrito
+Bar & Lounge,Gin e Vodka,Playmont,32000,,4000,transcrito
+Bar & Lounge,Gin e Vodka,Vodka Absolut,20000,"Green, Black, White, Blue [dose 2.500 Kz].",2500,transcrito
+Bar & Lounge,Gin e Vodka,Vodka Wyborowa Garrafa,18000,,2500,transcrito
+Bar & Lounge,Gin e Vodka,Cîroc,30000,,3500,confirmar
+Bar & Lounge,Gin e Vodka,Gin Gordons,20000,,2000,transcrito
+Bar & Lounge,Gin e Vodka,Gin Tónico de frutos vermelhos,5000,,,transcrito
+Bar & Lounge,Licores e Vermutes,Malibu Garrafa,24000,,3000,transcrito
+Bar & Lounge,Licores e Vermutes,Amarula Garrafa,30000,,3750,transcrito
+Bar & Lounge,Licores e Vermutes,Licor Beirão Garrafa,30000,,3750,transcrito
+Bar & Lounge,Licores e Vermutes,Martini Rosso Garrafa,40000,,4000,transcrito
+Bar & Lounge,Licores e Vermutes,Martini Bianco Garrafa,40000,,4000,transcrito
+Bar & Lounge,Aguardentes,CRF,85000,,8000,transcrito
+Bar & Lounge,Aguardentes,Antiqua,85000,,8000,transcrito
+Bar & Lounge,Aguardentes,Aliança Velha,85000,,8000,transcrito
+Bar & Lounge,Aguardentes,Cachaça,30000,,3500,transcrito
+Bar & Lounge,Aguardentes,São Domingos,85000,,8000,transcrito
+Bar & Lounge,Brandes,Royal Brand Garrafa,23000,,3500,transcrito
+Bar & Lounge,Brandes,Macieira Cream Garrafa,30000,,3500,transcrito
+Bar & Lounge,Brandes,Presidente,90000,,9000,confirmar_categoria_preco
+Bar & Lounge,Brandes,Fundador Supremo,90000,,9000,confirmar_categoria_preco
+Bar & Lounge,Runs,Havana Club Garrafa,25000,,3500,transcrito
+Bar & Lounge,Runs,Bumbu Original Rum Garrafa,60000,,4000,transcrito
+Bar & Lounge,Runs,Bumbu Cremel Garrafa,65000,,4000,transcrito
+Bar & Lounge,Runs,Bacardi,65000,,5500,transcrito
+Bar & Lounge,Tequilas,Olmeca Branco Silver Garrafa,25000,,2000,transcrito
+Bar & Lounge,Tequilas,Olmeca Chocolate Garrafa,25000,,2000,transcrito
+Bar & Lounge,Tequilas,Dom Júlio,100000,,12000,transcrito
+Bar & Lounge,Tequilas,Camino,100000,,12000,transcrito
+Bar & Lounge,Conhaques,Monnet,120000,,12000,transcrito
+Bar & Lounge,Conhaques,Davidoff,120000,,12000,transcrito
+Bar & Lounge,Conhaques,Courvoisier,180000,,18000,transcrito
+Bar & Lounge,Sangrias,"Sangria Jarra 1,5L (tinto ou branco)",20000,Tinto ou branco.,,transcrito
+Bar & Lounge,Sangrias,"Sangria Jarra 1,5L (frutos vermelhos)",25000,Frutos vermelhos.,,transcrito
+Bar & Lounge,Sangrias,"Sangria Jarra 1,5L (só morangos)",35000,Só morangos.,,transcrito
+Bar & Lounge,Sangrias,Sangria Belaire,70000,Frutos vermelhos.,,transcrito
+Bar & Lounge,Sangrias,Sangria Moët Chandon Nectar,150000,Frutos vermelhos e morangos.,,transcrito
+Bar & Lounge,Sangrias,Sangria Moët Chandon Ice,170000,Frutos vermelhos e morangos.,,transcrito
+Bar & Lounge,Vinhos Tintos,Loios,15000,,,confirmar
+Bar & Lounge,Vinhos Tintos,Alumia Reserva,12000,,,confirmar
+Bar & Lounge,Vinhos Tintos,Alabastro,16000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Pouca Roupa,25000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Marquês de Borba Garrafa,25000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Paulo Laureano,15000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Paulo Laureano Clássico,15000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Flor de Castro,35000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Mariana,28000,,,confirmar
+Bar & Lounge,Vinhos Tintos,Amicone,50000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Papa Figos,25000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Caves da Murça do Porto,48000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Silk Space (Garrafa),25000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Meandro,48000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Duas Quintas,38700,,,transcrito
+Bar & Lounge,Vinhos Tintos,Trincas Bolotas,20000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Vinho Grande Douro,25000,,,confirmar
+Bar & Lounge,Vinhos Tintos,Quinta dos Carvalhais,25000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Esteva Douro,25000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Nederburg,35000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Merlot,100000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Baltazar,60000,,,transcrito
+Bar & Lounge,Vinhos Tintos,Quinta da Bacalhôa,42700,,,transcrito
+Bar & Lounge,Vinhos Brancos e Verdes,Loios Branco,14000,,,transcrito
+Bar & Lounge,Vinhos Brancos e Verdes,Planalto,17000,,,transcrito
+Bar & Lounge,Vinhos Brancos e Verdes,Gazela,10000,,,transcrito
+Bar & Lounge,Vinhos Brancos e Verdes,Casal Garcia,15000,,,transcrito
+Bar & Lounge,Vinhos Brancos e Verdes,Baltazar,15000,,,transcrito
+Bar & Lounge,Vinhos Brancos e Verdes,Marquês de Borba Branco,23000,,,confirmar
+Bar & Lounge,Vinhos Brancos e Verdes,Silk Space,25000,,,confirmar
+Bar & Lounge,Vinhos Brancos e Verdes,Azevedo,15000,,,confirmar
+Bar & Lounge,Vinhos Rosé,Mateus Rosé,13000,,,transcrito
+Bar & Lounge,Vinhos Rosé,Baltazar Rosé,14000,,,transcrito
+Bar & Lounge,Champanhes e Espumantes,Moscato,40000,,,transcrito
+Bar & Lounge,Champanhes e Espumantes,Moët & Chandon Ice,200000,,,transcrito
+Bar & Lounge,Champanhes e Espumantes,Moët & Chandon Nectar,170000,,,transcrito
+Bar & Lounge,Champanhes e Espumantes,Ruinart,250000,,,transcrito
+Bar & Lounge,Champanhes e Espumantes,Louis Roederer,350000,,,transcrito
+Bar & Lounge,Champanhes e Espumantes,Dom Pérignon,600000,,,transcrito
+Bar & Lounge,Champanhes e Espumantes,Armand de Brignac,800000,,,transcrito
