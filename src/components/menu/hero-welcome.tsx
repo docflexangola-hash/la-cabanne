@@ -13,8 +13,8 @@ export function HeroWelcome() {
         className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f33]/90 via-[#0b1f33]/60 to-transparent" />
-      <div className="relative z-10 mx-auto flex h-full max-w-[1100px] items-center px-4 sm:px-6">
-        <div className="max-w-xl">
+      <div className="relative z-10 mx-auto flex min-h-[78svh] w-full max-w-[1100px] items-center px-4 sm:px-6 md:min-h-[88svh]">
+        <div className="w-full max-w-xl">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.32em] text-ivory/90 sm:text-sm">
             Bem-vindo ao
           </p>

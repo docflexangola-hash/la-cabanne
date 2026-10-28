@@ -1,6 +1,6 @@
 'use client';
 
-import { Info, Search, X } from 'lucide-react';
+import { Info } from 'lucide-react';
 import Image from 'next/image';
 import {
   useCallback,
@@ -13,6 +13,7 @@ import {
 
 import { BrandLogo } from '@/components/menu/brand-logo';
 import { CategoryChips } from '@/components/menu/category-chips';
+import { FeedbackDialog } from '@/components/menu/feedback-dialog';
 import { GroupTabs } from '@/components/menu/group-tabs';
 import { InfoDialog } from '@/components/menu/info-dialog';
 import { MonogramPlaceholder } from '@/components/menu/monogram-placeholder';
@@ -90,6 +91,7 @@ export function MenuExperience({
   const [query, setQuery] = useState('');
   const [product, setProduct] = useState<MenuProduct | null>(null);
   const [infoOpen, setInfoOpen] = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
   const isClient = useIsClient();
 
   const didReadUrl = useRef(false);
@@ -244,63 +246,19 @@ export function MenuExperience({
 
       <div className="relative flex flex-1 flex-col">
         <header className="sticky top-0 z-30 border-b border-line bg-ivory/85 backdrop-blur-md">
-          <div className="mx-auto flex h-14 w-full max-w-[1100px] items-center gap-2 px-4 sm:px-6">
-            {searchOpen ? (
-              <>
-                <Search aria-hidden="true" className="size-4 shrink-0 text-ink-2" />
+          <div className="mx-auto flex h-14 w-full max-w-[1100px] items-center justify-between px-4 sm:px-6">
+            <BrandLogo priority />
 
-                <input
-                  type="search"
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Escape') {
-                      closeSearch();
-                    }
-                  }}
-                  autoFocus
-                  placeholder="Pesquisar no menu"
-                  aria-label="Pesquisar no menu"
-                  className="h-10 min-w-0 flex-1 bg-transparent text-[15px] text-ink outline-none placeholder:text-decor [&::-webkit-search-cancel-button]:hidden"
-                />
-
-                <button
-                  type="button"
-                  onClick={() => (query.length > 0 ? setQuery('') : closeSearch())}
-                  aria-label={query.length > 0 ? 'Limpar pesquisa' : 'Fechar pesquisa'}
-                  className="flex size-10 shrink-0 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
-                >
-                  <X aria-hidden="true" className="size-5" />
-                </button>
-              </>
-            ) : (
-              <>
-                <BrandLogo priority />
-
-                <div className="ml-auto flex items-center gap-1">
-                  <button
-                    ref={searchButtonRef}
-                    type="button"
-                    onClick={() => setSearchOpen(true)}
-                    aria-label="Pesquisar no menu"
-                    className="flex size-10 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
-                  >
-                    <Search aria-hidden="true" className="size-5" />
-                  </button>
-
-                  {settings ? (
-                    <button
-                      type="button"
-                      onClick={() => setInfoOpen(true)}
-                      aria-label="Informações do restaurante"
-                      className="flex size-10 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
-                    >
-                      <Info aria-hidden="true" className="size-5" />
-                    </button>
-                  ) : null}
-                </div>
-              </>
-            )}
+            {settings ? (
+              <button
+                type="button"
+                onClick={() => setInfoOpen(true)}
+                aria-label="Informações do restaurante"
+                className="flex size-10 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
+              >
+                <Info aria-hidden="true" className="size-5" />
+              </button>
+            ) : null}
           </div>
         </header>
 
@@ -309,22 +267,6 @@ export function MenuExperience({
             <p className="mx-auto w-full max-w-[1100px] px-4 py-2 text-center text-xs text-ink-2 sm:px-6">
               {openState.label}
             </p>
-          </div>
-        ) : null}
-
-        {!searchOpen ? (
-          <div className="relative mx-auto mt-3 w-full max-w-[1100px] overflow-hidden px-4 sm:mt-4 sm:px-6">
-            <div className="relative h-14 w-full overflow-hidden rounded-tile sm:h-18 lg:h-20">
-              <Image
-                src="/images/la-cabanne/01-lounge-noturno.webp"
-                alt=""
-                fill
-                sizes="(max-width: 1100px) 100vw, 1100px"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-ivory via-ivory/80 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ivory/30 to-transparent" />
-            </div>
           </div>
         ) : null}
 
@@ -528,6 +470,25 @@ export function MenuExperience({
                     </div>
                   )}
                 </section>
+
+                <section className="mt-10 border-t border-line pt-8 text-center">
+                  <p className="text-[11px] font-semibold tracking-[0.16em] text-decor uppercase">
+                    Ajude-nos a melhorar !
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl text-deep">
+                    Fale sobre o nosso atendimento
+                  </h3>
+                  <p className="mt-2 text-sm text-ink-2">
+                    O seu feedback é privado e ajuda-nos a melhorar continuamente.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setFeedbackOpen(true)}
+                    className="mt-5 inline-flex h-11 items-center rounded-sm bg-deep px-6 text-sm font-medium text-ivory transition-colors hover:bg-blue-700"
+                  >
+                    Deixar avaliação
+                  </button>
+                </section>
               </>
             )}
           </main>
@@ -546,6 +507,8 @@ export function MenuExperience({
       {infoOpen && settings ? (
         <InfoDialog settings={settings} onClose={() => setInfoOpen(false)} />
       ) : null}
+
+      <FeedbackDialog open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
     </div>
   );
 }
