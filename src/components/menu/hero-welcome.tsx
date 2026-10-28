@@ -4,15 +4,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { useTranslation } from '@/lib/i18n/i18n-context';
+import { useTheme } from '@/lib/theme/use-theme';
 
 export function HeroWelcome() {
   const { t } = useTranslation();
+  const { resolved } = useTheme();
+  const imageSrc = resolved === 'dark' ? "/images/la-cabanne/hero-piscina-noturna.webp" : "/images/la-cabanne/hero-piscina-resort.webp";
 
   return (
     <section className="relative isolate min-h-[78svh] overflow-hidden md:min-h-[88svh]">
       <Image
-        src="/images/la-cabanne/hero-piscina-resort.webp"
-        alt="Piscina do Resort La Cabanne ao entardecer"
+        src={imageSrc}
+        alt={resolved === 'dark' ? "Piscina Noturna do LA CABANE" : "Piscina do Resort La Cabanne ao entardecer"}
         fill
         priority
         sizes="100vw"
