@@ -312,6 +312,22 @@ export function MenuExperience({
           </div>
         ) : null}
 
+        {!searchOpen ? (
+          <div className="relative mx-auto mt-3 w-full max-w-[1100px] overflow-hidden px-4 sm:mt-4 sm:px-6">
+            <div className="relative h-14 w-full overflow-hidden rounded-tile sm:h-18 lg:h-20">
+              <Image
+                src="/images/la-cabanne/01-lounge-noturno.webp"
+                alt=""
+                fill
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-ivory via-ivory/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ivory/30 to-transparent" />
+            </div>
+          </div>
+        ) : null}
+
         <div className="mx-auto flex w-full max-w-[1100px] flex-1 items-start gap-10 px-4 sm:px-6">
           {!searchOpen ? (
             <aside className="sticky top-14 hidden max-h-[calc(100dvh-3.5rem)] w-[220px] shrink-0 overflow-y-auto py-6 lg:block">
