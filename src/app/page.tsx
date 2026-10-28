@@ -1,4 +1,5 @@
 import { EmptyMenuState } from '@/components/menu/empty-menu-state';
+import { HeroWelcome } from '@/components/menu/hero-welcome';
 import { MenuExperience } from '@/components/menu/menu-experience';
 import { PublicHeader } from '@/components/menu/public-header';
 import { getPublicMenu } from '@/lib/menu/queries';
@@ -18,7 +19,23 @@ export default async function HomePage() {
   const totalProducts = menu.status === 'ok' ? countProducts(menu.groups) : 0;
 
   if (menu.status === 'ok' && totalProducts > 0) {
-    return <MenuExperience groups={menu.groups} settings={menu.settings} />;
+    return (
+      <div className="relative flex min-h-dvh flex-col">
+        <div
+          aria-hidden="true"
+          className="texture-paper pointer-events-none absolute inset-0 opacity-[0.04]"
+        />
+
+        <div className="relative flex flex-1 flex-col">
+          <PublicHeader />
+          <HeroWelcome />
+
+          <div id="menu" className="scroll-mt-14 sm:scroll-mt-16">
+            <MenuExperience groups={menu.groups} settings={menu.settings} />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   // For preview - show sample data if no products
@@ -121,7 +138,23 @@ export default async function HomePage() {
         ],
       },
     ];
-    return <MenuExperience groups={sampleGroups as any} settings={menu.settings} />;
+    return (
+      <div className="relative flex min-h-dvh flex-col">
+        <div
+          aria-hidden="true"
+          className="texture-paper pointer-events-none absolute inset-0 opacity-[0.04]"
+        />
+
+        <div className="relative flex flex-1 flex-col">
+          <PublicHeader />
+          <HeroWelcome />
+
+          <div id="menu" className="scroll-mt-14 sm:scroll-mt-16">
+            <MenuExperience groups={sampleGroups as any} settings={menu.settings} />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -133,8 +166,9 @@ export default async function HomePage() {
 
       <div className="relative flex flex-1 flex-col">
         <PublicHeader />
+        <HeroWelcome />
 
-        <main className="mx-auto w-full max-w-[1100px] flex-1 px-4 pb-16 sm:px-6">
+        <main id="menu" className="mx-auto w-full max-w-[1100px] flex-1 px-4 pb-16 sm:px-6 scroll-mt-14 sm:scroll-mt-16">
           <EmptyMenuState variant={menu.status === 'error' ? 'error' : 'preparing'} />
         </main>
 

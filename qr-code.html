@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Oficial — La Cabanne Benguela</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+    :root {
+      --ivory: #F8F6F0;
+      --deep: #123E64;
+      --blue: #2474B5;
+      --sand: #EFEBE2;
+      --line: #E5E9ED;
+      --ink: #202832;
+      --ink-2: #5F6B75;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0D1B2A;
+      color: var(--ivory);
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 520px;
+      width: 100%;
+      background: #132438;
+      border: 1px solid rgba(229, 233, 237, 0.12);
+      border-radius: 28px;
+      padding: 44px 36px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .brand-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(248, 246, 240, 0.6);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ivory);
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: rgba(248, 246, 240, 0.7);
+      margin-bottom: 28px;
+    }
+
+    .qr-wrapper {
+      position: relative;
+      display: inline-block;
+      background: #FFFFFF;
+      padding: 24px;
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+      margin-bottom: 24px;
+    }
+
+    #qr-canvas-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #final-canvas {
+      display: block;
+      width: 300px;
+      height: 300px;
+      border-radius: 12px;
+    }
+
+    /* Hidden intermediate container */
+    #hidden-qr {
+      display: none;
+    }
+
+    .url-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: rgba(248, 246, 240, 0.85);
+      margin-bottom: 28px;
+      word-break: break-all;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--blue);
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(36, 116, 181, 0.35);
+    }
+
+    .btn-download:hover {
+      background: #1b5c91;
+      transform: translateY(-1px);
+    }
+
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--ivory);
+      font-weight: 500;
+      font-size: 0.875rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-print:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .tips {
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: rgba(248, 246, 240, 0.5);
+      line-height: 1.6;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+        padding: 0;
+      }
+      .container {
+        border: none;
+        box-shadow: none;
+        background: #fff;
+        max-width: 100%;
+        padding: 40px 0;
+      }
+      .brand-eyebrow, .subtitle, .url-badge, .tips, .actions {
+        display: none !important;
+      }
+      h1 {
+        color: #123E64;
+        font-size: 2.8rem;
+        margin-bottom: 24px;
+      }
+      .qr-wrapper {
+        box-shadow: none;
+        border: 2px solid #E5E9ED;
+      }
+      #final-canvas {
+        width: 420px;
+        height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="brand-eyebrow">Menu Digital · Benguela</p>
+    <h1>La Cabanne</h1>
+    <p class="subtitle">Aponte a câmara do telemóvel para aceder ao cardápio</p>
+
+    <!-- QR Code Visual -->
+    <div class="qr-wrapper">
+      <div id="qr-canvas-container">
+        <canvas id="final-canvas" width="1200" height="1200"></canvas>
+      </div>
+    </div>
+
+    <!-- Hidden element used by QRCode.js -->
+    <div id="hidden-qr"></div>
+
+    <div class="url-badge">
+      <span>🔗</span>
+      <span>https://la-cabanne-six.vercel.app/</span>
+    </div>
+
+    <div class="actions">
+      <button class="btn-download" onclick="downloadHighResPNG()">
+        ⬇ Descarregar PNG em Alta Resolução (1200px)
+      </button>
+      <button class="btn-print" onclick="window.print()">
+        🖨 Imprimir Cartão de Mesa
+      </button>
+    </div>
+
+    <p class="tips">
+      QR Code gerado com nível H de correção de erro (30% de redundância), garantindo leitura instantânea em iOS e Android com o emblema no centro.
+    </p>
+  </div>
+
+  <script>
+    const TARGET_URL = "https://la-cabanne-six.vercel.app/";
+    const CANVAS_SIZE = 1200; // High-res for crisp printing
+
+    // Generate QR code off-screen using QRCode.js
+    const hiddenContainer = document.getElementById("hidden-qr");
+    const qrcode = new QRCode(hiddenContainer, {
+      text: TARGET_URL,
+      width: CANVAS_SIZE,
+      height: CANVAS_SIZE,
+      colorDark: "#123E64", // La Cabanne Deep Blue
+      colorLight: "#FFFFFF",
+      correctLevel: QRCode.CorrectLevel.H // 30% redundancy allows center logo
+    });
+
+    // Logo image to draw in the center
+    const logoImg = new Image();
+    // SVG emblem as data URI for 100% standalone and reliable loading
+    logoImg.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+        <defs>
+          <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="100%" stop-color="#F8F6F0"/>
+          </radialGradient>
+        </defs>
+        <!-- Background circle -->
+        <circle cx="200" cy="200" r="190" fill="url(#goldGlow)" stroke="#123E64" stroke-width="12"/>
+        <circle cx="200" cy="200" r="172" fill="none" stroke="#2474B5" stroke-width="2" stroke-dasharray="6,4"/>
+        <!-- Inner deep disc -->
+        <circle cx="200" cy="200" r="150" fill="#123E64"/>
+        <!-- Monogram LC -->
+        <text x="200" y="235" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="140" letter-spacing="-6" fill="#F8F6F0">LC</text>
+        <!-- Subtitle curve/text -->
+        <text x="200" y="278" text-anchor="middle" font-family="'DM Sans', sans-serif" font-weight="600" font-size="20" letter-spacing="4" fill="#2474B5">LA CABANNE</text>
+      </svg>
+    `);
+
+    // Once both QR and logo are ready, compose on final canvas
+    function composeQRWithLogo() {
+      const qrCanvas = hiddenContainer.querySelector("canvas");
+      if (!qrCanvas) {
+        setTimeout(composeQRWithLogo, 100);
+        return;
+      }
+
+      const finalCanvas = document.getElementById("final-canvas");
+      const ctx = finalCanvas.getContext("2d");
+
+      // 1. Draw QR code
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+      ctx.drawImage(qrCanvas, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+
+      // 2. Draw Center Shield / Badge
+      const badgeSize = Math.round(CANVAS_SIZE * 0.28); // 28% of size (safely within 30% H margin)
+      const badgeX = (CANVAS_SIZE - badgeSize) / 2;
+      const badgeY = (CANVAS_SIZE - badgeSize) / 2;
+
+      // Draw white padding disc to isolate QR data
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(CANVAS_SIZE / 2, CANVAS_SIZE / 2, (badgeSize / 2) + 12, 0, Math.PI * 2);
+      ctx.fillStyle = "#FFFFFF";
+      ctx.shadowColor = "rgba(18, 62, 100, 0.25)";
+      ctx.shadowBlur = 24;
+      ctx.shadowOffsetY = 4;
+      ctx.fill();
+      ctx.restore();
+
+      // Draw emblem image
+      ctx.drawImage(logoImg, badgeX, badgeY, badgeSize, badgeSize);
+    }
+
+    logoImg.onload = () => {
+      setTimeout(composeQRWithLogo, 250);
+    };
+
+    function downloadHighResPNG() {
+      const canvas = document.getElementById("final-canvas");
+      const link = document.createElement("a");
+      link.download = "la-cabanne-qr-code-com-logo.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+  </script>
+</body>
+</html>

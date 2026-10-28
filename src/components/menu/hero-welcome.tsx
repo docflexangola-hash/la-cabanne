@@ -1,0 +1,41 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+export function HeroWelcome() {
+  return (
+    <section className="relative isolate min-h-[78svh] overflow-hidden md:min-h-[88svh]">
+      <Image
+        src="/images/la-cabanne/hero-piscina-resort.png"
+        alt="Piscina do Resort La Cabanne ao entardecer"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f33]/90 via-[#0b1f33]/60 to-transparent" />
+      <div className="relative z-10 mx-auto flex h-full max-w-[1100px] items-center px-4 sm:px-6">
+        <div className="max-w-xl">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.32em] text-ivory/90 sm:text-sm">
+            Bem-vindo ao
+          </p>
+          <Image
+            src="/brand/01-logo-cor.svg"
+            alt="La Cabanne"
+            width={520}
+            height={180}
+            className="h-auto w-[min(82vw,420px)] brightness-0 invert drop-shadow-[0_12px_70px_rgba(0,0,0,0.55)] md:w-[520px]"
+            priority
+          />
+          <div className="mt-8">
+            <Link
+              href="#menu"
+              className="inline-flex h-11 items-center rounded-sm bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-blue-700"
+            >
+              Ver cardápio
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
