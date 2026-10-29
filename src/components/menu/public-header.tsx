@@ -5,7 +5,7 @@ import { Info, Moon, Sun } from 'lucide-react';
 import { BrandLogo } from '@/components/menu/brand-logo';
 import { InfoDialog } from '@/components/menu/info-dialog';
 import { useTranslation } from '@/lib/i18n/i18n-context';
-import { useTheme } from '@/lib/theme/use-theme';
+import { useTheme } from '@/lib/theme/theme-context';
 import type { RestaurantSettings } from '@/types/menu';
 import { useState } from 'react';
 

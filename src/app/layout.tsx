@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import Script from 'next/script';
 
 import { getSiteUrl } from '@/lib/env';
+import { ThemeProvider } from '@/lib/theme/theme-context';
 import { I18nProvider } from '@/lib/i18n/i18n-context';
 
 import './globals.css';
@@ -121,7 +122,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <I18nProvider>{children}</I18nProvider>
+        <ThemeProvider>
+          <I18nProvider>{children}</I18nProvider>
+        </ThemeProvider>
         {process.env.NEXT_PUBLIC_VERCEL ? (
           <Script
             src="https://va.vercel-scripts.com/v1/script.debug.js"

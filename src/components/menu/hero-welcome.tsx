@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { useTranslation } from '@/lib/i18n/i18n-context';
-import { useTheme } from '@/lib/theme/use-theme';
+import { useTheme } from '@/lib/theme/theme-context';
 
 export function HeroWelcome() {
   const { t } = useTranslation();
