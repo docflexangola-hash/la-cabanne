@@ -194,7 +194,7 @@ export function MenuExperience({
         ) : null}
 
         <div className="mx-auto flex w-full max-w-[1100px] flex-1 items-start gap-10 px-4 sm:px-6">
-          <aside className="sticky top-14 hidden max-h-[calc(100vh - 3.5rem)] w-[220px] shrink-0 overflow-y-auto py-6 lg:block">
+          <aside className="sticky top-14 md:hidden max-h-[calc(100vh - 3.5rem)] w-[220px] shrink-0 overflow-y-auto py-6 lg:block">
             <nav aria-label={t('nav_categories')}>
               {groups.map((group) => (
                 <div key={group.id} className="mb-5">
