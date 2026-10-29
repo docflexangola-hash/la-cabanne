@@ -6,6 +6,12 @@
 --------------------------------------------------------------------------- */
 @theme {
   --color-ivory: #f8f6f0;
+
+  /* Hero overlays sit on top of a photo, so they must stay light in both
+     themes. These tokens are intentionally never overridden in dark mode. */
+  --color-hero-fg: #f8f6f0;
+  --color-hero-fg-soft: #f8f6f0e6;
+
   --color-surface: #ffffff;
   --color-surface-2: #f4f6f8;
 
@@ -20,6 +26,7 @@
   --color-blue-tint: #eef4fa;
 
   --color-deep: #123e64;
+  --color-strong: #123e64;
 
   --color-sand: #efebe2;
   --color-sand-line: #e3dcce;
@@ -158,6 +165,7 @@
   --color-blue-700: #3b82f6;
   --color-blue-tint: #1e3a8a;
   --color-deep: #123e64;
+  --color-strong: #f8f6f0;
   --color-sand: #1f2937;
   --color-sand-line: #243042;
   --color-danger: #f87171;

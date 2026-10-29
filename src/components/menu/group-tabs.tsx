@@ -1,3 +1,6 @@
+'use client';
+
+import { useTranslation } from '@/lib/i18n/i18n-context';
 import { cn } from '@/lib/utils';
 import type { MenuGroup } from '@/types/menu';
 
@@ -10,8 +13,10 @@ export function GroupTabs({
   activeSlug: string;
   onChange: (slug: string) => void;
 }) {
+  const { t } = useTranslation();
+
   return (
-    <nav aria-label="Grupos do menu" className="border-b border-line">
+    <nav aria-label={t('nav_groups')} className="border-b border-line">
       <ul className="flex items-stretch">
         {groups.map((group) => {
           const isActive = group.slug === activeSlug;
@@ -25,8 +30,8 @@ export function GroupTabs({
                 className={cn(
                   'flex h-11 w-full items-center justify-center px-1 text-[12px] tracking-[0.16em] uppercase transition-colors',
                   isActive
-                    ? 'font-semibold text-white'
-                    : 'font-medium text-ink-2 hover:text-deep',
+                    ? 'font-semibold text-strong'
+                    : 'font-medium text-ink-2 hover:text-strong',
                 )}
               >
                 {group.name}
@@ -34,7 +39,7 @@ export function GroupTabs({
               <span
                 aria-hidden="true"
                 className={cn(
-                  'absolute inset-x-0 bottom-0 h-0.5 origin-left bg-deep transition-transform duration-200',
+                  'absolute inset-x-0 bottom-0 h-0.5 origin-left bg-strong transition-transform duration-200',
                   isActive ? 'scale-x-100' : 'scale-x-0',
                 )}
               />

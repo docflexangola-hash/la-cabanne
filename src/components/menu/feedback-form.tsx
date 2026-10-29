@@ -2,15 +2,13 @@
 
 import { useState } from 'react';
 
-const TYPES = [
-  { value: 'compliment', label: 'Elogio' },
-  { value: 'suggestion', label: 'Sugestão' },
-  { value: 'complaint', label: 'Reclamação' },
-  { value: 'other', label: 'Outro' },
-] as const;
+import { useTranslation } from '@/lib/i18n/i18n-context';
+
+const TYPE_VALUES = ['compliment', 'suggestion', 'complaint', 'other'] as const;
 
 export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
-  const [type, setType] = useState<'compliment' | 'suggestion' | 'complaint' | 'other'>('suggestion');
+  const { t } = useTranslation();
+  const [type, setType] = useState<(typeof TYPE_VALUES)[number]>('suggestion');
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
   const [name, setName] = useState('');
@@ -56,8 +54,8 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
   if (status === 'ok') {
     return (
       <div className="rounded-2xl border border-line bg-surface p-6 text-center">
-        <p className="font-display text-xl text-deep">Obrigado pelo feedback</p>
-        <p className="mt-2 text-sm text-ink-2">A sua mensagem foi recebida com sucesso.</p>
+        <p className="font-display text-xl text-strong">{t('fb_thanks')}</p>
+        <p className="mt-2 text-sm text-ink-2">{t('fb_thanks_body')}</p>
       </div>
     );
   }
@@ -66,25 +64,25 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
     <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-line bg-surface p-6">
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="space-y-2 text-base">
-          <span className="text-ink">Tipo</span>
+          <span className="text-ink">{t('fb_type')}</span>
           <select
             value={type}
             onChange={(e) => setType(e.target.value as typeof type)}
-            className="w-full rounded-lg border border-line px-3 py-2"
+            className="w-full rounded-lg border border-line bg-surface px-3 py-2"
           >
-            {TYPES.map((t) => (
-              <option key={t.value} value={t.value}>
-                {t.label}
+            {TYPE_VALUES.map((value) => (
+              <option key={value} value={value}>
+                {t(`fb_${value}`)}
               </option>
             ))}
           </select>
         </label>
         <label className="space-y-2 text-base">
-          <span className="text-ink">Classificação (1-5)</span>
+          <span className="text-ink">{t('fb_rating')}</span>
           <select
             value={rating}
             onChange={(e) => setRating(Number(e.target.value))}
-            className="w-full rounded-lg border border-line px-3 py-2"
+            className="w-full rounded-lg border border-line bg-surface px-3 py-2"
           >
             {[1, 2, 3, 4, 5].map((n) => (
               <option key={n} value={n}>
@@ -96,34 +94,34 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
       </div>
 
       <label className="space-y-2 text-base">
-        <span className="text-ink">Comentário (obrigatório, 10-2000 caracteres)</span>
+        <span className="text-ink">{t('fb_comment')}</span>
         <textarea
           required
           minLength={10}
           maxLength={2000}
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className="min-h-[120px] w-full rounded-lg border border-line px-3 py-2"
+          className="min-h-[120px] w-full rounded-lg border border-line bg-surface px-3 py-2"
         />
       </label>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="space-y-2 text-base">
-          <span className="text-ink">Nome (opcional)</span>
+          <span className="text-ink">{t('fb_name')}</span>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             maxLength={80}
-            className="w-full rounded-lg border border-line px-3 py-2"
+            className="w-full rounded-lg border border-line bg-surface px-3 py-2"
           />
         </label>
         <label className="space-y-2 text-base">
-          <span className="text-ink">Contacto (opcional)</span>
+          <span className="text-ink">{t('fb_contact')}</span>
           <input
             value={contact}
             onChange={(e) => setContact(e.target.value)}
             maxLength={120}
-            className="w-full rounded-lg border border-line px-3 py-2"
+            className="w-full rounded-lg border border-line bg-surface px-3 py-2"
           />
         </label>
       </div>
@@ -135,23 +133,23 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
       </label>
 
       <p className="text-xs text-ink-2">
-        Ao enviar, concorda com a{' '}
+        {t('fb_privacy_prefix')}{' '}
         <a href="/privacidade" className="underline hover:text-blue">
-          Política de Privacidade
+          {t('fb_privacy_link')}
         </a>
         .
       </p>
 
       {status === 'error' ? (
-        <p className="text-sm text-red-600">Ocorreu um erro. Tente novamente.</p>
+        <p className="text-sm text-red-600">{t('fb_error')}</p>
       ) : null}
 
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="rounded-lg bg-deep px-4 py-2 text-sm text-ivory disabled:opacity-60"
+        className="rounded-lg bg-deep px-4 py-2 text-sm text-hero-fg disabled:opacity-60"
       >
-        {status === 'submitting' ? 'A enviar...' : 'Enviar feedback'}
+        {status === 'submitting' ? t('fb_sending') : t('fb_submit')}
       </button>
     </form>
   );

@@ -26,7 +26,7 @@ export function HeroWelcome() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f33]/90 via-[#0b1f33]/60 to-transparent" />
       <div className="relative z-10 mx-auto flex min-h-[78vh] w-full max-w-[1100px] items-center px-4 sm:px-6 md:min-h-[88vh]">
         <div className="w-full max-w-xl">
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.32em] text-ivory/90 sm:text-sm">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.32em] text-hero-fg-soft sm:text-sm">
             {t('bem_vindo_ao')}
           </p>
           <Image
@@ -40,7 +40,7 @@ export function HeroWelcome() {
           <div className="mt-8">
             <Link
               href="#menu"
-              className="inline-flex h-11 items-center rounded-sm bg-deep/85 px-6 text-sm font-medium text-ivory backdrop-blur-md border border-ivory/20 shadow-lg shadow-deep/10 transition-colors hover:bg-deep hover:border-ivory/30"
+              className="inline-flex h-11 items-center rounded-sm border border-hero-fg/25 bg-deep/40 px-6 text-sm font-medium text-hero-fg shadow-lg shadow-black/20 backdrop-blur-md transition-colors hover:border-hero-fg/40 hover:bg-deep/60"
             >
               {t('ver_menu')}
             </Link>

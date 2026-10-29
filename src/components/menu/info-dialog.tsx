@@ -20,7 +20,7 @@ function InstagramLink({ value }: { value: string }) {
       href={`https://instagram.com/${handle}`}
       target="_blank"
       rel="noreferrer"
-      className="flex min-h-11 items-center gap-3 text-sm text-ink-2 transition-colors hover:text-deep"
+      className="flex min-h-11 items-center gap-3 text-sm text-ink-2 transition-colors hover:text-strong"
     >
       <AtSign aria-hidden="true" className="size-4 shrink-0 text-decor" />
       <span>@{handle}</span>
@@ -36,7 +36,6 @@ export function InfoDialog({
   onClose: () => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const { t } = useTranslation();
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -55,9 +54,10 @@ export function InfoDialog({
     return () => dialog.removeEventListener('close', handleClose);
   }, [onClose]);
 
-  const openState = getOpenState(settings);
-  const hoursRows = getHoursRows(settings.hours);
-  const hasHours = hoursRows.some((row) => row.value !== 'Fechado');
+  const { t, locale } = useTranslation();
+  const openState = getOpenState(settings, new Date(), locale);
+  const hoursRows = getHoursRows(settings.hours, locale);
+  const hasHours = hoursRows.some((row) => !row.closed);
   const todayKey = getTodayKey();
 
   const whatsappDigits = settings.whatsapp?.replace(/[^\d]/g, '') ?? '';
@@ -79,8 +79,8 @@ export function InfoDialog({
         <button
           type="button"
           onClick={() => dialogRef.current?.close()}
-          aria-label="Fechar informações"
-          className="absolute top-3 right-3 z-10 flex size-10 items-center justify-center rounded-full bg-white/10 text-ivory/80 backdrop-blur transition-colors hover:bg-white/20 hover:text-white"
+          aria-label={t('close_info')}
+          className="absolute top-3 right-3 z-10 flex size-10 items-center justify-center rounded-full bg-white/10 text-hero-fg/80 backdrop-blur transition-colors hover:bg-white/20 hover:text-hero-fg"
         >
           <X aria-hidden="true" className="size-5" />
         </button>
@@ -94,12 +94,12 @@ export function InfoDialog({
             className="h-7 w-auto"
             sizes="200px"
           />
-          <p className="text-[10px] font-medium tracking-[0.22em] text-ivory/60 uppercase">
-            Menu digital · Benguela
+          <p className="text-[10px] font-medium tracking-[0.22em] text-hero-fg/60 uppercase">
+            {t('menu_digital')} · Benguela
           </p>
 
           {openState ? (
-            <p className="mt-1 flex items-center gap-2 text-xs text-ivory/85">
+            <p className="mt-1 flex items-center gap-2 text-xs text-hero-fg/85">
               <span
                 aria-hidden="true"
                 className={cn(
@@ -114,7 +114,7 @@ export function InfoDialog({
 
         <div className="px-6 py-5">
           <h2 id="info-title" className="sr-only">
-            Informações do {settings.name}
+            {t('info_title')} {settings.name}
           </h2>
 
           {settings.infoMessage ? (
@@ -131,7 +131,7 @@ export function InfoDialog({
           {settings.phone ? (
             <a
               href={`tel:${settings.phone.replace(/\s/g, '')}`}
-              className="flex min-h-11 items-center gap-3 text-sm text-ink-2 transition-colors hover:text-deep"
+              className="flex min-h-11 items-center gap-3 text-sm text-ink-2 transition-colors hover:text-strong"
             >
               <Phone aria-hidden="true" className="size-4 shrink-0 text-decor" />
               <span>{settings.phone}</span>
@@ -143,7 +143,7 @@ export function InfoDialog({
               href={`https://wa.me/${whatsappDigits}`}
               target="_blank"
               rel="noreferrer"
-              className="flex min-h-11 items-center gap-3 text-sm text-ink-2 transition-colors hover:text-deep"
+              className="flex min-h-11 items-center gap-3 text-sm text-ink-2 transition-colors hover:text-strong"
             >
               <MessageCircle aria-hidden="true" className="size-4 shrink-0 text-decor" />
               <span>{settings.whatsapp}</span>
@@ -153,7 +153,7 @@ export function InfoDialog({
           {settings.email ? (
             <a
               href={`mailto:${settings.email}`}
-              className="flex min-h-11 items-center gap-3 text-sm text-ink-2 transition-colors hover:text-deep"
+              className="flex min-h-11 items-center gap-3 text-sm text-ink-2 transition-colors hover:text-strong"
             >
               <Mail aria-hidden="true" className="size-4 shrink-0 text-decor" />
               <span>{settings.email}</span>
@@ -188,7 +188,7 @@ export function InfoDialog({
                 ))}
               </dl>
             ) : (
-              <p className="mt-2 text-sm text-ink-2">Horário por confirmar.</p>
+              <p className="mt-2 text-sm text-ink-2">{t('hours_tbc')}</p>
             )}
           </div>
 
@@ -199,9 +199,7 @@ export function InfoDialog({
           !settings.instagram &&
           !hasHours &&
           !settings.infoMessage ? (
-            <p className="mt-5 text-xs leading-relaxed text-decor">
-              Informação detalhada disponível em breve.
-            </p>
+            <p className="mt-5 text-xs leading-relaxed text-decor">{t('info_soon')}</p>
           ) : null}
         </div>
       </div>

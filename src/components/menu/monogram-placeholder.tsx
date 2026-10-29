@@ -13,8 +13,8 @@ export function MonogramPlaceholder({
         aria-hidden="true"
         className={
           compact
-            ? 'font-display text-2xl leading-none tracking-[-0.04em] text-deep/75'
-            : 'font-display text-5xl leading-none tracking-[-0.04em] text-deep/75'
+            ? 'font-display text-2xl leading-none tracking-[-0.04em] text-strong/75'
+            : 'font-display text-5xl leading-none tracking-[-0.04em] text-strong/75'
         }
       >
         LC
@@ -22,8 +22,8 @@ export function MonogramPlaceholder({
       <span
         className={
           compact
-            ? 'text-[8px] font-semibold tracking-[0.22em] text-deep/45'
-            : 'text-[10px] font-semibold tracking-[0.22em] text-deep/45'
+            ? 'text-[8px] font-semibold tracking-[0.22em] text-strong/45'
+            : 'text-[10px] font-semibold tracking-[0.22em] text-strong/45'
         }
       >
         {word}

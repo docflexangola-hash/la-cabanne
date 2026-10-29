@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
 
 import { MonogramPlaceholder } from '@/components/menu/monogram-placeholder';
+import { useTranslation } from '@/lib/i18n/i18n-context';
 import { formatKz } from '@/lib/menu/format';
 import { getSelectedPrice } from '@/lib/menu/pricing';
 import { cn } from '@/lib/utils';
@@ -18,6 +19,7 @@ export function ProductDialog({
   onClose: () => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const { t } = useTranslation();
   const unavailable = product.status === 'unavailable';
 
   const [selection, setSelection] = useState<Record<string, string>>(() =>
@@ -62,8 +64,8 @@ export function ProductDialog({
         <button
           type="button"
           onClick={() => dialogRef.current?.close()}
-          aria-label="Fechar detalhe do produto"
-          className="absolute top-3 right-3 z-10 flex size-10 items-center justify-center rounded-full border border-line bg-white/90 text-ink-2 backdrop-blur transition-colors hover:text-deep"
+          aria-label={t('close_product')}
+          className="absolute top-3 right-3 z-10 flex size-10 items-center justify-center rounded-full border border-line bg-surface/90 text-ink-2 backdrop-blur transition-colors hover:text-strong"
         >
           <X aria-hidden="true" className="size-5" />
         </button>
@@ -91,7 +93,7 @@ export function ProductDialog({
         <div className="p-5 sm:p-6 lg:p-8">
           <h2
             id={`product-title-${product.id}`}
-            className="pr-10 font-display text-[34px] leading-[1.1] text-deep"
+            className="pr-10 font-display text-[34px] leading-[1.1] text-strong"
           >
             {product.name}
           </h2>
@@ -101,7 +103,9 @@ export function ProductDialog({
           ) : null}
 
           {product.serves ? (
-            <p className="mt-2 text-xs text-ink-2">Serve {product.serves}</p>
+            <p className="mt-2 text-xs text-ink-2">
+              {t('serves')} {product.serves}
+            </p>
           ) : null}
 
           {unavailable ? (
@@ -109,7 +113,7 @@ export function ProductDialog({
               role="status"
               className="mt-4 rounded-lg border border-danger/25 bg-danger/5 px-3 py-2 text-sm text-danger"
             >
-              Esgotado neste momento.
+              {t('sold_out_now')}
             </p>
           ) : null}
 
@@ -138,7 +142,7 @@ export function ProductDialog({
                           'inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm transition-colors',
                           active
                             ? 'border-deep bg-deep text-white'
-                            : 'border-line text-ink-2 hover:border-deep hover:text-deep',
+                            : 'border-line text-ink-2 hover:border-deep hover:text-strong',
                         )}
                       >
                         <span>{variant.name}</span>
@@ -159,22 +163,20 @@ export function ProductDialog({
           })}
 
           <div className="mt-6 flex items-baseline justify-between gap-4 border-t border-line pt-4">
-            <span className="text-xs text-ink-2">Preço</span>
-            <span className="font-display text-2xl text-deep tabular">
-              {price !== null ? formatKz(price) : (product.priceNote ?? 'Sob consulta')}
+            <span className="text-xs text-ink-2">{t('price_label')}</span>
+            <span className="font-display text-2xl text-strong tabular">
+              {price !== null ? formatKz(price) : (product.priceNote ?? t('on_request'))}
             </span>
           </div>
 
           {product.allergens.length > 0 ? (
             <p className="mt-3 text-xs leading-relaxed text-ink-2">
-              <span className="font-medium text-ink">Alergénios:</span>{' '}
+              <span className="font-medium text-ink">{t('allergens')}</span>{' '}
               {product.allergens.join(', ')}.
             </p>
           ) : null}
 
-          <p className="mt-6 text-[11px] leading-relaxed text-decor">
-            Preço com IVA incluído. Consulte a equipa para informação sobre alergénios.
-          </p>
+          <p className="mt-6 text-[11px] leading-relaxed text-decor">{t('price_tax_note')}</p>
         </div>
       </div>
     </dialog>

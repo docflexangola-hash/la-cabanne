@@ -16,7 +16,7 @@ export function EmptyMenuState({
         aria-hidden="true"
         className="mx-auto flex h-24 w-24 items-center justify-center rounded-tile border border-sand-line bg-sand"
       >
-        <span className="font-display text-4xl leading-none tracking-[-0.04em] text-deep">
+        <span className="font-display text-4xl leading-none tracking-[-0.04em] text-strong">
           LC
         </span>
       </div>
@@ -27,7 +27,7 @@ export function EmptyMenuState({
 
       <h1
         id="menu-empty-title"
-        className="mt-2 font-display text-3xl leading-tight text-deep sm:text-[2.5rem]"
+        className="mt-2 font-display text-3xl leading-tight text-strong sm:text-[2.5rem]"
       >
         {isError ? 'Não foi possível carregar o menu' : 'O cardápio está a ser preparado'}
       </h1>

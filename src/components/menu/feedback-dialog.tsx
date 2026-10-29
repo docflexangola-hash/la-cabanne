@@ -4,8 +4,11 @@ import { X } from 'lucide-react';
 import { useEffect } from 'react';
 
 import { FeedbackForm } from '@/components/menu/feedback-form';
+import { useTranslation } from '@/lib/i18n/i18n-context';
 
 export function FeedbackDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const { t } = useTranslation();
+
   useEffect(() => {
     if (!open) return;
     function onKeyDown(e: KeyboardEvent) {
@@ -31,7 +34,7 @@ export function FeedbackDialog({ open, onClose }: { open: boolean; onClose: () =
     >
       <button
         type="button"
-        aria-label="Fechar"
+        aria-label={t('close')}
         className="absolute inset-0 bg-deep/40"
         onClick={onClose}
       />
@@ -42,17 +45,17 @@ export function FeedbackDialog({ open, onClose }: { open: boolean; onClose: () =
         <header className="flex items-start justify-between gap-4 border-b border-line px-6 py-4">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.16em] text-decor uppercase">
-              Ajude-nos a melhorar !
+              {t('feedback_title_small')}
             </p>
-            <h2 id="feedback-title" className="mt-1 font-display text-xl text-deep">
-              Fale sobre o nosso atendimento
+            <h2 id="feedback-title" className="mt-1 font-display text-xl text-strong">
+              {t('feedback_title')}
             </h2>
           </div>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Fechar"
-            className="flex size-9 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
+            aria-label={t('close')}
+            className="flex size-9 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-strong"
           >
             <X aria-hidden="true" className="size-5" />
           </button>

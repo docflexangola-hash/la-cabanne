@@ -1,15 +1,51 @@
+import type { Locale } from '@/lib/i18n/dictionaries';
 import type { RestaurantSettings, WeekHours } from '@/types/menu';
 
 const DAY_KEYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'] as const;
 
-const DAY_LABELS: Record<string, string> = {
-  mon: 'Segunda',
-  tue: 'Terça',
-  wed: 'Quarta',
-  thu: 'Quinta',
-  fri: 'Sexta',
-  sat: 'Sábado',
-  sun: 'Domingo',
+const HOURS_TEXT: Record<
+  Locale,
+  {
+    days: Record<string, string>;
+    open: string;
+    closed: string;
+    closesAt: (time: string) => string;
+    opensAt: (time: string) => string;
+    opensOn: (day: string, time: string) => string;
+  }
+> = {
+  pt: {
+    days: {
+      mon: 'Segunda',
+      tue: 'Terça',
+      wed: 'Quarta',
+      thu: 'Quinta',
+      fri: 'Sexta',
+      sat: 'Sábado',
+      sun: 'Domingo',
+    },
+    open: 'Aberto',
+    closed: 'Fechado',
+    closesAt: (time) => `Aberto · fecha às ${time}`,
+    opensAt: (time) => `Fechado · abre às ${time}`,
+    opensOn: (day, time) => `Fechado · abre ${day.toLowerCase()} às ${time}`,
+  },
+  en: {
+    days: {
+      mon: 'Monday',
+      tue: 'Tuesday',
+      wed: 'Wednesday',
+      thu: 'Thursday',
+      fri: 'Friday',
+      sat: 'Saturday',
+      sun: 'Sunday',
+    },
+    open: 'Open',
+    closed: 'Closed',
+    closesAt: (time) => `Open · closes at ${time}`,
+    opensAt: (time) => `Closed · opens at ${time}`,
+    opensOn: (day, time) => `Closed · opens ${day} at ${time}`,
+  },
 };
 
 export type OpenState = {
@@ -45,11 +81,14 @@ function hasAnyHours(hours: WeekHours): boolean {
 export function getOpenState(
   settings: RestaurantSettings,
   now: Date = new Date(),
+  locale: Locale = 'pt',
 ): OpenState | null {
+  const text = HOURS_TEXT[locale];
+
   if (settings.isOpenOverride !== null) {
     return {
       open: settings.isOpenOverride,
-      label: settings.isOpenOverride ? 'Aberto' : 'Fechado',
+      label: settings.isOpenOverride ? text.open : text.closed,
     };
   }
 
@@ -99,29 +138,29 @@ export function getOpenState(
       if (offset === 0 && currentMinutes >= from && currentMinutes < closesAt) {
         return {
           open: true,
-          label: `Aberto · fecha às ${formatTime(interval[1])}`,
+          label: text.closesAt(formatTime(interval[1])),
         };
       }
 
       if (offset === 0 && currentMinutes < from) {
         return {
           open: false,
-          label: `Fechado · abre às ${formatTime(interval[0])}`,
+          label: text.opensAt(formatTime(interval[0])),
         };
       }
 
       if (offset > 0) {
-        const dayLabel = DAY_LABELS[key] ?? key;
+        const dayLabel = text.days[key] ?? key;
 
         return {
           open: false,
-          label: `Fechado · abre ${dayLabel.toLowerCase()} às ${formatTime(interval[0])}`,
+          label: text.opensOn(dayLabel, formatTime(interval[0])),
         };
       }
     }
   }
 
-  return { open: false, label: 'Fechado' };
+  return { open: false, label: text.closed };
 }
 
 export function getTodayKey(now: Date = new Date()): string {
@@ -135,21 +174,29 @@ export function getTodayKey(now: Date = new Date()): string {
   return index >= 0 ? DAY_KEYS[index] : '';
 }
 
-export function getHoursRows(hours: WeekHours): Array<{
+export function getHoursRows(
+  hours: WeekHours,
+  locale: Locale = 'pt',
+): Array<{
   key: string;
   label: string;
   value: string;
-}> {  return Object.keys(DAY_LABELS).map((key) => {
+  closed: boolean;
+}> {
+  const text = HOURS_TEXT[locale];
+
+  return Object.keys(text.days).map((key) => {
     const intervals = hours[key];
 
     if (!Array.isArray(intervals) || intervals.length === 0) {
-      return { key, label: DAY_LABELS[key], value: 'Fechado' };
+      return { key, label: text.days[key], value: text.closed, closed: true };
     }
 
     return {
       key,
-      label: DAY_LABELS[key],
+      label: text.days[key],
       value: intervals.map(([from, to]) => `${formatTime(from)}–${formatTime(to)}`).join(' · '),
+      closed: false,
     };
   });
 }

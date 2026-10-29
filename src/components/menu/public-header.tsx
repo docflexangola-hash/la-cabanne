@@ -29,7 +29,7 @@ export function PublicHeader({
               type="button"
               onClick={toggleTheme}
               aria-label="Alternar tema"
-              className="flex h-9 items-center gap-1 rounded-full px-2 text-xs text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
+              className="flex h-9 items-center gap-1 rounded-full px-2 text-xs text-ink-2 transition-colors hover:bg-surface-2 hover:text-strong"
             >
               {resolved === 'dark' ? <Moon className="size-4" /> : <Sun className="size-4" />}
               <span className="hidden sm:inline">
@@ -41,7 +41,7 @@ export function PublicHeader({
               type="button"
               onClick={toggleLang}
               aria-label="Alternar idioma"
-              className="flex h-9 items-center rounded-full px-2 text-xs font-medium text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
+              className="flex h-9 items-center rounded-full px-2 text-xs font-medium text-ink-2 transition-colors hover:bg-surface-2 hover:text-strong"
             >
               {locale === 'pt' ? t('lang_en') : t('lang_pt')}
             </button>
@@ -51,7 +51,7 @@ export function PublicHeader({
                 type="button"
                 onClick={() => setInfoOpen(true)}
                 aria-label={t('info_aria')}
-                className="flex size-9 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
+                className="flex size-9 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-strong"
               >
                 <Info aria-hidden="true" className="size-5" />
               </button>
