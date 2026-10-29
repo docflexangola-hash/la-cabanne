@@ -9,10 +9,12 @@ import { useTheme } from '@/lib/theme/use-theme';
 export function HeroWelcome() {
   const { t } = useTranslation();
   const { resolved } = useTheme();
-  const imageSrc = resolved === 'dark' ? "/images/la-cabanne/hero-piscina-noturna.webp" : "/images/la-cabanne/hero-piscina-resort.webp";
+  const imageSrc = resolved === 'dark'
+    ? "/Piscina Noturna do LA CABANE.png"
+    : "/Piscina do Resort La Cabane.png";
 
   return (
-    <section className="relative isolate min-h-[78svh] overflow-hidden md:min-h-[88svh]">
+    <section className="relative isolate min-h-[78vh] overflow-hidden md:min-h-[88vh]">
       <Image
         src={imageSrc}
         alt={resolved === 'dark' ? "Piscina Noturna do LA CABANE" : "Piscina do Resort La Cabanne ao entardecer"}
@@ -22,7 +24,7 @@ export function HeroWelcome() {
         className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f33]/90 via-[#0b1f33]/60 to-transparent" />
-      <div className="relative z-10 mx-auto flex min-h-[78svh] w-full max-w-[1100px] items-center px-4 sm:px-6 md:min-h-[88svh]">
+      <div className="relative z-10 mx-auto flex min-h-[78vh] w-full max-w-[1100px] items-center px-4 sm:px-6 md:min-h-[88vh]">
         <div className="w-full max-w-xl">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.32em] text-ivory/90 sm:text-sm">
             {t('bem_vindo_ao')}

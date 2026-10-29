@@ -75,6 +75,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: '#2474B5',
   colorScheme: 'light',
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -98,7 +99,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       data-scroll-behavior="smooth"
       className={`${cormorant.variable} ${dmSans.variable}`}
     >
-      <body className="min-h-dvh bg-ivory text-ink">
+      <body className="min-h-[100vh] bg-ivory text-ink">
         <script
           dangerouslySetInnerHTML={{
             __html: `(() => {

@@ -73,7 +73,7 @@ export function InfoDialog({
       aria-labelledby="info-title"
       onClick={handleBackdropClick}
     >
-      <div className="menu-sheet-panel relative max-w-[440px] overflow-y-auto bg-white">
+      <div className="menu-sheet-panel relative max-w-[440px] overflow-y-auto bg-surface">
         <button
           type="button"
           onClick={() => dialogRef.current?.close()}

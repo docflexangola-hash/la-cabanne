@@ -37,7 +37,7 @@ export function FeedbackDialog({ open, onClose }: { open: boolean; onClose: () =
       />
       <div
         role="document"
-        className="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-line bg-white shadow-xl"
+        className="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-line bg-surface shadow-xl"
       >
         <header className="flex items-start justify-between gap-4 border-b border-line px-6 py-4">
           <div>

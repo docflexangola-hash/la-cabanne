@@ -55,7 +55,7 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
 
   if (status === 'ok') {
     return (
-      <div className="rounded-2xl border border-line bg-white p-6 text-center">
+      <div className="rounded-2xl border border-line bg-surface p-6 text-center">
         <p className="font-display text-xl text-deep">Obrigado pelo feedback</p>
         <p className="mt-2 text-sm text-ink-2">A sua mensagem foi recebida com sucesso.</p>
       </div>
@@ -63,9 +63,9 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-line bg-white p-6">
+    <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-line bg-surface p-6">
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="space-y-2 text-sm">
+        <label className="space-y-2 text-base">
           <span className="text-ink">Tipo</span>
           <select
             value={type}
@@ -79,7 +79,7 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
             ))}
           </select>
         </label>
-        <label className="space-y-2 text-sm">
+        <label className="space-y-2 text-base">
           <span className="text-ink">Classificação (1-5)</span>
           <select
             value={rating}
@@ -95,7 +95,7 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
         </label>
       </div>
 
-      <label className="space-y-2 text-sm">
+      <label className="space-y-2 text-base">
         <span className="text-ink">Comentário (obrigatório, 10-2000 caracteres)</span>
         <textarea
           required
@@ -108,7 +108,7 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
       </label>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="space-y-2 text-sm">
+        <label className="space-y-2 text-base">
           <span className="text-ink">Nome (opcional)</span>
           <input
             value={name}
@@ -117,7 +117,7 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
             className="w-full rounded-lg border border-line px-3 py-2"
           />
         </label>
-        <label className="space-y-2 text-sm">
+        <label className="space-y-2 text-base">
           <span className="text-ink">Contacto (opcional)</span>
           <input
             value={contact}

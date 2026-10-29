@@ -48,6 +48,14 @@ export function useTheme() {
   }, [preference]);
 
   useEffect(() => {
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) {
+      metaTheme.setAttribute('content', resolved === 'dark' ? '#123e64' : '#2474B5');
+    }
+    document.documentElement.style.colorScheme = resolved === 'dark' ? 'dark' : 'light';
+  }, [resolved]);
+
+  useEffect(() => {
     if (preference !== 'auto') return;
     const interval = setInterval(() => {
       const resolvedTheme = resolveTheme('auto');

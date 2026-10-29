@@ -1,6 +1,6 @@
 'use client';
 
-import { Info, Moon, Sun } from 'lucide-react';
+import { Search } from 'lucide-react';
 import Image from 'next/image';
 import {
   useCallback,
@@ -11,7 +11,6 @@ import {
   useState,
 } from 'react';
 
-import { BrandLogo } from '@/components/menu/brand-logo';
 import { CategoryChips } from '@/components/menu/category-chips';
 import { FeedbackDialog } from '@/components/menu/feedback-dialog';
 import { GroupTabs } from '@/components/menu/group-tabs';
@@ -23,7 +22,6 @@ import { useTranslation } from '@/lib/i18n/i18n-context';
 import { formatKz, normalizeSearch } from '@/lib/menu/format';
 import { getOpenState } from '@/lib/menu/hours';
 import { getStartingPrice } from '@/lib/menu/pricing';
-import { useTheme } from '@/lib/theme/use-theme';
 import { useIsClient } from '@/lib/use-is-client';
 import { cn } from '@/lib/utils';
 import type { MenuCategory, MenuGroup, MenuProduct, RestaurantSettings } from '@/types/menu';
@@ -72,7 +70,12 @@ function buildSuggestions(
 
 function scrollToTop() {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  const menuEl = document.getElementById('menu');
+  if (menuEl) {
+    menuEl.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+  } else {
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  }
 }
 
 export function MenuExperience({
@@ -94,7 +97,6 @@ export function MenuExperience({
   const [product, setProduct] = useState<MenuProduct | null>(null);
   const [infoOpen, setInfoOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
-  const { preference, resolved, toggle: toggleTheme } = useTheme();
   const { locale, toggle: toggleLang, t } = useTranslation();
   const isClient = useIsClient();
 
@@ -221,6 +223,10 @@ export function MenuExperience({
 
     setCategorySlug(slug);
     syncUrl(activeGroup.slug, slug);
+    const el = document.getElementById('category-' + slug);
+    if (el) {
+      el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
   }
 
   function jumpTo(groupSlugToOpen: string, categorySlugToOpen: string) {
@@ -241,51 +247,13 @@ export function MenuExperience({
   const showClosedBand = Boolean(openState && !openState.open && !searchOpen);
 
   return (
-    <div className="relative flex min-h-dvh flex-col">
+    <div className="relative flex min-h-[100vh] flex-col">
       <div
         aria-hidden="true"
         className="texture-paper pointer-events-none absolute inset-0 opacity-[0.04]"
       />
 
       <div className="relative flex flex-1 flex-col">
-        <header className="sticky top-0 z-30 border-b border-line bg-ivory/85 backdrop-blur-md">
-          <div className="mx-auto flex h-14 w-full max-w-[1100px] items-center justify-between px-4 sm:px-6">
-            <BrandLogo priority />
-
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                onClick={toggleTheme}
-                aria-label="Alternar tema"
-                className="flex h-9 items-center gap-1 rounded-full px-2 text-xs text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
-              >
-                {resolved === 'dark' ? <Moon className="size-4" /> : <Sun className="size-4" />}
-                <span className="hidden sm:inline">
-                  {preference === 'auto' ? t('theme_auto') : resolved === 'dark' ? t('theme_dark') : t('theme_light')}
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={toggleLang}
-                aria-label="Alternar idioma"
-                className="flex h-9 items-center rounded-full px-2 text-xs font-medium text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
-              >
-                {locale === 'pt' ? t('lang_en') : t('lang_pt')}
-              </button>
-              {settings ? (
-                <button
-                  type="button"
-                  onClick={() => setInfoOpen(true)}
-                  aria-label={t('info_aria')}
-                  className="flex size-9 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-deep"
-                >
-                  <Info aria-hidden="true" className="size-5" />
-                </button>
-              ) : null}
-            </div>
-          </div>
-        </header>
-
         {showClosedBand && openState ? (
           <div className="border-b border-sand-line bg-sand/60">
             <p className="mx-auto w-full max-w-[1100px] px-4 py-2 text-center text-xs text-ink-2 sm:px-6">
@@ -296,7 +264,7 @@ export function MenuExperience({
 
         <div className="mx-auto flex w-full max-w-[1100px] flex-1 items-start gap-10 px-4 sm:px-6">
           {!searchOpen ? (
-            <aside className="sticky top-14 hidden max-h-[calc(100dvh-3.5rem)] w-[220px] shrink-0 overflow-y-auto py-6 lg:block">
+            <aside className="sticky top-14 hidden max-h-[calc(100vh - 3.5rem)] w-[220px] shrink-0 overflow-y-auto py-6 lg:block">
               <nav aria-label="Categorias do menu">
                 {groups.map((group) => (
                   <div key={group.id} className="mb-5">
@@ -443,6 +411,15 @@ export function MenuExperience({
                       activeSlug={activeGroup.slug}
                       onChange={selectGroup}
                     />
+                    <button
+                      type="button"
+                      onClick={() => setSearchOpen(true)}
+                      aria-label={t('search_aria')}
+                      className="flex h-9 items-center gap-2 rounded-full border border-line bg-surface px-3 text-xs text-ink-2 transition-colors hover:border-deep hover:text-deep"
+                    >
+                      <Search aria-hidden className="size-3.5" />
+                      <span className="hidden sm:inline">{t('search_placeholder')}</span>
+                    </button>
                     <CategoryChips
                       categories={activeGroup.categories}
                       activeSlug={activeCategory.slug}
@@ -468,7 +445,7 @@ export function MenuExperience({
                       ))}
                     </div>
                   ) : (
-                    <div className="mt-8 rounded-card border border-line bg-white px-6 py-10 text-center">
+                    <div className="mt-8 rounded-card border border-line bg-surface px-6 py-10 text-center">
                       <div className="mx-auto h-16 w-16 overflow-hidden rounded-tile border border-sand-line">
                         <MonogramPlaceholder compact />
                       </div>

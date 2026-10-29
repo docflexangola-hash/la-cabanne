@@ -58,7 +58,7 @@ export function ProductDialog({
       aria-labelledby={`product-title-${product.id}`}
       onClick={handleBackdropClick}
     >
-      <div className="menu-sheet-panel relative grid bg-white lg:grid-cols-2">
+      <div className="menu-sheet-panel relative grid bg-surface lg:grid-cols-2">
         <button
           type="button"
           onClick={() => dialogRef.current?.close()}

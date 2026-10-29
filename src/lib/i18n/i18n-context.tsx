@@ -31,6 +31,10 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = locale === 'en' ? 'en' : 'pt-PT';
+  }, [locale]);
+
   function setLocale(locale: Locale) {
     setLocaleState(locale);
     try {
