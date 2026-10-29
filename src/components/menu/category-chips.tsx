@@ -23,10 +23,10 @@ export function CategoryChips({
               onClick={() => onChange(category.slug)}
               aria-pressed={isActive}
               className={cn(
-                'inline-flex h-9 shrink-0 items-center rounded-full border px-3.5 text-[13px] whitespace-nowrap transition-colors',
+                'inline-flex h-9 shrink-0 items-center rounded-full border-0 border-b px-3.5 text-[13px] whitespace-nowrap transition-colors',
                 isActive
-                  ? 'border-deep bg-deep font-medium text-white'
-                  : 'border-transparent text-ink-2 hover:border-line hover:text-deep',
+                  ? 'font-semibold text-deep border-b-2 border-deep pb-0.5'
+                  : 'font-medium text-ink-2 hover:text-deep border-b border-transparent hover:border-deep/30',
               )}
             >
               {category.name}

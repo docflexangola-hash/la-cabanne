@@ -40,7 +40,7 @@ export function HeroWelcome() {
           <div className="mt-8">
             <Link
               href="#menu"
-              className="inline-flex h-11 items-center rounded-sm bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-blue-700"
+              className="inline-flex h-11 items-center rounded-sm bg-deep/85 px-6 text-sm font-medium text-ivory backdrop-blur-md border border-ivory/20 shadow-lg shadow-deep/10 transition-colors hover:bg-deep hover:border-ivory/30"
             >
               {t('ver_menu')}
             </Link>

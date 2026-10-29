@@ -1,54 +1,21 @@
-15:14:17.804 Running build in Washington, D.C., USA (East) – iad1
-15:14:17.805 Build machine configuration: 2 cores, 8 GB
-15:14:17.948 Cloning github.com/docflexangola-hash/la-cabanne (Branch: main, Commit: 02b6769)
-15:14:18.599 Cloning completed: 650.000ms
-15:14:18.954 Restored build cache from previous deployment (HNMKz79fdGykehJ7PqDMT6YPD3Z8)
-15:14:19.368 Running "vercel build"
-15:14:19.380 Vercel CLI 65.1.0
-15:14:19.696 Warning: Detected "engines": { "node": ">=20.9.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: <https://vercel.link/node-version>
-15:14:19.713 Installing dependencies...
-15:14:20.256 npm warn Unknown env config "cache-dir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
-15:14:20.851
-15:14:20.851 up to date in 1s
-15:14:20.851
-15:14:20.851 149 packages are looking for funding
-15:14:20.851   run `npm fund` for details
-15:14:20.852 npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
-15:14:20.852 npm warn install-scripts   unrs-resolver@1.12.2 (postinstall: node postinstall.js)
-15:14:20.852 npm warn install-scripts
-15:14:20.852 npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
-15:14:20.880 Detected Next.js version: 16.4.3
-15:14:20.885 Running "npm run build"
-15:14:20.993 npm warn Unknown env config "cache-dir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
-15:14:21.014
-15:14:21.015 > la-cabanne@0.1.0 build
-15:14:21.015 > next build
-15:14:21.015
-15:14:21.691 ▲ Next.js 16.4.3 (Turbopack)
-15:14:21.928   Applying modifyConfig from Vercel
-15:14:21.934 ✓ Running next.config.ts took 243ms
-15:14:21.960
-15:14:21.996   Creating an optimized production build ...
-15:14:25.120 ✓ Compiled successfully in 3.1s
-15:14:25.128   Running TypeScript ...
-15:14:28.675   Finished TypeScript in 3.5s ...
-15:14:28.678   Collecting page data using 1 worker ...
-15:14:29.249   Generating static pages using 1 worker (0/14) ...
-15:14:29.372   Generating static pages using 1 worker (3/14)
-15:14:29.431   Generating static pages using 1 worker (6/14)
-15:14:29.489   Generating static pages using 1 worker (10/14)
-15:14:30.409 Error occurred prerendering page "/". Read more: <https://nextjs.org/docs/messages/prerender-error>
-15:14:30.781 Error: Attempted to call useTranslation() from the server but useTranslation is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.
-15:14:30.781     at g (src/components/menu/hero-welcome.tsx:7:17)
-15:14:30.781    5 |
-15:14:30.781    6 | export function HeroWelcome() {
-15:14:30.781 >  7 |   const { t } = useTranslation();
-15:14:30.782      |                 ^
-15:14:30.782    8 |
-15:14:30.782    9 |   return (
-15:14:30.782   10 |     <section className="relative isolate min-h-[78svh] overflow-hidden md:min-h-[88svh]"> {
-15:14:30.782   digest: '1305780158'
-15:14:30.782 }
-15:14:30.782 Export encountered an error on /page: /, exiting the build.
-15:14:30.809 ⨯ Next.js build worker exited with code: 1 and signal: null
-15:14:30.854 Error: [BUILD_UTILS_SPAWN_1] Command "npm run build" exited with 1
+retire a funcionalidade de busca e a sua lupa: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search size-3.5" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>. estão a estragar o ui.
+
+o texto:<p class="mb-3 text-xs font-medium uppercase tracking-[0.32em] text-ivory/90 sm:text-sm">Bem-vindo ao</p>, e o texto do botao na hero: <a class="inline-flex h-11 items-center rounded-sm bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-blue-700" href="#menu">Ver cardápio</a>,deve permanecer branco tanto no modo diurno como no modo nocturno
+
+o logo do site na header: <a class="inline-flex h-11 items-center rounded-sm bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-blue-700" href="#menu">Ver cardápio</a>,no modo nocturno deve alternar para um com vor branca ou clara
+
+este texto:<span class="shrink-0 text-xs text-ink-2 tabular">14 produtos</span>, nao é necessario pode apagar
+
+Este texto: <h2 class="font-display text-2xl leading-tight text-deep">Entradas e Aperitivos</h2>, deve estar centralizado  ou seja no meio da div
+
+este elemento para onde vem a imagem preview do produto:<div class="size-14 shrink-0 overflow-hidden rounded-[10px] bg-surface-2"><img alt="" loading="lazy" width="112" height="112" decoding="async" data-nimg="1" class="size-14 object-cover" src="/images/placeholder.svg" style="color: transparent;"></div>, já n é necessario, remova, a ideia é retirae esse quadradinho da foto
+
+o selecionador deste elemento: <div class="flex gap-2 py-3"><button type="button" aria-pressed="true" class="inline-flex h-9 shrink-0 items-center rounded-full border px-3.5 text-[13px] whitespace-nowrap transition-colors border-deep bg-deep font-medium text-white">Entradas e Aperitivos</button><button type="button" aria-pressed="false" class="inline-flex h-9 shrink-0 items-center rounded-full border px-3.5 text-[13px] whitespace-nowrap transition-colors border-transparent text-ink-2 hover:border-line hover:text-deep">Snacks</button><button type="button" aria-pressed="false" class="inline-flex h-9 shrink-0 items-center rounded-full border px-3.5 text-[13px] whitespace-nowrap transition-colors border-transparent text-ink-2 hover:border-line hover:text-deep">Pastas</button><button type="button" aria-pressed="false" class="inline-flex h-9 shrink-0 items-center rounded-full border px-3.5 text-[13px] whitespace-nowrap transition-colors border-transparent text-ink-2 hover:border-line hover:text-deep">Peixes</button><button type="button" aria-pressed="false" class="inline-flex h-9 shrink-0 items-center rounded-full border px-3.5 text-[13px] whitespace-nowrap transition-colors border-transparent text-ink-2 hover:border-line hover:text-deep">Carnes</button><button type="button" aria-pressed="false" class="inline-flex h-9 shrink-0 items-center rounded-full border px-3.5 text-[13px] whitespace-nowrap transition-colors border-transparent text-ink-2 hover:border-line hover:text-deep">Mariscos e Frutos do Mar</button><button type="button" aria-pressed="false" class="inline-flex h-9 shrink-0 items-center rounded-full border px-3.5 text-[13px] whitespace-nowrap transition-colors border-transparent text-ink-2 hover:border-line hover:text-deep">Guarnições</button><button type="button" aria-pressed="false" class="inline-flex h-9 shrink-0 items-center rounded-full border px-3.5 text-[13px] whitespace-nowrap transition-colors border-transparent text-ink-2 hover:border-line hover:text-deep">Sobremesas</button></div> é um preenchimento azul muito bruto quero que fique como o selecionador deste <button type="button" aria-pressed="true" class="flex h-11 w-full items-center justify-center px-1 text-[12px] tracking-[0.16em] uppercase transition-colors font-semibold text-deep">Refeições</button>, que é uma um sublinhado que fica muito mais leve. e tome atenção a cor do texto nestes 2 elementos quando estiver no modo nocturno tem de ser uma cor clara para ter contraste mas apenas para os objectos selecionados os n selecionados podem manter a cor de texto actual
+
+este botao: <a class="inline-flex h-11 items-center rounded-sm bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-blue-700" href="#menu">Ver cardápio</a>, quero que tenha glassmofirsmo, que seja elegante, mas tome atencao para garantir que o texto seja perceptivel em rrlacao ao fundo que tiver tanto no modo nocturno ou diurno
+
+tambem quero que as categorias e subcategorias fiquem fixas ao ler o catalogo
+
+para alem do ja vcitados existem muitos problemas de contrastes nos textos no modo nocturno,  investigue e garanta uma aproximacao elegante e que n tire a estetica suave do site para melhorar a intelegibilidade, dos textos, principalmente os jogos de cor de texto.
+
+os nomes dos produtos e suas descricoes continuam a nao ser traduzidas para ingles, e a informacao no sheet que abre ao clicar no botao info na header tambem continua em portugues, resolva isso

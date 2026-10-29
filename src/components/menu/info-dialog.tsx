@@ -4,6 +4,7 @@ import { AtSign, Mail, MapPin, MessageCircle, Phone, X } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useRef, type MouseEvent } from 'react';
 
+import { useTranslation } from '@/lib/i18n/i18n-context';
 import { getHoursRows, getOpenState, getTodayKey } from '@/lib/menu/hours';
 import { cn } from '@/lib/utils';
 import type { RestaurantSettings } from '@/types/menu';
@@ -35,6 +36,7 @@ export function InfoDialog({
   onClose: () => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -105,7 +107,7 @@ export function InfoDialog({
                   openState.open ? 'bg-emerald-300' : 'bg-ivory/40',
                 )}
               />
-              {openState.label}
+              {openState ? (openState.open ? t('aberto') : t('fechado')) : null}
             </p>
           ) : null}
         </div>
@@ -162,7 +164,7 @@ export function InfoDialog({
 
           <div className="mt-4 border-t border-line pt-4">
             <p className="text-[11px] font-semibold tracking-[0.14em] text-ink-2 uppercase">
-              Horário
+              {t('horario')}
             </p>
 
             {hasHours ? (

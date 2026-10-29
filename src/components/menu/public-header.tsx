@@ -3,9 +3,9 @@
 import { Info, Moon, Sun } from 'lucide-react';
 
 import { BrandLogo } from '@/components/menu/brand-logo';
+import { useTheme } from '@/lib/theme/theme-context';
 import { InfoDialog } from '@/components/menu/info-dialog';
 import { useTranslation } from '@/lib/i18n/i18n-context';
-import { useTheme } from '@/lib/theme/theme-context';
 import type { RestaurantSettings } from '@/types/menu';
 import { useState } from 'react';
 
@@ -22,7 +22,7 @@ export function PublicHeader({
     <>
       <header className="sticky top-0 z-30 border-b border-line bg-ivory/85 backdrop-blur-md">
         <div className="mx-auto flex h-14 w-full max-w-[1100px] items-center justify-between px-4 sm:px-6">
-          <BrandLogo priority />
+          <BrandLogo priority dark={resolved === 'dark'} />
 
           <div className="flex items-center gap-1">
             <button

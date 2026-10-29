@@ -430,12 +430,9 @@ export function MenuExperience({
 
                 <section aria-live="polite" className="pt-1 lg:pt-7">
                   <header className="flex items-baseline justify-between gap-4 border-b border-line pb-2 lg:mt-0">
-                    <h2 className="font-display text-2xl leading-tight text-deep">
+                    <h2 className="font-display text-2xl leading-tight text-deep text-center">
                       {activeCategory.name}
                     </h2>
-                    <span className="shrink-0 text-xs text-ink-2 tabular">
-                      {products.length} {products.length === 1 ? 'produto' : 'produtos'}
-                    </span>
                   </header>
 
                   {products.length > 0 ? (

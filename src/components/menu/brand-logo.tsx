@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export function BrandLogo({ priority = false }: { priority?: boolean }) {
+export function BrandLogo({ priority = false, dark = false }: { priority?: boolean; dark?: boolean }) {
   return (
     <Link
       href="/"
@@ -9,7 +9,7 @@ export function BrandLogo({ priority = false }: { priority?: boolean }) {
       className="inline-flex items-center rounded-sm"
     >
       <Image
-        src="/brand/01-logo-cor.png"
+        src={dark ? '/brand/02-logo-mono-claro.png' : '/brand/01-logo-cor.png'}
         alt="La Cabanne"
         width={1200}
         height={416}

@@ -25,7 +25,7 @@ export function GroupTabs({
                 className={cn(
                   'flex h-11 w-full items-center justify-center px-1 text-[12px] tracking-[0.16em] uppercase transition-colors',
                   isActive
-                    ? 'font-semibold text-deep'
+                    ? 'font-semibold text-white'
                     : 'font-medium text-ink-2 hover:text-deep',
                 )}
               >
