@@ -16,12 +16,14 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
   const [website, setWebsite] = useState(''); // honeypot
   const [startedAt] = useState(() => Date.now());
   const [status, setStatus] = useState<'idle' | 'submitting' | 'ok' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (status === 'submitting') return;
 
     setStatus('submitting');
+    setErrorMessage('');
     try {
       const res = await fetch('/api/feedback', {
         method: 'POST',
@@ -33,7 +35,6 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
           name: name || undefined,
           contact: contact || undefined,
           website,
-          elapsed: Date.now() - startedAt,
           source_path: sourcePath,
         }),
       });
@@ -44,9 +45,12 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
         setName('');
         setContact('');
       } else {
+        const payload = (await res.json().catch(() => null)) as { error?: string } | null;
+        setErrorMessage(payload?.error || t('fb_error'));
         setStatus('error');
       }
     } catch {
+      setErrorMessage(t('fb_error'));
       setStatus('error');
     }
   }
@@ -141,7 +145,9 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
       </p>
 
       {status === 'error' ? (
-        <p className="text-sm text-red-600">{t('fb_error')}</p>
+        <p role="alert" className="text-sm text-red-600">
+          {errorMessage || t('fb_error')}
+        </p>
       ) : null}
 
       <button

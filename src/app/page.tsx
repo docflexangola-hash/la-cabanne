@@ -30,7 +30,7 @@ export default async function HomePage() {
           <PublicHeader settings={menu.settings} />
           <HeroWelcome />
 
-          <div id="menu" className="scroll-mt-14 sm:scroll-mt-16">
+          <div id="menu" className="scroll-mt-[57px]">
             <MenuExperience groups={menu.groups} settings={menu.settings} />
           </div>
         </div>
@@ -53,7 +53,7 @@ export default async function HomePage() {
         <PublicHeader />
         <HeroWelcome />
 
-        <main id="menu" className="mx-auto w-full max-w-[1100px] flex-1 px-4 pb-16 sm:px-6 scroll-mt-14 sm:scroll-mt-16">
+        <main id="menu" className="mx-auto w-full max-w-[1100px] flex-1 px-4 pb-16 scroll-mt-[57px] sm:px-6">
           <EmptyMenuState variant={menu.status === 'error' ? 'error' : 'preparing'} />
         </main>
 

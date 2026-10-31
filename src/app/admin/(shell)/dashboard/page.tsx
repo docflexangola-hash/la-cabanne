@@ -22,11 +22,17 @@ export default async function DashboardPage() {
   }
 
   const supabase = await createClient();
-  const [{ count: productsCount }, { count: categoriesCount }, { count: feedbackCount }] = await Promise.all([
+  const [
+    { count: productsCount, error: productsError },
+    { count: categoriesCount, error: categoriesError },
+    { count: feedbackCount, error: feedbackError },
+  ] = await Promise.all([
     supabase.from('products').select('*', { count: 'exact', head: true }),
     supabase.from('categories').select('*', { count: 'exact', head: true }),
     supabase.from('customer_feedback').select('*', { count: 'exact', head: true }),
   ]);
+
+  const hasError = Boolean(productsError || categoriesError || feedbackError);
 
   return (
     <div className="space-y-6">
@@ -38,18 +44,38 @@ export default async function DashboardPage() {
         <p className="text-sm text-ink-2">Resumo rápido do menu digital.</p>
       </header>
 
+      {hasError ? (
+        <div
+          role="alert"
+          className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+        >
+          <p className="font-medium">Alguns indicadores não puderam ser carregados.</p>
+          <p className="mt-1 text-red-600">
+            {feedbackError
+              ? 'O feedback está indisponível porque a tabela ainda não existe. Aplique a migração 0007_feedback.sql.'
+              : 'Verifique a ligação à base de dados e recarregue a página.'}
+          </p>
+        </div>
+      ) : null}
+
       <div className="grid gap-4 sm:grid-cols-3">
         <div className="rounded-2xl border border-line bg-white p-5">
           <p className="text-xs text-ink-2">Produtos</p>
-          <p className="mt-2 font-display text-3xl text-deep">{productsCount || 0}</p>
+          <p className="mt-2 font-display text-3xl text-deep">
+            {productsError ? '—' : productsCount || 0}
+          </p>
         </div>
         <div className="rounded-2xl border border-line bg-white p-5">
           <p className="text-xs text-ink-2">Categorias</p>
-          <p className="mt-2 font-display text-3xl text-deep">{categoriesCount || 0}</p>
+          <p className="mt-2 font-display text-3xl text-deep">
+            {categoriesError ? '—' : categoriesCount || 0}
+          </p>
         </div>
         <div className="rounded-2xl border border-line bg-white p-5">
           <p className="text-xs text-ink-2">Feedback recebido</p>
-          <p className="mt-2 font-display text-3xl text-deep">{feedbackCount || 0}</p>
+          <p className="mt-2 font-display text-3xl text-deep">
+            {feedbackError ? '—' : feedbackCount || 0}
+          </p>
         </div>
       </div>
 

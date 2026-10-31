@@ -23,7 +23,7 @@ export default async function FeedbackPage() {
   }
 
   const supabase = await createClient();
-  const { data: feedback } = await supabase
+  const { data: feedback, error } = await supabase
     .from('customer_feedback')
     .select('id, type, rating, comment, name, contact, status, source_path, created_at')
     .order('created_at', { ascending: false })
@@ -40,6 +40,19 @@ export default async function FeedbackPage() {
           Caixa de entrada privada com elogios, sugestões e reclamações.
         </p>
       </header>
+
+      {error ? (
+        <div
+          role="alert"
+          className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+        >
+          <p className="font-medium">Não foi possível carregar o feedback.</p>
+          <p className="mt-1 text-red-600">
+            A base de dados ainda não tem a tabela necessária. Aplique as migrações pendentes
+            (0007_feedback.sql) e volte a carregar esta página.
+          </p>
+        </div>
+      ) : null}
 
       <FeedbackInbox items={feedback || []} />
     </div>

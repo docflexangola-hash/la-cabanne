@@ -98,6 +98,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html
       lang="pt-PT"
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`${cormorant.variable} ${dmSans.variable}`}
     >
       <body className="min-h-[100vh] bg-ivory text-ink">

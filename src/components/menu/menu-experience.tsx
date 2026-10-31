@@ -17,6 +17,8 @@ import type { MenuCategory, MenuGroup, MenuProduct, RestaurantSettings } from '@
 
 type Suggestion = { group: MenuGroup; category: MenuCategory };
 
+type ScrollTarget = { kind: 'group' | 'category'; slug: string };
+
 function firstCategoryOf(group: MenuGroup): MenuCategory {
   return group.categories.find((category) => category.products.length > 0) ?? group.categories[0];
 }
@@ -49,14 +51,15 @@ function buildSuggestions(
     .slice(0, 3);
 }
 
-function scrollToTop() {
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const menuEl = document.getElementById('menu');
-  if (menuEl) {
-    menuEl.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
-  } else {
-    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+function scrollToTarget(target: ScrollTarget) {
+  const el = document.getElementById(`${target.kind}-${target.slug}`);
+
+  if (!el) {
+    return;
   }
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  el.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
 }
 
 export function MenuExperience({
@@ -81,15 +84,16 @@ export function MenuExperience({
   const isClient = useIsClient();
 
   const didReadUrl = useRef(false);
+  const scrollFrame = useRef<number | null>(null);
 
   const activeGroup = groups.find((group) => group.slug === groupSlug) ?? groups[0];
   const activeCategory =
     activeGroup.categories.find((category) => category.slug === categorySlug) ??
     firstCategoryOf(activeGroup);
-  const products = activeCategory.products;
 
   const syncUrl = useCallback((g: string, c: string) => {
     const url = new URL(window.location.href);
+    url.hash = '';
     url.searchParams.set('g', g);
     url.searchParams.set('c', c);
     window.history.replaceState(null, '', url);
@@ -99,22 +103,36 @@ export function MenuExperience({
     const params = new URLSearchParams(window.location.search);
     const groupParam = params.get('g');
 
-    if (!groupParam) {
-      return;
-    }
+    let group = groupParam ? groups.find((item) => item.slug === groupParam) : undefined;
+    let category = group
+      ? group.categories.find((item) => item.slug === params.get('c')) ?? firstCategoryOf(group)
+      : undefined;
 
-    const group = groups.find((item) => item.slug === groupParam);
+    // Hash is only a no-JS fallback; the canonical state lives in ?g=&c=.
+    if (!group) {
+      const match = /^#(group|category)-(.+)$/.exec(window.location.hash);
+
+      if (match) {
+        const [, kind, slug] = match;
+
+        if (kind === 'category') {
+          group = groups.find((item) =>
+            item.categories.some((candidate) => candidate.slug === slug),
+          );
+          category = group?.categories.find((candidate) => candidate.slug === slug);
+        } else {
+          group = groups.find((item) => item.slug === slug);
+          category = group ? firstCategoryOf(group) : undefined;
+        }
+      }
+    }
 
     if (!group) {
       return;
     }
 
-    const categoryParam = params.get('c');
-    const category =
-      group.categories.find((item) => item.slug === categoryParam) ?? firstCategoryOf(group);
-
     setGroupSlug(group.slug);
-    setCategorySlug(category.slug);
+    setCategorySlug(category ? category.slug : firstCategoryOf(group).slug);
   }, [groups]);
 
   useEffect(() => {
@@ -132,15 +150,30 @@ export function MenuExperience({
     return () => window.removeEventListener('popstate', onPopState);
   }, [applyUrlState]);
 
+  useEffect(
+    () => () => {
+      if (scrollFrame.current !== null) {
+        cancelAnimationFrame(scrollFrame.current);
+      }
+    },
+    [],
+  );
+
   const openState = isClient && settings ? getOpenState(settings, new Date(), locale) : null;
 
-  const suggestions = buildSuggestions(groups, activeGroup, activeCategory);
-
-  function selectGroup(slug: string) {
-    if (slug === activeGroup.slug) {
-      return;
+  function scheduleScroll(target: ScrollTarget) {
+    if (scrollFrame.current !== null) {
+      cancelAnimationFrame(scrollFrame.current);
     }
 
+    // Wait for React to commit the new active section before scrolling to it.
+    scrollFrame.current = requestAnimationFrame(() => {
+      scrollFrame.current = null;
+      scrollToTarget(target);
+    });
+  }
+
+  function selectGroup(slug: string) {
     const group = groups.find((item) => item.slug === slug);
 
     if (!group) {
@@ -152,27 +185,21 @@ export function MenuExperience({
     setGroupSlug(group.slug);
     setCategorySlug(category.slug);
     syncUrl(group.slug, category.slug);
-    scrollToTop();
+    scheduleScroll({ kind: 'group', slug: group.slug });
   }
 
-  function selectCategory(slug: string) {
-    if (slug === activeCategory.slug) {
+  function selectCategory(groupSlugToOpen: string, categorySlugToOpen: string) {
+    const group = groups.find((item) => item.slug === groupSlugToOpen);
+    const category = group?.categories.find((item) => item.slug === categorySlugToOpen);
+
+    if (!group || !category) {
       return;
     }
 
-    setCategorySlug(slug);
-    syncUrl(activeGroup.slug, slug);
-    const el = document.getElementById('category-' + slug);
-    if (el) {
-      el.scrollIntoView({ block: 'start', behavior: 'smooth' });
-    }
-  }
-
-  function jumpTo(groupSlugToOpen: string, categorySlugToOpen: string) {
-    setGroupSlug(groupSlugToOpen);
-    setCategorySlug(categorySlugToOpen);
-    syncUrl(groupSlugToOpen, categorySlugToOpen);
-    scrollToTop();
+    setGroupSlug(group.slug);
+    setCategorySlug(category.slug);
+    syncUrl(group.slug, category.slug);
+    scheduleScroll({ kind: 'category', slug: category.slug });
   }
 
   const showClosedBand = Boolean(openState && !openState.open);
@@ -194,13 +221,17 @@ export function MenuExperience({
         ) : null}
 
         <div className="mx-auto flex w-full max-w-[1100px] flex-1 items-start gap-10 px-4 sm:px-6">
-          <aside className="sticky top-14 hidden max-h-[calc(100vh - 3.5rem)] w-[220px] shrink-0 overflow-y-auto py-6 lg:block">
+          <aside className="sticky top-[57px] hidden max-h-[calc(100vh-57px)] w-[220px] shrink-0 overflow-y-auto py-6 lg:block">
             <nav aria-label={t('nav_categories')}>
               {groups.map((group) => (
                 <div key={group.id} className="mb-5">
-                  <button
-                    type="button"
-                    onClick={() => selectGroup(group.slug)}
+                  <a
+                    href={`#group-${group.slug}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      selectGroup(group.slug);
+                    }}
+                    aria-current={group.slug === activeGroup.slug ? 'true' : undefined}
                     className={cn(
                       'text-[11px] font-semibold tracking-[0.16em] uppercase transition-colors',
                       group.slug === activeGroup.slug
@@ -209,7 +240,7 @@ export function MenuExperience({
                     )}
                   >
                     {group.name}
-                  </button>
+                  </a>
 
                   {group.slug === activeGroup.slug ? (
                     <ul className="mt-2 border-l border-line">
@@ -218,9 +249,12 @@ export function MenuExperience({
 
                         return (
                           <li key={category.id}>
-                            <button
-                              type="button"
-                              onClick={() => selectCategory(category.slug)}
+                            <a
+                              href={`#category-${category.slug}`}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                selectCategory(group.slug, category.slug);
+                              }}
                               aria-current={isActive ? 'true' : undefined}
                               className={cn(
                                 '-ml-px flex min-h-9 w-full items-center border-l-2 px-3 text-left text-sm transition-colors',
@@ -230,7 +264,7 @@ export function MenuExperience({
                               )}
                             >
                               {category.name}
-                            </button>
+                            </a>
                           </li>
                         );
                       })}
@@ -244,61 +278,95 @@ export function MenuExperience({
           <main className="min-w-0 flex-1 pb-16">
             <h1 className="sr-only">{t('menu_h1')}</h1>
 
-            <div className="lg:hidden">
-              <div className="sticky top-14 z-20 -mx-4 border-b border-line bg-ivory/95 px-4 backdrop-blur-md sm:-mx-6 sm:px-6">
-                <GroupTabs
-                  groups={groups}
-                  activeSlug={activeGroup.slug}
-                  onChange={selectGroup}
-                />
-                <CategoryChips
-                  categories={activeGroup.categories}
-                  activeSlug={activeCategory.slug}
-                  onChange={selectCategory}
-                />
-              </div>
+            <div className="sticky top-[57px] z-20 -mx-4 border-b border-line bg-ivory/95 px-4 backdrop-blur-md sm:-mx-6 sm:px-6 lg:hidden">
+              <GroupTabs
+                groups={groups}
+                activeSlug={activeGroup.slug}
+                onSelect={selectGroup}
+              />
+              <CategoryChips
+                groups={groups}
+                activeGroupSlug={activeGroup.slug}
+                activeSlug={activeCategory.slug}
+                filtered={isClient}
+                onSelect={selectCategory}
+              />
             </div>
 
-            <section aria-live="polite" className="pt-1 lg:pt-7">
-              <header className="border-b border-line pb-2 lg:mt-0">
-                <h2 className="text-center font-display text-2xl leading-tight text-strong">
-                  {activeCategory.name}
-                </h2>
-              </header>
+            <p role="status" aria-live="polite" className="sr-only">
+              {activeGroup.name}: {activeCategory.name}
+            </p>
 
-              {products.length > 0 ? (
-                <div className="lg:grid lg:grid-cols-2 lg:gap-x-10">
-                  {products.map((item) => (
-                    <ProductRow key={item.id} product={item} onOpen={setProduct} />
-                  ))}
-                </div>
-              ) : (
-                <div className="mt-8 rounded-card border border-line bg-surface px-6 py-10 text-center">
-                  <div className="mx-auto h-16 w-16 overflow-hidden rounded-tile border border-sand-line">
-                    <MonogramPlaceholder compact />
-                  </div>
-                  <p className="mt-4 font-display text-xl text-strong">
-                    {t('still_no_products')}
-                  </p>
-                  <p className="mt-1 text-sm text-ink-2">{t('new_soon')}</p>
+            {groups.map((group) => (
+              <section
+                key={group.id}
+                id={`group-${group.slug}`}
+                className={cn(
+                  'scroll-mt-[163px] lg:scroll-mt-[57px]',
+                  isClient && group.slug !== activeGroup.slug && 'hidden',
+                )}
+              >
+                <h2 className="sr-only">{group.name}</h2>
 
-                  {suggestions.length > 0 ? (
-                    <div className="mt-4 flex flex-wrap justify-center gap-2">
-                      {suggestions.map((item) => (
-                        <button
-                          key={`${item.group.id}-${item.category.id}`}
-                          type="button"
-                          onClick={() => jumpTo(item.group.slug, item.category.slug)}
-                          className="inline-flex h-9 items-center rounded-full border border-line px-3.5 text-[13px] text-ink-2 transition-colors hover:border-deep hover:text-strong"
-                        >
-                          {item.category.name}
-                        </button>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              )}
-            </section>
+                {group.categories.map((category) => {
+                  const isActiveCategory = category.slug === activeCategory.slug;
+                  const products = category.products;
+                  const suggestions = buildSuggestions(groups, group, category);
+
+                  return (
+                    <section
+                      key={category.id}
+                      id={`category-${category.slug}`}
+                      className={cn(
+                        'scroll-mt-[163px] pt-5 lg:scroll-mt-[57px] lg:pt-7',
+                        isClient && !isActiveCategory && 'hidden',
+                      )}
+                    >
+                      <header className="border-b border-line pb-2">
+                        <h3 className="text-center font-display text-2xl leading-tight text-strong">
+                          {category.name}
+                        </h3>
+                      </header>
+
+                      {products.length > 0 ? (
+                        <div className="lg:grid lg:grid-cols-2 lg:gap-x-10">
+                          {products.map((item) => (
+                            <ProductRow key={item.id} product={item} onOpen={setProduct} />
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="mt-8 rounded-card border border-line bg-surface px-6 py-10 text-center">
+                          <div className="mx-auto h-16 w-16 overflow-hidden rounded-tile border border-sand-line">
+                            <MonogramPlaceholder compact />
+                          </div>
+                          <p className="mt-4 font-display text-xl text-strong">
+                            {t('still_no_products')}
+                          </p>
+                          <p className="mt-1 text-sm text-ink-2">{t('new_soon')}</p>
+
+                          {suggestions.length > 0 ? (
+                            <div className="mt-4 flex flex-wrap justify-center gap-2">
+                              {suggestions.map((item) => (
+                                <button
+                                  key={`${item.group.id}-${item.category.id}`}
+                                  type="button"
+                                  onClick={() =>
+                                    selectCategory(item.group.slug, item.category.slug)
+                                  }
+                                  className="inline-flex h-9 items-center rounded-full border border-line px-3.5 text-[13px] text-ink-2 transition-colors hover:border-deep hover:text-strong"
+                                >
+                                  {item.category.name}
+                                </button>
+                              ))}
+                            </div>
+                          ) : null}
+                        </div>
+                      )}
+                    </section>
+                  );
+                })}
+              </section>
+            ))}
 
             <section className="mt-10 border-t border-line pt-8 text-center">
               <p className="text-[11px] font-semibold tracking-[0.16em] text-decor uppercase">

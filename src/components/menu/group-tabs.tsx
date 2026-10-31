@@ -7,11 +7,11 @@ import type { MenuGroup } from '@/types/menu';
 export function GroupTabs({
   groups,
   activeSlug,
-  onChange,
+  onSelect,
 }: {
   groups: MenuGroup[];
   activeSlug: string;
-  onChange: (slug: string) => void;
+  onSelect: (slug: string) => void;
 }) {
   const { t } = useTranslation();
 
@@ -23,10 +23,13 @@ export function GroupTabs({
 
           return (
             <li key={group.id} className="relative flex-1">
-              <button
-                type="button"
-                onClick={() => onChange(group.slug)}
-                aria-pressed={isActive}
+              <a
+                href={`#group-${group.slug}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  onSelect(group.slug);
+                }}
+                aria-current={isActive ? 'true' : undefined}
                 className={cn(
                   'flex h-11 w-full items-center justify-center px-1 text-[12px] tracking-[0.16em] uppercase transition-colors',
                   isActive
@@ -35,7 +38,7 @@ export function GroupTabs({
                 )}
               >
                 {group.name}
-              </button>
+              </a>
               <span
                 aria-hidden="true"
                 className={cn(

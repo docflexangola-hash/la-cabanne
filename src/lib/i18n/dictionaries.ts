@@ -26,6 +26,7 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     // Estado vazio
     still_no_products: 'Ainda sem produtos nesta categoria',
     new_soon: 'Novos produtos serão publicados em breve.',
+    coming_soon: 'em breve',
 
     // Feedback
     feedback_title_small: 'Ajude-nos a melhorar !',
@@ -101,6 +102,7 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     // Empty state
     still_no_products: 'No dishes in this category yet',
     new_soon: 'New dishes coming soon.',
+    coming_soon: 'soon',
 
     // Feedback
     feedback_title_small: 'Help us improve!',

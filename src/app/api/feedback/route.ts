@@ -27,10 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true }, { status: 201 });
     }
 
-    // Tempo mínimo (3 segundos)
-    if (typeof data.elapsed === 'number' && data.elapsed < 3000) {
-      return NextResponse.json({ error: 'Por favor, tente novamente' }, { status: 429 });
-    }
+    
 
     const ip = getClientIp(request);
     const ipHash = getIpHash(ip);
@@ -56,11 +53,24 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      return NextResponse.json({ ok: true }, { status: 201 });
+      console.error('[feedback] insert failed', {
+        code: error.code,
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+      });
+      return NextResponse.json(
+        { error: 'Não foi possível guardar o feedback. Tente novamente.' },
+        { status: 500 },
+      );
     }
 
     return NextResponse.json({ ok: true }, { status: 201 });
-  } catch {
-    return NextResponse.json({ ok: true }, { status: 201 });
+  } catch (error) {
+    console.error('[feedback] unexpected error', error);
+    return NextResponse.json(
+      { error: 'Não foi possível guardar o feedback. Tente novamente.' },
+      { status: 500 },
+    );
   }
 }
