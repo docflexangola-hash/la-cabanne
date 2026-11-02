@@ -19,11 +19,11 @@ export function PhasePlaceholder({
         <p className="text-[11px] font-semibold tracking-[0.16em] text-decor uppercase">
           {phase}
         </p>
-        <h1 className="font-display text-3xl text-deep">{title}</h1>
+        <h1 className="font-display text-3xl text-strong">{title}</h1>
         <p className="max-w-2xl text-sm text-ink-2">{description}</p>
       </header>
 
-      <div className="rounded-2xl border border-line bg-white p-6">
+      <div className="rounded-2xl border border-line bg-surface p-6">
         <p className="text-sm font-medium text-ink">Ainda não implementado</p>
         <p className="mt-1 max-w-xl text-sm text-ink-2">
           Esta área faz parte de uma fase posterior do plano. Nenhum dado fictício é

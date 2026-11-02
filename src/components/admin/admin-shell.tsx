@@ -2,11 +2,14 @@
 
 import {
   History,
+  Images,
   LayoutDashboard,
   LogOut,
   Menu,
   MessageSquare,
+  Moon,
   Settings,
+  Sun,
   Tags,
   TrendingUp,
   Users,
@@ -18,6 +21,7 @@ import { usePathname } from 'next/navigation';
 import { useState, type ReactNode } from 'react';
 
 import { signOut } from '@/lib/auth/actions';
+import { useTheme } from '@/lib/theme/theme-context';
 import { cn } from '@/lib/utils';
 import type { StaffMember } from '@/types/auth';
 
@@ -46,6 +50,7 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       { href: '/admin/products', label: 'Produtos', icon: UtensilsCrossed },
       { href: '/admin/categories', label: 'Categorias', icon: Tags },
+      { href: '/admin/stories', label: 'Stories', icon: Images },
     ],
   },
   {
@@ -76,15 +81,16 @@ export function AdminShell({
 }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const { resolved, setTheme } = useTheme();
 
   const sidebar = (
-    <div className="flex h-full flex-col bg-white">
+    <div className="flex h-full flex-col bg-surface">
       <div className="flex h-24 shrink-0 items-center justify-center bg-deep px-6">
         <div className="text-center">
-          <p className="font-display text-2xl leading-none tracking-tight text-ivory">
+          <p className="font-display text-2xl leading-none tracking-tight text-hero-fg">
             La Cabanne
           </p>
-          <p className="mt-2 text-[10px] font-medium tracking-[0.22em] text-ivory/60">
+          <p className="mt-2 text-[10px] font-medium tracking-[0.22em] text-hero-fg/60">
             MENU DIGITAL
           </p>
         </div>
@@ -122,7 +128,7 @@ export function AdminShell({
                         className={cn(
                           'flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm transition-colors',
                           active
-                            ? 'bg-blue-tint font-medium text-deep'
+                            ? 'bg-blue-tint font-medium text-strong'
                             : 'text-ink-2 hover:bg-surface-2 hover:text-ink',
                         )}
                       >
@@ -181,7 +187,7 @@ export function AdminShell({
       ) : null}
 
       <div className="lg:pl-60">
-        <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-line bg-white/95 px-4 backdrop-blur sm:px-6">
+        <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-line bg-surface/95 px-4 backdrop-blur sm:px-6">
           <button
             type="button"
             onClick={() => setOpen(true)}
@@ -195,16 +201,33 @@ export function AdminShell({
             Painel administrativo
           </p>
 
-          {open ? (
+          <div className="ml-auto flex items-center gap-1">
             <button
               type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Fechar menu"
-              className="ml-auto flex size-10 items-center justify-center rounded-lg text-ink-2 hover:bg-surface-2 lg:hidden"
+              onClick={() => setTheme(resolved === 'dark' ? 'light' : 'dark')}
+              aria-label={resolved === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
+              aria-pressed={resolved === 'dark'}
+              title={resolved === 'dark' ? 'Modo claro' : 'Modo escuro'}
+              className="flex size-10 items-center justify-center rounded-lg text-ink-2 transition-colors hover:bg-surface-2 hover:text-ink"
             >
-              <X aria-hidden="true" className="size-5" />
+              {resolved === 'dark' ? (
+                <Sun aria-hidden="true" className="size-5" />
+              ) : (
+                <Moon aria-hidden="true" className="size-5" />
+              )}
             </button>
-          ) : null}
+
+            {open ? (
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Fechar menu"
+                className="flex size-10 items-center justify-center rounded-lg text-ink-2 hover:bg-surface-2 lg:hidden"
+              >
+                <X aria-hidden="true" className="size-5" />
+              </button>
+            ) : null}
+          </div>
         </header>
 
         <main className="mx-auto w-full max-w-[1440px] px-4 py-6 sm:px-6 lg:py-8">

@@ -225,7 +225,7 @@ export function CategoriesManager({
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl text-deep">Categorias</h1>
+          <h1 className="font-display text-3xl text-strong">Categorias</h1>
           <p className="mt-1 text-sm text-ink-2">
             Organize o cardápio em grupos e categorias de refeições, sushi e bebidas.
           </p>
@@ -234,7 +234,7 @@ export function CategoriesManager({
         <button
           type="button"
           onClick={openCreateModal}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-blue px-4 text-sm font-medium text-white shadow-xs hover:bg-blue-700 transition-colors"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-blue px-4 text-sm font-medium text-primary-foreground shadow-xs hover:bg-blue-700 transition-colors"
         >
           <Plus className="size-4" />
           Nova Categoria
@@ -245,7 +245,7 @@ export function CategoriesManager({
         <div
           className={`flex items-center justify-between rounded-xl p-4 text-sm ${
             feedbackMessage.type === 'ok'
-              ? 'bg-[#2E7D5B]/10 text-[#2E7D5B] border border-[#2E7D5B]/20'
+              ? 'bg-ok/10 text-ok border border-ok/20'
               : 'bg-danger/10 text-danger border border-danger/20'
           }`}
         >
@@ -268,7 +268,7 @@ export function CategoriesManager({
             onClick={() => setSelectedGroupId('all')}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
               selectedGroupId === 'all'
-                ? 'bg-white text-deep shadow-xs'
+                ? 'bg-surface text-strong shadow-xs'
                 : 'text-ink-2 hover:text-ink'
             }`}
           >
@@ -283,7 +283,7 @@ export function CategoriesManager({
                 onClick={() => setSelectedGroupId(group.id)}
                 className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                   selectedGroupId === group.id
-                    ? 'bg-white text-deep shadow-xs'
+                    ? 'bg-surface text-strong shadow-xs'
                     : 'text-ink-2 hover:text-ink'
                 }`}
               >
@@ -301,13 +301,13 @@ export function CategoriesManager({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Pesquisar categoria..."
-            className="w-full rounded-xl border border-line bg-white pl-9 pr-4 py-2 text-sm text-ink focus:border-blue focus:outline-hidden"
+            className="w-full rounded-xl border border-line bg-surface pl-9 pr-4 py-2 text-sm text-ink focus:border-blue focus:outline-hidden"
           />
         </div>
       </div>
 
       {/* Categories Table */}
-      <div className="overflow-hidden rounded-2xl border border-line bg-white">
+      <div className="overflow-hidden rounded-2xl border border-line bg-surface">
         {filteredCategories.length === 0 ? (
           <div className="p-12 text-center">
             <FolderPlus className="mx-auto size-10 text-decor" />
@@ -372,7 +372,7 @@ export function CategoriesManager({
                     </td>
 
                     <td className="px-4 py-3.5 whitespace-nowrap text-center">
-                      <span className="inline-flex items-center justify-center rounded-full bg-blue-tint px-2.5 py-0.5 text-xs font-medium text-deep">
+                      <span className="inline-flex items-center justify-center rounded-full bg-blue-tint px-2.5 py-0.5 text-xs font-medium text-strong">
                         {category.productCount}
                       </span>
                     </td>
@@ -384,7 +384,7 @@ export function CategoriesManager({
                         disabled={isPending}
                         className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors ${
                           category.isActive
-                            ? 'bg-[#2E7D5B]/10 text-[#2E7D5B] hover:bg-[#2E7D5B]/20'
+                            ? 'bg-ok/10 text-ok hover:bg-ok/20'
                             : 'bg-decor/10 text-decor hover:bg-decor/20'
                         }`}
                       >
@@ -424,8 +424,8 @@ export function CategoriesManager({
       {/* Modal Criar / Editar Categoria */}
       {isFormOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-deep/40 backdrop-blur-xs">
-          <div className="w-full max-w-md rounded-2xl border border-line bg-white p-6 shadow-2xl">
-            <h2 className="font-display text-2xl text-deep">
+          <div className="w-full max-w-md rounded-2xl border border-line bg-surface p-6 shadow-2xl">
+            <h2 className="font-display text-2xl text-strong">
               {editingCategory ? 'Editar Categoria' : 'Nova Categoria'}
             </h2>
             <p className="mt-1 text-xs text-ink-2">
@@ -440,7 +440,7 @@ export function CategoriesManager({
                 <select
                   value={formData.groupId}
                   onChange={(e) => setFormData({ ...formData, groupId: e.target.value })}
-                  className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-sm text-ink bg-white focus:border-blue focus:outline-hidden"
+                  className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-sm text-ink bg-surface focus:border-blue focus:outline-hidden"
                   required
                 >
                   {groups.map((g) => (
@@ -528,7 +528,7 @@ export function CategoriesManager({
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center gap-2 rounded-lg bg-blue px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-blue px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending && <Loader2 className="size-4 animate-spin" />}
                   {editingCategory ? 'Guardar Alterações' : 'Criar Categoria'}

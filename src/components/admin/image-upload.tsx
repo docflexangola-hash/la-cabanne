@@ -111,7 +111,7 @@ export function ImageUpload({
             <button
               type="button"
               onClick={handleRemove}
-              className="absolute top-2 right-2 flex size-8 items-center justify-center rounded-lg bg-deep/80 text-white hover:bg-danger transition-colors shadow-sm"
+              className="absolute top-2 right-2 flex size-8 items-center justify-center rounded-lg bg-deep/80 text-hero-fg hover:bg-danger hover:text-destructive-foreground transition-colors shadow-sm"
               title="Remover fotografia"
             >
               <Trash2 className="size-4" />
@@ -127,7 +127,7 @@ export function ImageUpload({
               value={altText}
               onChange={(e) => handleAltChange(e.target.value)}
               placeholder="Ex.: Prato de Garoupa Grelhada com legumes e batata"
-              className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-sm text-ink bg-white focus:border-blue focus:outline-hidden"
+              className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-sm text-ink bg-surface focus:border-blue focus:outline-hidden"
               required
             />
           </div>

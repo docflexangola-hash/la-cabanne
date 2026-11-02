@@ -45,7 +45,7 @@ export function ConfirmDialog({
     <dialog
       ref={dialogRef}
       onClose={onCancel}
-      className="fixed inset-0 z-50 m-auto max-w-md w-[90%] rounded-2xl border border-line bg-white p-6 shadow-2xl backdrop:bg-deep/40 backdrop:backdrop-blur-xs"
+      className="fixed inset-0 z-50 m-auto max-w-md w-[90%] rounded-2xl border border-line bg-surface p-6 shadow-2xl backdrop:bg-deep/40 backdrop:backdrop-blur-xs"
     >
       <div className="flex items-start gap-4">
         {isDestructive && (
@@ -54,7 +54,7 @@ export function ConfirmDialog({
           </div>
         )}
         <div className="space-y-1">
-          <h3 className="font-display text-xl text-deep">{title}</h3>
+          <h3 className="font-display text-xl text-strong">{title}</h3>
           <p className="text-sm text-ink-2">{description}</p>
         </div>
       </div>
@@ -72,8 +72,10 @@ export function ConfirmDialog({
           type="button"
           onClick={onConfirm}
           disabled={isLoading}
-          className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors disabled:opacity-50 ${
-            isDestructive ? 'bg-danger hover:bg-danger/90' : 'bg-blue hover:bg-blue-700'
+          className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 ${
+            isDestructive
+              ? 'bg-danger text-destructive-foreground hover:bg-danger/90'
+              : 'bg-blue text-primary-foreground hover:bg-blue-700'
           }`}
         >
           {isLoading && <Loader2 className="size-4 animate-spin" />}

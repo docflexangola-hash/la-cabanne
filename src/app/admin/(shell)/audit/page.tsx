@@ -12,8 +12,8 @@ export default async function AuditPage() {
 
   if (!isSupabaseConfigured()) {
     return (
-      <div className="rounded-2xl border border-line bg-white p-8 text-center">
-        <p className="font-display text-2xl text-deep">Supabase não configurado</p>
+      <div className="rounded-2xl border border-line bg-surface p-8 text-center">
+        <p className="font-display text-2xl text-strong">Supabase não configurado</p>
         <p className="mt-2 text-sm text-ink-2">
           Configure as variáveis de ambiente para aceder ao histórico de alterações.
         </p>
@@ -34,13 +34,13 @@ export default async function AuditPage() {
         <p className="text-[11px] font-semibold tracking-[0.16em] text-decor uppercase">
           Fase 3
         </p>
-        <h1 className="font-display text-3xl text-deep">Histórico de alterações</h1>
+        <h1 className="font-display text-3xl text-strong">Histórico de alterações</h1>
         <p className="max-w-2xl text-sm text-ink-2">
           Registo auditável de quem alterou o quê e quando.
         </p>
       </header>
 
-      <div className="overflow-x-auto rounded-2xl border border-line bg-white">
+      <div className="overflow-x-auto rounded-2xl border border-line bg-surface">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-line text-left">

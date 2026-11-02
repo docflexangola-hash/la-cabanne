@@ -15,8 +15,8 @@ export default async function ProductsPage() {
 
   if (!isSupabaseConfigured()) {
     return (
-      <div className="rounded-2xl border border-line bg-white p-8 text-center">
-        <p className="font-display text-2xl text-deep">Supabase não configurado</p>
+      <div className="rounded-2xl border border-line bg-surface p-8 text-center">
+        <p className="font-display text-2xl text-strong">Supabase não configurado</p>
         <p className="mt-2 text-sm text-ink-2">
           Configure as variáveis de ambiente no ficheiro .env.local para aceder à base de dados.
         </p>
@@ -41,6 +41,7 @@ export default async function ProductsPage() {
         status,
         display_order,
         image_path,
+        is_story_highlight,
         published_at,
         categories (
           id,
@@ -71,6 +72,7 @@ export default async function ProductsPage() {
     status: ProductTableRow['status'];
     display_order: number;
     image_path: string | null;
+    is_story_highlight: boolean;
     published_at: string | null;
     categories: {
       id: string;
@@ -95,6 +97,7 @@ export default async function ProductsPage() {
       status: p.status,
       displayOrder: p.display_order,
       hasImage: Boolean(p.image_path),
+      isStoryHighlight: Boolean(p.is_story_highlight),
       variantsCount: Array.isArray(p.variant_groups) ? p.variant_groups.length : 0,
       publishedAt: p.published_at,
     }),

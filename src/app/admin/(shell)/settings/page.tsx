@@ -13,8 +13,8 @@ export default async function SettingsPage() {
 
   if (!isSupabaseConfigured()) {
     return (
-      <div className="rounded-2xl border border-line bg-white p-8 text-center">
-        <p className="font-display text-2xl text-deep">Supabase não configurado</p>
+      <div className="rounded-2xl border border-line bg-surface p-8 text-center">
+        <p className="font-display text-2xl text-strong">Supabase não configurado</p>
         <p className="mt-2 text-sm text-ink-2">
           Configure as variáveis de ambiente no ficheiro .env.local para aceder à base de dados.
         </p>

@@ -138,7 +138,7 @@ export function UsersManager({
     <div className="space-y-6 max-w-5xl">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl text-deep">Utilizadores e Segurança</h1>
+          <h1 className="font-display text-3xl text-strong">Utilizadores e Segurança</h1>
           <p className="mt-1 text-sm text-ink-2">
             Gestão das contas com acesso ao painel de administração e segurança.
           </p>
@@ -148,7 +148,7 @@ export function UsersManager({
           <button
             type="button"
             onClick={() => setIsPasswordModalOpen(true)}
-            className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-line bg-white px-4 text-sm font-medium text-ink-2 hover:bg-surface-2 transition-colors"
+            className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-line bg-surface px-4 text-sm font-medium text-ink-2 hover:bg-surface-2 transition-colors"
           >
             <KeyRound className="size-4" />
             Alterar Palavra-passe
@@ -157,7 +157,7 @@ export function UsersManager({
           <button
             type="button"
             onClick={() => setIsInviteOpen(true)}
-            className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-blue px-4 text-sm font-medium text-white shadow-xs hover:bg-blue-700 transition-colors"
+            className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-blue px-4 text-sm font-medium text-primary-foreground shadow-xs hover:bg-blue-700 transition-colors"
           >
             <Plus className="size-4" />
             Convidar Membro
@@ -169,7 +169,7 @@ export function UsersManager({
         <div
           className={`flex items-center justify-between rounded-xl p-4 text-sm ${
             feedback.type === 'ok'
-              ? 'bg-[#2E7D5B]/10 text-[#2E7D5B] border border-[#2E7D5B]/20'
+              ? 'bg-ok/10 text-ok border border-ok/20'
               : 'bg-danger/10 text-danger border border-danger/20'
           }`}
         >
@@ -184,7 +184,7 @@ export function UsersManager({
       )}
 
       {/* Users table */}
-      <div className="overflow-hidden rounded-2xl border border-line bg-white">
+      <div className="overflow-hidden rounded-2xl border border-line bg-surface">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead className="border-b border-line bg-surface-2 text-xs font-semibold text-decor uppercase tracking-wider">
@@ -206,7 +206,7 @@ export function UsersManager({
                       <div className="flex items-center gap-2">
                         <span className="font-medium text-ink">{user.displayName}</span>
                         {isMe && (
-                          <span className="rounded-full bg-blue-tint px-2 py-0.5 text-[10px] font-semibold text-deep">
+                          <span className="rounded-full bg-blue-tint px-2 py-0.5 text-[10px] font-semibold text-strong">
                             Você
                           </span>
                         )}
@@ -221,7 +221,7 @@ export function UsersManager({
                       <span
                         className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium ${
                           user.role === 'admin'
-                            ? 'bg-deep/10 text-deep'
+                            ? 'bg-deep/10 text-strong'
                             : 'bg-surface-2 text-ink-2'
                         }`}
                       >
@@ -234,7 +234,7 @@ export function UsersManager({
                       <span
                         className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
                           user.isActive
-                            ? 'bg-[#2E7D5B]/10 text-[#2E7D5B]'
+                            ? 'bg-ok/10 text-ok'
                             : 'bg-danger/10 text-danger'
                         }`}
                       >
@@ -251,7 +251,7 @@ export function UsersManager({
                           className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-colors ${
                             user.isActive
                               ? 'text-danger hover:bg-danger/10'
-                              : 'text-[#2E7D5B] hover:bg-[#2E7D5B]/10'
+                              : 'text-ok hover:bg-ok/10'
                           }`}
                         >
                           {user.isActive ? 'Desactivar' : 'Activar'}
@@ -269,8 +269,8 @@ export function UsersManager({
       {/* Invite Modal */}
       {isInviteOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-deep/40 backdrop-blur-xs">
-          <div className="w-full max-w-md rounded-2xl border border-line bg-white p-6 shadow-2xl">
-            <h2 className="font-display text-2xl text-deep">Convidar Membro</h2>
+          <div className="w-full max-w-md rounded-2xl border border-line bg-surface p-6 shadow-2xl">
+            <h2 className="font-display text-2xl text-strong">Convidar Membro</h2>
             <p className="mt-1 text-xs text-ink-2">
               O novo utilizador receberá um email do Supabase para aceder ao painel.
             </p>
@@ -317,7 +317,7 @@ export function UsersManager({
                 <select
                   value={inviteRole}
                   onChange={(e) => setInviteRole(e.target.value as 'admin' | 'manager')}
-                  className="mt-1 w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink focus:border-blue focus:outline-hidden"
+                  className="mt-1 w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink focus:border-blue focus:outline-hidden"
                 >
                   <option value="manager">Gerente (gere menu, preços e configurações)</option>
                   <option value="admin">Administrador (acesso total incluindo utilizadores)</option>
@@ -336,7 +336,7 @@ export function UsersManager({
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center gap-2 rounded-lg bg-blue px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-blue px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending && <Loader2 className="size-4 animate-spin" />}
                   Enviar Convite
@@ -350,8 +350,8 @@ export function UsersManager({
       {/* Change Password Modal */}
       {isPasswordModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-deep/40 backdrop-blur-xs">
-          <div className="w-full max-w-md rounded-2xl border border-line bg-white p-6 shadow-2xl">
-            <h2 className="font-display text-2xl text-deep">Alterar Palavra-passe</h2>
+          <div className="w-full max-w-md rounded-2xl border border-line bg-surface p-6 shadow-2xl">
+            <h2 className="font-display text-2xl text-strong">Alterar Palavra-passe</h2>
             <p className="mt-1 text-xs text-ink-2">
               A palavra-passe deve ter no mínimo 12 caracteres para assegurar a protecção do painel.
             </p>
@@ -419,7 +419,7 @@ export function UsersManager({
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center gap-2 rounded-lg bg-blue px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-blue px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending && <Loader2 className="size-4 animate-spin" />}
                   Actualizar Palavra-passe

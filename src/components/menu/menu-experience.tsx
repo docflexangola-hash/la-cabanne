@@ -1,6 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
+import { Lock } from 'lucide-react';
 
 import { CategoryChips } from '@/components/menu/category-chips';
 import { FeedbackDialog } from '@/components/menu/feedback-dialog';
@@ -8,12 +10,22 @@ import { GroupTabs } from '@/components/menu/group-tabs';
 import { MonogramPlaceholder } from '@/components/menu/monogram-placeholder';
 import { ProductDialog } from '@/components/menu/product-dialog';
 import { ProductRow } from '@/components/menu/product-row';
+import { StoriesWidget } from '@/components/menu/stories-widget';
+import {
+  trackCategoryViewed,
+  trackFeedbackOpened,
+  trackGroupViewed,
+  trackMenuOpened,
+  trackProductOpened,
+} from '@/lib/analytics/client';
 import { useTranslation } from '@/lib/i18n/i18n-context';
 import { localizeGroups } from '@/lib/i18n/menu-en';
 import { getOpenState } from '@/lib/menu/hours';
+import { buildStorySlides } from '@/lib/stories/build';
 import { useIsClient } from '@/lib/use-is-client';
 import { cn } from '@/lib/utils';
 import type { MenuCategory, MenuGroup, MenuProduct, RestaurantSettings } from '@/types/menu';
+import type { StoryConfig, StorySlide } from '@/types/stories';
 
 type Suggestion = { group: MenuGroup; category: MenuCategory };
 
@@ -65,12 +77,29 @@ function scrollToTarget(target: ScrollTarget) {
 export function MenuExperience({
   groups: groupsProp,
   settings,
+  storyConfig,
 }: {
   groups: MenuGroup[];
   settings: RestaurantSettings | null;
+  storyConfig: StoryConfig;
 }) {
   const { locale, t } = useTranslation();
   const groups = useMemo(() => localizeGroups(groupsProp, locale), [groupsProp, locale]);
+
+  // Semente determinística — definida uma vez no effect
+  const [shuffleSeed, setShuffleSeed] = useState<number | null>(null);
+
+  useEffect(() => {
+    setShuffleSeed(Math.floor(Math.random() * 1_000_000_000));
+  }, []);
+
+  const storySlides = useMemo(
+    () => buildStorySlides(groups, storyConfig, {
+      shuffle: true,
+      seed: shuffleSeed ?? 1,
+    }),
+    [groups, storyConfig, shuffleSeed],
+  );
 
   const initialGroup =
     groups.find((group) => group.categories.some((category) => category.products.length > 0)) ??
@@ -79,9 +108,17 @@ export function MenuExperience({
   const [groupSlug, setGroupSlug] = useState(initialGroup.slug);
   const [categorySlug, setCategorySlug] = useState(() => firstCategoryOf(initialGroup).slug);
 
-  const [product, setProduct] = useState<MenuProduct | null>(null);
+  const [activeProduct, setActiveProduct] = useState<{
+    product: MenuProduct;
+    groupSlug: string;
+    categorySlug: string;
+  } | null>(null);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const isClient = useIsClient();
+
+  useEffect(() => {
+    trackMenuOpened();
+  }, []);
 
   const didReadUrl = useRef(false);
   const scrollFrame = useRef<number | null>(null);
@@ -90,6 +127,14 @@ export function MenuExperience({
   const activeCategory =
     activeGroup.categories.find((category) => category.slug === categorySlug) ??
     firstCategoryOf(activeGroup);
+
+  useEffect(() => {
+    trackGroupViewed(activeGroup.slug);
+  }, [activeGroup.slug]);
+
+  useEffect(() => {
+    trackCategoryViewed(activeGroup.slug, activeCategory.slug);
+  }, [activeGroup.slug, activeCategory.slug]);
 
   const syncUrl = useCallback((g: string, c: string) => {
     const url = new URL(window.location.href);
@@ -200,6 +245,24 @@ export function MenuExperience({
     setCategorySlug(category.slug);
     syncUrl(group.slug, category.slug);
     scheduleScroll({ kind: 'category', slug: category.slug });
+  }
+
+  function handleStoryProductOpen(slide: StorySlide) {
+    if (!slide.product || !slide.groupSlug || !slide.categorySlug) {
+      return;
+    }
+
+    selectCategory(slide.groupSlug, slide.categorySlug);
+    setActiveProduct({
+      product: slide.product,
+      groupSlug: slide.groupSlug,
+      categorySlug: slide.categorySlug,
+    });
+    trackProductOpened({
+      groupSlug: slide.groupSlug,
+      categorySlug: slide.categorySlug,
+      productSlug: slide.product.slug,
+    });
   }
 
   const showClosedBand = Boolean(openState && !openState.open);
@@ -331,7 +394,22 @@ export function MenuExperience({
                       {products.length > 0 ? (
                         <div className="lg:grid lg:grid-cols-2 lg:gap-x-10">
                           {products.map((item) => (
-                            <ProductRow key={item.id} product={item} onOpen={setProduct} />
+                            <ProductRow
+                              key={item.id}
+                              product={item}
+                              onOpen={(selected) => {
+                                setActiveProduct({
+                                  product: selected,
+                                  groupSlug: group.slug,
+                                  categorySlug: category.slug,
+                                });
+                                trackProductOpened({
+                                  groupSlug: group.slug,
+                                  categorySlug: category.slug,
+                                  productSlug: selected.slug,
+                                });
+                              }}
+                            />
                           ))}
                         </div>
                       ) : (
@@ -369,14 +447,17 @@ export function MenuExperience({
             ))}
 
             <section className="mt-10 border-t border-line pt-8 text-center">
-              <p className="text-[11px] font-semibold tracking-[0.16em] text-decor uppercase">
+              <p className="text-[11px] font-semibold tracking-[0.16em] text-decor">
                 {t('feedback_title_small')}
               </p>
               <h3 className="mt-2 font-display text-2xl text-strong">{t('feedback_title')}</h3>
               <p className="mt-2 text-sm text-ink-2">{t('feedback_subtitle')}</p>
               <button
                 type="button"
-                onClick={() => setFeedbackOpen(true)}
+                onClick={() => {
+                  trackFeedbackOpened();
+                  setFeedbackOpen(true);
+                }}
                 className="mt-5 inline-flex h-11 items-center rounded-sm bg-deep px-6 text-sm font-medium text-hero-fg transition-colors hover:bg-blue-700"
               >
                 {t('leave_review')}
@@ -388,14 +469,40 @@ export function MenuExperience({
         <footer className="border-t border-line">
           <div className="mx-auto flex w-full max-w-[1100px] flex-col gap-1 px-4 py-6 text-xs text-ink-2 sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <p>{t('footer_rights')}</p>
-            <p>{t('footer_location')}</p>
+            <div className="flex items-center gap-3">
+              <p>{t('footer_location')}</p>
+              <span aria-hidden="true" className="h-3 w-px bg-line" />
+              <Link
+                href="/admin"
+                className="inline-flex items-center gap-1 text-ink-2 transition-colors hover:text-strong"
+              >
+                <Lock aria-hidden="true" className="size-3" />
+                {t('footer_admin')}
+              </Link>
+            </div>
           </div>
         </footer>
+
+        {activeProduct ? (
+          <ProductDialog
+            product={activeProduct.product}
+            groupSlug={activeProduct.groupSlug}
+            categorySlug={activeProduct.categorySlug}
+            onClose={() => setActiveProduct(null)}
+          />
+        ) : null}
+
+        {isClient && storyConfig.settings.enabled ? (
+          <StoriesWidget
+            slides={storySlides}
+            intervalSeconds={storyConfig.settings.intervalSeconds}
+            enabled={storyConfig.settings.enabled}
+            onOpenProduct={handleStoryProductOpen}
+          />
+        ) : null}
+
+        <FeedbackDialog open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
       </div>
-
-      {product ? <ProductDialog product={product} onClose={() => setProduct(null)} /> : null}
-
-      <FeedbackDialog open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
     </div>
   );
 }

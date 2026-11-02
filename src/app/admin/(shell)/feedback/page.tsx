@@ -13,8 +13,8 @@ export default async function FeedbackPage() {
 
   if (!isSupabaseConfigured()) {
     return (
-      <div className="rounded-2xl border border-line bg-white p-8 text-center">
-        <p className="font-display text-2xl text-deep">Supabase não configurado</p>
+      <div className="rounded-2xl border border-line bg-surface p-8 text-center">
+        <p className="font-display text-2xl text-strong">Supabase não configurado</p>
         <p className="mt-2 text-sm text-ink-2">
           Configure as variáveis de ambiente para aceder à caixa de entrada de feedback.
         </p>
@@ -35,7 +35,7 @@ export default async function FeedbackPage() {
         <p className="text-[11px] font-semibold tracking-[0.16em] text-decor uppercase">
           Fase 5
         </p>
-        <h1 className="font-display text-3xl text-deep">Feedback</h1>
+        <h1 className="font-display text-3xl text-strong">Feedback</h1>
         <p className="max-w-2xl text-sm text-ink-2">
           Caixa de entrada privada com elogios, sugestões e reclamações.
         </p>
@@ -44,10 +44,10 @@ export default async function FeedbackPage() {
       {error ? (
         <div
           role="alert"
-          className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+          className="rounded-2xl border border-danger/30 bg-danger/10 p-4 text-sm text-danger"
         >
           <p className="font-medium">Não foi possível carregar o feedback.</p>
-          <p className="mt-1 text-red-600">
+          <p className="mt-1 text-danger">
             A base de dados ainda não tem a tabela necessária. Aplique as migrações pendentes
             (0007_feedback.sql) e volte a carregar esta página.
           </p>

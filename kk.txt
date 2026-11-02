@@ -1,0 +1,13 @@
+Dashboard conclusão do relatório de estado, temos de definir o que vira abaixo do paine
+ 
+saber como o analitycs do app está a rodar
+
+criar mini ecra para ver comidas in preview como se fosse estados
+
+criar botão de area persolnalizada no footer que da acesso ao admin
+
+criar no dashboard botao para voltar ao site principal
+
+adicionar no dashboard o botão toggle de night mode/day mode
+
+e gere o favicon para o logo aparecer nas barras dos browsers

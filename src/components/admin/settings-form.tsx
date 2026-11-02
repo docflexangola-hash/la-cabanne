@@ -126,7 +126,7 @@ export function SettingsForm({
   return (
     <div className="space-y-6 max-w-4xl">
       <div>
-        <h1 className="font-display text-3xl text-deep">Configurações</h1>
+        <h1 className="font-display text-3xl text-strong">Configurações</h1>
         <p className="mt-1 text-sm text-ink-2">
           Identidade, contactos, redes sociais, horário semanal e estado de abertura do restaurante.
         </p>
@@ -136,7 +136,7 @@ export function SettingsForm({
         <div
           className={`flex items-center justify-between rounded-xl p-4 text-sm ${
             feedback.type === 'ok'
-              ? 'bg-[#2E7D5B]/10 text-[#2E7D5B] border border-[#2E7D5B]/20'
+              ? 'bg-ok/10 text-ok border border-ok/20'
               : 'bg-danger/10 text-danger border border-danger/20'
           }`}
         >
@@ -151,14 +151,14 @@ export function SettingsForm({
       )}
 
       {/* Immediate Override Banner */}
-      <div className="rounded-2xl border border-line bg-white p-6">
+      <div className="rounded-2xl border border-line bg-surface p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3">
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-blue-tint text-deep">
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-blue-tint text-strong">
               <Power className="size-5" />
             </div>
             <div>
-              <h2 className="font-display text-lg text-deep">Controlo Imediato de Abertura</h2>
+              <h2 className="font-display text-lg text-strong">Controlo Imediato de Abertura</h2>
               <p className="text-xs text-ink-2">
                 Força o estado do restaurante para aberto ou fechado no menu público, ou segue o horário automático.
               </p>
@@ -172,7 +172,7 @@ export function SettingsForm({
               disabled={isPending}
               className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 isOpenOverride === null
-                  ? 'bg-white text-deep shadow-xs'
+                  ? 'bg-surface text-strong shadow-xs'
                   : 'text-ink-2 hover:text-ink'
               }`}
             >
@@ -184,8 +184,8 @@ export function SettingsForm({
               disabled={isPending}
               className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 isOpenOverride === true
-                  ? 'bg-[#2E7D5B] text-white shadow-xs'
-                  : 'text-ink-2 hover:text-[#2E7D5B]'
+                  ? 'bg-ok text-primary-foreground shadow-xs'
+                  : 'text-ink-2 hover:text-ok'
               }`}
             >
               Aberto
@@ -196,7 +196,7 @@ export function SettingsForm({
               disabled={isPending}
               className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 isOpenOverride === false
-                  ? 'bg-danger text-white shadow-xs'
+                  ? 'bg-danger text-destructive-foreground shadow-xs'
                   : 'text-ink-2 hover:text-danger'
               }`}
             >
@@ -208,8 +208,8 @@ export function SettingsForm({
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Identity & Contacts */}
-        <div className="rounded-2xl border border-line bg-white p-6 space-y-4">
-          <h2 className="font-display text-xl text-deep">Identidade e Contactos</h2>
+        <div className="rounded-2xl border border-line bg-surface p-6 space-y-4">
+          <h2 className="font-display text-xl text-strong">Identidade e Contactos</h2>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
@@ -327,10 +327,10 @@ export function SettingsForm({
         </div>
 
         {/* Operating Hours */}
-        <div className="rounded-2xl border border-line bg-white p-6 space-y-4">
+        <div className="rounded-2xl border border-line bg-surface p-6 space-y-4">
           <div className="flex items-center gap-2">
-            <Clock className="size-5 text-deep" />
-            <h2 className="font-display text-xl text-deep">Horário Semanal de Funcionamento</h2>
+            <Clock className="size-5 text-strong" />
+            <h2 className="font-display text-xl text-strong">Horário Semanal de Funcionamento</h2>
           </div>
           <p className="text-xs text-ink-2">
             Defina os dias e horas em que a cozinha e o espaço estão a servir. Dias desativados aparecem como &quot;Encerrado&quot;.
@@ -353,7 +353,7 @@ export function SettingsForm({
                       onClick={() => toggleDay(day.key)}
                       className={`inline-flex items-center justify-center rounded-lg px-2.5 py-1 text-xs font-medium transition-colors ${
                         isOpen
-                          ? 'bg-[#2E7D5B]/10 text-[#2E7D5B]'
+                          ? 'bg-ok/10 text-ok'
                           : 'bg-decor/10 text-decor'
                       }`}
                     >
@@ -368,14 +368,14 @@ export function SettingsForm({
                         type="time"
                         value={start}
                         onChange={(e) => updateTime(day.key, 0, 0, e.target.value)}
-                        className="rounded-lg border border-line bg-white px-2 py-1 text-xs font-mono text-ink focus:border-blue focus:outline-hidden"
+                        className="rounded-lg border border-line bg-surface px-2 py-1 text-xs font-mono text-ink focus:border-blue focus:outline-hidden"
                       />
                       <span className="text-xs text-decor">até às</span>
                       <input
                         type="time"
                         value={end}
                         onChange={(e) => updateTime(day.key, 0, 1, e.target.value)}
-                        className="rounded-lg border border-line bg-white px-2 py-1 text-xs font-mono text-ink focus:border-blue focus:outline-hidden"
+                        className="rounded-lg border border-line bg-surface px-2 py-1 text-xs font-mono text-ink focus:border-blue focus:outline-hidden"
                       />
                     </div>
                   ) : (
@@ -392,7 +392,7 @@ export function SettingsForm({
           <button
             type="submit"
             disabled={isPending}
-            className="inline-flex items-center gap-2 rounded-lg bg-blue px-6 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors shadow-xs disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue px-6 py-2.5 text-sm font-medium text-primary-foreground hover:bg-blue-700 transition-colors shadow-xs disabled:opacity-50"
           >
             {isPending ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
             Guardar Configurações

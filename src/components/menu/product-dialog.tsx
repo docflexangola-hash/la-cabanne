@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
 
 import { MonogramPlaceholder } from '@/components/menu/monogram-placeholder';
+import { trackProductEngagement } from '@/lib/analytics/client';
 import { useTranslation } from '@/lib/i18n/i18n-context';
 import { formatKz } from '@/lib/menu/format';
 import { getSelectedPrice } from '@/lib/menu/pricing';
@@ -13,9 +14,13 @@ import type { MenuProduct } from '@/types/menu';
 
 export function ProductDialog({
   product,
+  groupSlug,
+  categorySlug,
   onClose,
 }: {
   product: MenuProduct;
+  groupSlug: string;
+  categorySlug: string;
   onClose: () => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -44,6 +49,40 @@ export function ProductDialog({
 
     return () => dialog.removeEventListener('close', handleClose);
   }, [onClose]);
+
+  useEffect(() => {
+    let visibleSince = document.visibilityState === 'visible' ? Date.now() : null;
+    let visibleMs = 0;
+
+    function handleVisibility() {
+      if (document.visibilityState === 'visible') {
+        visibleSince = Date.now();
+        return;
+      }
+
+      if (visibleSince !== null) {
+        visibleMs += Date.now() - visibleSince;
+        visibleSince = null;
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibility);
+
+      if (visibleSince !== null) {
+        visibleMs += Date.now() - visibleSince;
+      }
+
+      trackProductEngagement({
+        groupSlug,
+        categorySlug,
+        productSlug: product.slug,
+        durationMs: visibleMs,
+      });
+    };
+  }, [groupSlug, categorySlug, product.slug]);
 
   const price = getSelectedPrice(product, selection);
 

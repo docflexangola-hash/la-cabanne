@@ -59,6 +59,7 @@ export async function createProduct(input: ProductInput): Promise<ActionResponse
       serves: parsed.data.serves || null,
       status: parsed.data.status,
       display_order: parsed.data.displayOrder,
+      is_story_highlight: parsed.data.isStoryHighlight,
       published_at: publishedAt,
       created_by: staff.id,
       updated_by: staff.id,
@@ -151,6 +152,7 @@ export async function updateProduct(
       serves: parsed.data.serves || null,
       status: parsed.data.status,
       display_order: parsed.data.displayOrder,
+      is_story_highlight: parsed.data.isStoryHighlight,
       published_at: publishedAt,
       updated_by: staff.id,
     })
@@ -225,6 +227,35 @@ export async function deleteProduct(id: string): Promise<ActionResponse> {
   revalidatePath('/admin/products');
 
   return { success: true, message: 'Produto removido com sucesso' };
+}
+
+export async function toggleProductStoryHighlight(
+  id: string,
+  isHighlighted: boolean,
+): Promise<ActionResponse> {
+  const staff = await requireStaff();
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from('products')
+    .update({
+      is_story_highlight: isHighlighted,
+      updated_by: staff.id,
+    })
+    .eq('id', id);
+
+  if (error) {
+    return { success: false, message: 'Erro ao actualizar destaque' };
+  }
+
+  revalidatePath('/');
+  revalidatePath('/admin/products');
+  revalidatePath('/admin/stories');
+
+  return {
+    success: true,
+    message: isHighlighted ? 'Produto destacado nos stories' : 'Destaque removido',
+  };
 }
 
 export async function updateProductStatus(

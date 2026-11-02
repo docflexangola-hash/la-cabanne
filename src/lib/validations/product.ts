@@ -64,6 +64,7 @@ export const productSchema = z
     serves: z.string().trim().nullable().optional(),
     status: productStatusSchema.default('draft'),
     displayOrder: z.coerce.number().int().default(0),
+    isStoryHighlight: z.boolean().default(false),
     variantGroups: z.array(variantGroupSchema).default([]),
   })
   .refine(

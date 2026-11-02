@@ -110,6 +110,7 @@ export default async function EditProductPage(props: PageProps) {
     serves: prod.serves,
     status: prod.status,
     displayOrder: prod.display_order,
+    isStoryHighlight: prod.is_story_highlight ?? false,
     variantGroups,
   };
 

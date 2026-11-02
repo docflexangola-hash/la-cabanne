@@ -34,6 +34,7 @@ O projeto já está linkado, então `vercel --prod` deve funcionar se autenticad
    - `SUPABASE_SERVICE_ROLE_KEY`
    - `NEXT_PUBLIC_SITE_URL` (URL final do domínio)
    - `ANALYTICS_IP_SALT`
+   - `CRON_SECRET` (obrigatório para o cron diário de analytics)
    - `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` (opcionais)
 
 2. **Configurar domínio**

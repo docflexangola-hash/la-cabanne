@@ -71,6 +71,7 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     // Rodapé e controlos
     footer_rights: 'La Cabanne · Restaurante & Lounge',
     footer_location: 'Benguela, Angola',
+    footer_admin: 'Área reservada',
     theme_light: 'Dia',
     theme_dark: 'Noite',
     theme_auto: 'Auto',
@@ -147,6 +148,7 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     // Footer and controls
     footer_rights: 'La Cabanne · Restaurant & Lounge',
     footer_location: 'Benguela, Angola',
+    footer_admin: 'Staff area',
     theme_light: 'Day',
     theme_dark: 'Night',
     theme_auto: 'Auto',

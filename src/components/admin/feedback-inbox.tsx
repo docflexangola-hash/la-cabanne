@@ -41,7 +41,7 @@ export function FeedbackInbox({ items }: { items: FeedbackItem[] }) {
             key={f}
             onClick={() => setFilter(f)}
             className={`rounded-lg px-3 py-1.5 text-sm ${
-              filter === f ? 'bg-deep text-ivory' : 'border border-line text-ink-2'
+              filter === f ? 'bg-deep text-hero-fg' : 'border border-line text-ink-2'
             }`}
           >
             {f === 'all' ? 'Todos' : STATUS_LABEL[f]}
@@ -51,7 +51,7 @@ export function FeedbackInbox({ items }: { items: FeedbackItem[] }) {
 
       <div className="space-y-3">
         {filtered.map((item) => (
-          <article key={item.id} className="rounded-2xl border border-line bg-white p-5">
+          <article key={item.id} className="rounded-2xl border border-line bg-surface p-5">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
@@ -77,7 +77,7 @@ export function FeedbackInbox({ items }: { items: FeedbackItem[] }) {
           </article>
         ))}
         {!filtered.length ? (
-          <div className="rounded-2xl border border-line bg-white p-6 text-center text-sm text-ink-2">
+          <div className="rounded-2xl border border-line bg-surface p-6 text-center text-sm text-ink-2">
             Sem feedback neste filtro.
           </div>
         ) : null}

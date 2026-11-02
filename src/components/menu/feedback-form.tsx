@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { trackFeedbackSubmitted } from '@/lib/analytics/client';
 import { useTranslation } from '@/lib/i18n/i18n-context';
 
 const TYPE_VALUES = ['compliment', 'suggestion', 'complaint', 'other'] as const;
@@ -44,6 +45,7 @@ export function FeedbackForm({ sourcePath }: { sourcePath?: string }) {
         setComment('');
         setName('');
         setContact('');
+        trackFeedbackSubmitted(sourcePath);
       } else {
         const payload = (await res.json().catch(() => null)) as { error?: string } | null;
         setErrorMessage(payload?.error || t('fb_error'));

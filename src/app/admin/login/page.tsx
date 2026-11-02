@@ -29,7 +29,7 @@ export default async function LoginPage({
     <div className="flex min-h-dvh items-center justify-center bg-ivory px-4 py-10">
       <div className="w-full max-w-[400px]">
         <div className="mb-8 text-center">
-          <p className="font-display text-4xl leading-none tracking-tight text-deep">
+          <p className="font-display text-4xl leading-none tracking-tight text-strong">
             La Cabanne
           </p>
           <p className="mt-3 text-[11px] font-medium tracking-[0.22em] text-ink-2 uppercase">
@@ -37,8 +37,8 @@ export default async function LoginPage({
           </p>
         </div>
 
-        <div className="rounded-2xl border border-line bg-white p-6 shadow-[0_24px_60px_rgba(18,62,100,0.08)] sm:p-8">
-          <h1 className="font-display text-2xl text-deep">Entrar</h1>
+        <div className="rounded-2xl border border-line bg-surface p-6 shadow-[0_24px_60px_rgba(18,62,100,0.08)] sm:p-8">
+          <h1 className="font-display text-2xl text-strong">Entrar</h1>
           <p className="mt-1 text-sm text-ink-2">
             Acesso reservado à gerência e administração.
           </p>
@@ -46,7 +46,7 @@ export default async function LoginPage({
           {!configured ? (
             <p
               role="status"
-              className="mt-5 rounded-lg border border-[#B4472F]/30 bg-[#B4472F]/5 px-3 py-2 text-sm text-[#B4472F]"
+              className="mt-5 rounded-lg border border-danger/30 bg-danger/5 px-3 py-2 text-sm text-danger"
             >
               {ERROR_MESSAGES.configuracao}
             </p>
@@ -55,7 +55,7 @@ export default async function LoginPage({
           {errorMessage ? (
             <p
               role="alert"
-              className="mt-5 rounded-lg border border-[#B4472F]/30 bg-[#B4472F]/5 px-3 py-2 text-sm text-[#B4472F]"
+              className="mt-5 rounded-lg border border-danger/30 bg-danger/5 px-3 py-2 text-sm text-danger"
             >
               {errorMessage}
             </p>
@@ -75,7 +75,7 @@ export default async function LoginPage({
                 autoComplete="email"
                 required
                 disabled={!configured}
-                className="h-11 w-full rounded-lg border border-line bg-white px-3 text-sm text-ink placeholder:text-decor focus-visible:border-blue focus-visible:ring-2 focus-visible:ring-blue/25 focus-visible:outline-none disabled:opacity-50"
+                className="h-11 w-full rounded-lg border border-line bg-surface px-3 text-sm text-ink placeholder:text-decor focus-visible:border-blue focus-visible:ring-2 focus-visible:ring-blue/25 focus-visible:outline-none disabled:opacity-50"
                 placeholder="nome@lacabanne.ao"
               />
             </div>
@@ -91,7 +91,7 @@ export default async function LoginPage({
                 autoComplete="current-password"
                 required
                 disabled={!configured}
-                className="h-11 w-full rounded-lg border border-line bg-white px-3 text-sm text-ink placeholder:text-decor focus-visible:border-blue focus-visible:ring-2 focus-visible:ring-blue/25 focus-visible:outline-none disabled:opacity-50"
+                className="h-11 w-full rounded-lg border border-line bg-surface px-3 text-sm text-ink placeholder:text-decor focus-visible:border-blue focus-visible:ring-2 focus-visible:ring-blue/25 focus-visible:outline-none disabled:opacity-50"
                 placeholder="••••••••••••"
               />
             </div>
@@ -99,7 +99,7 @@ export default async function LoginPage({
             <button
               type="submit"
               disabled={!configured}
-              className="h-11 w-full rounded-lg bg-blue text-sm font-semibold text-white transition-colors hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-blue/40 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-11 w-full rounded-lg bg-blue text-sm font-semibold text-primary-foreground transition-colors hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-blue/40 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
             >
               Entrar
             </button>

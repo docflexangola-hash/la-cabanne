@@ -12,6 +12,7 @@ import {
   Plus,
   Search,
   Square,
+  Star,
   Trash2,
   UtensilsCrossed,
 } from 'lucide-react';
@@ -22,6 +23,7 @@ import {
   bulkUpdateProductStatus,
   deleteProduct,
   duplicateProduct,
+  toggleProductStoryHighlight,
   updateProductStatus,
 } from '@/lib/actions/products';
 import { formatKz } from '@/lib/menu/format';
@@ -40,6 +42,7 @@ export type ProductTableRow = {
   status: 'draft' | 'published' | 'unavailable' | 'archived';
   displayOrder: number;
   hasImage: boolean;
+  isStoryHighlight: boolean;
   variantsCount: number;
   publishedAt: string | null;
 };
@@ -49,8 +52,8 @@ type CategoryFilter = { id: string; name: string; groupId: string };
 
 const STATUS_LABELS: Record<ProductTableRow['status'], { label: string; class: string }> = {
   draft: { label: 'Rascunho', class: 'bg-decor/10 text-decor border-decor/20' },
-  published: { label: 'Publicado', class: 'bg-[#2E7D5B]/10 text-[#2E7D5B] border-[#2E7D5B]/20' },
-  unavailable: { label: 'Esgotado', class: 'bg-[#B4472F]/10 text-[#B4472F] border-[#B4472F]/20' },
+  published: { label: 'Publicado', class: 'bg-ok/10 text-ok border-ok/20' },
+  unavailable: { label: 'Esgotado', class: 'bg-danger/10 text-danger border-danger/20' },
   archived: { label: 'Arquivado', class: 'bg-surface-2 text-ink-2 border-line' },
 };
 
@@ -167,9 +170,28 @@ export function ProductsManager({
     });
   }
 
+  // Toggle story highlight
+  async function handleStoryHighlight(product: ProductTableRow) {
+    const nextValue = !product.isStoryHighlight;
+
+    startTransition(async () => {
+      const res = await toggleProductStoryHighlight(product.id, nextValue);
+
+      if (res.success) {
+        setProducts((prev) =>
+          prev.map((p) =>
+            p.id === product.id ? { ...p, isStoryHighlight: nextValue } : p,
+          ),
+        );
+        setFeedback({ type: 'ok', text: res.message || 'Destaque actualizado' });
+      } else {
+        setFeedback({ type: 'error', text: res.message || 'Erro ao actualizar destaque' });
+      }
+    });
+  }
+
   // Delete product
-  async function handleDeleteConfirm() {
-    if (!deleteTarget) return;
+  async function handleDeleteConfirm() {    if (!deleteTarget) return;
 
     startTransition(async () => {
       const res = await deleteProduct(deleteTarget.id);
@@ -224,7 +246,7 @@ export function ProductsManager({
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl text-deep">Produtos</h1>
+          <h1 className="font-display text-3xl text-strong">Produtos</h1>
           <p className="mt-1 text-sm text-ink-2">
             Gestão do cardápio: pratos, bebidas, preços, variantes e fotografias.
           </p>
@@ -235,7 +257,7 @@ export function ProductsManager({
             type="button"
             onClick={handleExportCsv}
             disabled={filteredProducts.length === 0}
-            className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-line bg-white px-4 text-sm font-medium text-ink-2 hover:bg-surface-2 transition-colors disabled:opacity-50"
+            className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-line bg-surface px-4 text-sm font-medium text-ink-2 hover:bg-surface-2 transition-colors disabled:opacity-50"
             title="Exportar produtos visíveis para CSV"
           >
             <Download className="size-4" />
@@ -244,7 +266,7 @@ export function ProductsManager({
 
           <Link
             href="/admin/products/new"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-blue px-4 text-sm font-medium text-white shadow-xs hover:bg-blue-700 transition-colors"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-blue px-4 text-sm font-medium text-primary-foreground shadow-xs hover:bg-blue-700 transition-colors"
           >
             <Plus className="size-4" />
             Novo Produto
@@ -256,7 +278,7 @@ export function ProductsManager({
         <div
           className={`flex items-center justify-between rounded-xl p-4 text-sm ${
             feedback.type === 'ok'
-              ? 'bg-[#2E7D5B]/10 text-[#2E7D5B] border border-[#2E7D5B]/20'
+              ? 'bg-ok/10 text-ok border border-ok/20'
               : 'bg-danger/10 text-danger border border-danger/20'
           }`}
         >
@@ -271,7 +293,7 @@ export function ProductsManager({
       )}
 
       {/* Filter Toolbar */}
-      <div className="flex flex-col gap-3 rounded-2xl border border-line bg-white p-4">
+      <div className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-4">
         <div className="flex flex-wrap items-center gap-3">
           {/* Search Input */}
           <div className="relative flex-1 min-w-[240px]">
@@ -296,7 +318,7 @@ export function ProductsManager({
               setSelectedCategory('all');
               setCurrentPage(1);
             }}
-            className="rounded-xl border border-line bg-white px-3 py-2 text-xs font-medium text-ink focus:border-blue focus:outline-hidden"
+            className="rounded-xl border border-line bg-surface px-3 py-2 text-xs font-medium text-ink focus:border-blue focus:outline-hidden"
           >
             <option value="all">Todos os Grupos</option>
             {groups.map((g) => (
@@ -313,7 +335,7 @@ export function ProductsManager({
               setSelectedCategory(e.target.value);
               setCurrentPage(1);
             }}
-            className="rounded-xl border border-line bg-white px-3 py-2 text-xs font-medium text-ink focus:border-blue focus:outline-hidden"
+            className="rounded-xl border border-line bg-surface px-3 py-2 text-xs font-medium text-ink focus:border-blue focus:outline-hidden"
           >
             <option value="all">Todas as Categorias</option>
             {categories
@@ -332,7 +354,7 @@ export function ProductsManager({
               setSelectedStatus(e.target.value);
               setCurrentPage(1);
             }}
-            className="rounded-xl border border-line bg-white px-3 py-2 text-xs font-medium text-ink focus:border-blue focus:outline-hidden"
+            className="rounded-xl border border-line bg-surface px-3 py-2 text-xs font-medium text-ink focus:border-blue focus:outline-hidden"
           >
             <option value="all">Todos os Estados</option>
             <option value="published">Publicados</option>
@@ -345,7 +367,7 @@ export function ProductsManager({
         {/* Bulk Action Bar when items are selected */}
         {selectedIds.length > 0 && (
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-3 mt-1 bg-blue-tint/40 -mx-4 -mb-4 p-4 rounded-b-2xl">
-            <span className="text-xs font-semibold text-deep">
+            <span className="text-xs font-semibold text-strong">
               {selectedIds.length} produto(s) selecionado(s)
             </span>
             <div className="flex items-center gap-2">
@@ -353,7 +375,7 @@ export function ProductsManager({
                 type="button"
                 onClick={() => handleBulkStatus('published')}
                 disabled={isPending}
-                className="rounded-lg bg-[#2E7D5B] px-3 py-1 text-xs font-medium text-white hover:bg-[#2E7D5B]/90 transition-colors"
+                className="rounded-lg bg-ok px-3 py-1 text-xs font-medium text-primary-foreground hover:bg-ok/90 transition-colors"
               >
                 Marcar como Publicado
               </button>
@@ -361,7 +383,7 @@ export function ProductsManager({
                 type="button"
                 onClick={() => handleBulkStatus('unavailable')}
                 disabled={isPending}
-                className="rounded-lg bg-[#B4472F] px-3 py-1 text-xs font-medium text-white hover:bg-[#B4472F]/90 transition-colors"
+                className="rounded-lg bg-danger px-3 py-1 text-xs font-medium text-destructive-foreground hover:bg-danger/90 transition-colors"
               >
                 Marcar como Esgotado
               </button>
@@ -369,7 +391,7 @@ export function ProductsManager({
                 type="button"
                 onClick={() => handleBulkStatus('archived')}
                 disabled={isPending}
-                className="rounded-lg border border-line bg-white px-3 py-1 text-xs font-medium text-ink-2 hover:bg-surface-2 transition-colors"
+                className="rounded-lg border border-line bg-surface px-3 py-1 text-xs font-medium text-ink-2 hover:bg-surface-2 transition-colors"
               >
                 Arquivar
               </button>
@@ -379,17 +401,17 @@ export function ProductsManager({
       </div>
 
       {/* Table */}
-      <div className="overflow-hidden rounded-2xl border border-line bg-white">
+      <div className="overflow-hidden rounded-2xl border border-line bg-surface">
         {filteredProducts.length === 0 ? (
           <div className="p-16 text-center">
             <UtensilsCrossed className="mx-auto size-12 text-decor" />
-            <p className="mt-4 text-base font-semibold text-deep">Nenhum produto encontrado</p>
+            <p className="mt-4 text-base font-semibold text-strong">Nenhum produto encontrado</p>
             <p className="mt-1 text-xs text-ink-2">
               Ajuste os filtros de pesquisa ou crie o seu primeiro prato.
             </p>
             <Link
               href="/admin/products/new"
-              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-blue px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-blue px-4 py-2 text-xs font-medium text-primary-foreground hover:bg-blue-700 transition-colors"
             >
               <Plus className="size-4" /> Novo Produto
             </Link>
@@ -451,17 +473,28 @@ export function ProductsManager({
                             href={`/admin/products/${product.id}`}
                             className="font-medium text-ink hover:text-blue transition-colors line-clamp-1"
                           >
+                            {product.isStoryHighlight && (
+                              <Star
+                                aria-hidden="true"
+                                className="mr-1 inline-block size-3.5 fill-current text-blue align-[-1px]"
+                              />
+                            )}
                             {product.name}
                           </Link>
                           <div className="flex items-center gap-2 text-xs text-decor">
                             <span className="font-mono">{product.slug}</span>
+                            {product.isStoryHighlight && (
+                              <span className="rounded-full bg-blue-tint px-2 py-0.2 text-[10px] text-strong font-medium">
+                                story
+                              </span>
+                            )}
                             {product.variantsCount > 0 && (
                               <span className="rounded-full bg-surface-2 px-2 py-0.2 text-[10px] text-ink-2 font-medium">
                                 {product.variantsCount} variante(s)
                               </span>
                             )}
                             {product.hasImage && (
-                              <span className="text-[10px] text-[#2E7D5B]">📷 foto</span>
+                              <span className="text-[10px] text-ok">📷 foto</span>
                             )}
                           </div>
                         </div>
@@ -472,7 +505,7 @@ export function ProductsManager({
                         <span className="text-decor"> · {product.groupName}</span>
                       </td>
 
-                      <td className="px-4 py-3.5 whitespace-nowrap text-right font-medium text-deep">
+                      <td className="px-4 py-3.5 whitespace-nowrap text-right font-medium text-strong">
                         {product.basePrice !== null
                           ? formatKz(product.basePrice)
                           : product.priceNote || '—'}
@@ -519,6 +552,29 @@ export function ProductsManager({
 
                           <button
                             type="button"
+                            onClick={() => handleStoryHighlight(product)}
+                            disabled={isPending}
+                            aria-pressed={product.isStoryHighlight}
+                            className={`rounded-lg p-2 transition-colors ${
+                              product.isStoryHighlight
+                                ? 'text-blue hover:bg-blue-tint'
+                                : 'text-decor hover:bg-surface-2 hover:text-ink'
+                            }`}
+                            title={
+                              product.isStoryHighlight
+                                ? 'Remover destaque dos stories'
+                                : 'Destacar nos stories'
+                            }
+                          >
+                            <Star
+                              className={`size-4 ${
+                                product.isStoryHighlight ? 'fill-current' : ''
+                              }`}
+                            />
+                          </button>
+
+                          <button
+                            type="button"
                             onClick={() => setDeleteTarget(product)}
                             className="rounded-lg p-2 text-decor hover:bg-danger/10 hover:text-danger transition-colors"
                             title="Remover produto"
@@ -548,7 +604,7 @@ export function ProductsManager({
                 type="button"
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="rounded-lg border border-line bg-white px-3 py-1 font-medium hover:bg-surface-2 disabled:opacity-40"
+                className="rounded-lg border border-line bg-surface px-3 py-1 font-medium hover:bg-surface-2 disabled:opacity-40"
               >
                 Anterior
               </button>
@@ -559,7 +615,7 @@ export function ProductsManager({
                 type="button"
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="rounded-lg border border-line bg-white px-3 py-1 font-medium hover:bg-surface-2 disabled:opacity-40"
+                className="rounded-lg border border-line bg-surface px-3 py-1 font-medium hover:bg-surface-2 disabled:opacity-40"
               >
                 Seguinte
               </button>

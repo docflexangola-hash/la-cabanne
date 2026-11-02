@@ -18,6 +18,7 @@ const eventSchema = z.object({
         duration_ms: z.number().int().min(0).max(300000).optional(),
         referrer: z.string().max(200).optional(),
         occurred_at: z.string().datetime().optional(),
+        story_id: z.string().max(120).optional(),
       }),
     )
     .max(10),
@@ -63,6 +64,7 @@ export async function POST(request: Request) {
       duration_ms: typeof e.duration_ms === 'number' ? e.duration_ms : null,
       referrer: e.referrer || null,
       occurred_at: e.occurred_at || new Date().toISOString(),
+      story_id: e.story_id || null,
     }));
 
     await supabase.from('analytics_events').insert(events);

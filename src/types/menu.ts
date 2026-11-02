@@ -29,6 +29,7 @@ export type MenuProduct = {
   serves: string | null;
   status: MenuProductStatus;
   displayOrder: number;
+  isStoryHighlight: boolean;
   variantGroups: MenuVariantGroup[];
 };
 

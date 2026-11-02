@@ -340,6 +340,22 @@
       transform: translateY(0);
     }
   }
+
+  .story-progress-fill {
+    width: 0%;
+    animation-name: story-progress;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes story-progress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
 }
 
 

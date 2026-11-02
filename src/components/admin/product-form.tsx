@@ -79,6 +79,9 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
   const [imageAlt, setImageAlt] = useState<string | null>(initialData?.imageAlt || null);
   const [status, setStatus] = useState<ProductInput['status']>(initialData?.status || 'draft');
   const [displayOrder, setDisplayOrder] = useState<number>(initialData?.displayOrder || 0);
+  const [isStoryHighlight, setIsStoryHighlight] = useState(
+    initialData?.isStoryHighlight ?? false,
+  );
 
   const [formErrors, setFormErrors] = useState<Record<string, string[]>>({});
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -198,6 +201,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
       serves: serves || null,
       status,
       displayOrder,
+      isStoryHighlight,
       variantGroups: finalVariantGroups,
     };
 
@@ -234,7 +238,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl text-deep">
+          <h1 className="font-display text-3xl text-strong">
             {initialData ? `Editar: ${initialData.name}` : 'Novo Produto'}
           </h1>
           <p className="mt-1 text-sm text-ink-2">
@@ -248,7 +252,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value as ProductInput['status'])}
-            className="rounded-lg border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink focus:border-blue focus:outline-hidden"
+            className="rounded-lg border border-line bg-surface px-3 py-1.5 text-sm font-medium text-ink focus:border-blue focus:outline-hidden"
           >
             <option value="draft">Rascunho</option>
             <option value="published">Publicado</option>
@@ -269,8 +273,8 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
           {/* Main 2 columns: info and pricing */}
           <div className="space-y-6 lg:col-span-2">
             {/* Basic Info */}
-            <div className="rounded-2xl border border-line bg-white p-6 space-y-4">
-              <h2 className="font-display text-xl text-deep">Informação Principal</h2>
+            <div className="rounded-2xl border border-line bg-surface p-6 space-y-4">
+              <h2 className="font-display text-xl text-strong">Informação Principal</h2>
 
               <div>
                 <label className="block text-xs font-semibold text-decor uppercase">
@@ -279,7 +283,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                 <select
                   value={categoryId}
                   onChange={(e) => setCategoryId(e.target.value)}
-                  className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-sm text-ink bg-white focus:border-blue focus:outline-hidden"
+                  className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-sm text-ink bg-surface focus:border-blue focus:outline-hidden"
                   required
                 >
                   {categories.map((c) => (
@@ -369,8 +373,8 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
             </div>
 
             {/* Pricing Section */}
-            <div className="rounded-2xl border border-line bg-white p-6 space-y-4">
-              <h2 className="font-display text-xl text-deep">Preço e Variantes</h2>
+            <div className="rounded-2xl border border-line bg-surface p-6 space-y-4">
+              <h2 className="font-display text-xl text-strong">Preço e Variantes</h2>
 
               {/* Pricing type selector */}
               <div className="flex gap-2 rounded-xl bg-surface-2 p-1 border border-line">
@@ -379,7 +383,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                   onClick={() => setPricingType('fixed')}
                   className={`flex-1 rounded-lg py-2 text-xs font-medium transition-colors ${
                     pricingType === 'fixed'
-                      ? 'bg-white text-deep shadow-xs'
+                      ? 'bg-surface text-strong shadow-xs'
                       : 'text-ink-2 hover:text-ink'
                   }`}
                 >
@@ -390,7 +394,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                   onClick={() => setPricingType('variants')}
                   className={`flex-1 rounded-lg py-2 text-xs font-medium transition-colors ${
                     pricingType === 'variants'
-                      ? 'bg-white text-deep shadow-xs'
+                      ? 'bg-surface text-strong shadow-xs'
                       : 'text-ink-2 hover:text-ink'
                   }`}
                 >
@@ -401,7 +405,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                   onClick={() => setPricingType('note')}
                   className={`flex-1 rounded-lg py-2 text-xs font-medium transition-colors ${
                     pricingType === 'note'
-                      ? 'bg-white text-deep shadow-xs'
+                      ? 'bg-surface text-strong shadow-xs'
                       : 'text-ink-2 hover:text-ink'
                   }`}
                 >
@@ -434,7 +438,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                   )}
                   {Number(basePrice) > 0 && (
                     <p className="mt-1 text-xs text-ink-2">
-                      Aparecerá como: <strong className="text-deep">{formatKz(Number(basePrice))}</strong>
+                      Aparecerá como: <strong className="text-strong">{formatKz(Number(basePrice))}</strong>
                     </p>
                   )}
                 </div>
@@ -468,7 +472,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                     <button
                       type="button"
                       onClick={addVariantGroup}
-                      className="inline-flex items-center gap-1 rounded-lg border border-line bg-surface-2 px-3 py-1 text-xs font-medium text-deep hover:bg-white transition-colors"
+                      className="inline-flex items-center gap-1 rounded-lg border border-line bg-surface-2 px-3 py-1 text-xs font-medium text-strong hover:bg-surface transition-colors"
                     >
                       <Plus className="size-3.5" />
                       Adicionar Grupo
@@ -483,7 +487,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                           value={group.name}
                           onChange={(e) => updateVariantGroup(gIdx, 'name', e.target.value)}
                           placeholder="Nome do grupo (ex.: Tamanho, Dose)"
-                          className="flex-1 rounded-lg border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink focus:border-blue focus:outline-hidden"
+                          className="flex-1 rounded-lg border border-line bg-surface px-3 py-1.5 text-sm font-medium text-ink focus:border-blue focus:outline-hidden"
                         />
                         <button
                           type="button"
@@ -506,7 +510,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                                 updateVariantOption(gIdx, oIdx, 'name', e.target.value)
                               }
                               placeholder="Opção (ex.: Meia dose)"
-                              className="flex-1 rounded-lg border border-line bg-white px-3 py-1 text-sm text-ink focus:border-blue focus:outline-hidden"
+                              className="flex-1 rounded-lg border border-line bg-surface px-3 py-1 text-sm text-ink focus:border-blue focus:outline-hidden"
                             />
                             <div className="relative w-32">
                               <input
@@ -522,7 +526,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                                   )
                                 }
                                 placeholder="Preço"
-                                className="w-full rounded-lg border border-line bg-white px-3 py-1 pr-8 text-sm font-medium text-ink focus:border-blue focus:outline-hidden"
+                                className="w-full rounded-lg border border-line bg-surface px-3 py-1 pr-8 text-sm font-medium text-ink focus:border-blue focus:outline-hidden"
                               />
                               <span className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-decor">
                                 Kz
@@ -554,9 +558,9 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
             </div>
 
             {/* Tags & Allergens */}
-            <div className="rounded-2xl border border-line bg-white p-6 space-y-5">
+            <div className="rounded-2xl border border-line bg-surface p-6 space-y-5">
               <div>
-                <h3 className="font-display text-lg text-deep mb-2">Etiquetas (Badges)</h3>
+                <h3 className="font-display text-lg text-strong mb-2">Etiquetas (Badges)</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {COMMON_TAGS.map((tag) => {
                     const active = tags.includes(tag);
@@ -567,7 +571,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                         onClick={() => toggleTag(tag)}
                         className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                           active
-                            ? 'bg-blue text-white'
+                            ? 'bg-blue text-primary-foreground'
                             : 'bg-surface-2 text-ink-2 hover:bg-line'
                         }`}
                       >
@@ -603,7 +607,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
               </div>
 
               <div className="pt-4 border-t border-line">
-                <h3 className="font-display text-lg text-deep mb-2">Alergénios</h3>
+                <h3 className="font-display text-lg text-strong mb-2">Alergénios</h3>
                 <p className="text-xs text-ink-2 mb-3">
                   Selecione os alergénios presentes neste produto para salvaguarda dos clientes.
                 </p>
@@ -617,7 +621,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                         onClick={() => toggleAllergen(allergen)}
                         className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                           active
-                            ? 'bg-danger text-white'
+                            ? 'bg-danger text-destructive-foreground'
                             : 'bg-surface-2 text-ink-2 hover:bg-line'
                         }`}
                       >
@@ -634,7 +638,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
           {/* Sidebar column: Photography + Public Card Preview */}
           <div className="space-y-6">
             {/* Photography upload */}
-            <div className="rounded-2xl border border-line bg-white p-6">
+            <div className="rounded-2xl border border-line bg-surface p-6">
               <ImageUpload
                 currentPath={imagePath}
                 currentAlt={imageAlt}
@@ -649,8 +653,47 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
               )}
             </div>
 
+            {/* Story highlight */}
+            <div className="rounded-2xl border border-line bg-surface p-6">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="flex items-center gap-2 text-sm font-medium text-strong">
+                    <Sparkles aria-hidden="true" className="size-4 text-blue" />
+                    Destacar nos stories
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-ink-2">
+                    Inclui este produto no modo “Automático com destaques” do widget flutuante.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={isStoryHighlight}
+                  aria-label="Destacar nos stories"
+                  onClick={() => setIsStoryHighlight((value) => !value)}
+                  className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border transition-colors ${
+                    isStoryHighlight
+                      ? 'border-blue bg-blue'
+                      : 'border-line bg-surface-2'
+                  }`}
+                >
+                  <span
+                    className={`inline-block size-4 rounded-full bg-white shadow-xs transition-transform ${
+                      isStoryHighlight ? 'translate-x-6' : 'translate-x-1'
+                    }`}
+                  />
+                </button>
+              </div>
+              {isStoryHighlight && (
+                <p className="mt-3 rounded-lg bg-blue-tint/60 px-3 py-2 text-[11px] font-medium text-strong">
+                  O produto entra nos stories de destaque (se tiver fotografia publicada).
+                </p>
+              )}
+            </div>
+
             {/* Live Preview Card in "Editorial de Mesa" style */}
-            <div className="rounded-2xl border border-line bg-white p-6 space-y-3">
+            <div className="rounded-2xl border border-line bg-surface p-6 space-y-3">
               <div className="flex items-center gap-2 text-decor">
                 <Eye className="size-4" />
                 <span className="text-xs font-semibold uppercase tracking-wider">
@@ -669,7 +712,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                     )}
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="font-display text-base font-bold text-deep">
+                    <p className="font-display text-base font-bold text-strong">
                       {pricingType === 'fixed' && basePrice !== ''
                         ? formatKz(Number(basePrice))
                         : pricingType === 'variants' && variantGroups[0]?.variants[0]
@@ -684,7 +727,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
                     {tags.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full bg-blue-tint px-2 py-0.5 text-[10px] font-medium text-deep"
+                        className="rounded-full bg-blue-tint px-2 py-0.5 text-[10px] font-medium text-strong"
                       >
                         {t}
                       </span>
@@ -697,7 +740,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
         </div>
 
         {/* Submit action bar */}
-        <div className="sticky bottom-4 z-20 flex items-center justify-end gap-3 rounded-2xl border border-line bg-white/95 p-4 shadow-lg backdrop-blur">
+        <div className="sticky bottom-4 z-20 flex items-center justify-end gap-3 rounded-2xl border border-line bg-surface/95 p-4 shadow-lg backdrop-blur">
           <Link
             href="/admin/products"
             className="rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-ink-2 hover:bg-surface-2 transition-colors"
@@ -707,7 +750,7 @@ export function ProductForm({ initialData, categories }: ProductFormProps) {
           <button
             type="submit"
             disabled={isPending}
-            className="inline-flex items-center gap-2 rounded-lg bg-blue px-6 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors shadow-xs disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue px-6 py-2.5 text-sm font-medium text-primary-foreground hover:bg-blue-700 transition-colors shadow-xs disabled:opacity-50"
           >
             {isPending && <Loader2 className="size-4 animate-spin" />}
             {initialData ? 'Guardar Alterações' : 'Criar Produto'}

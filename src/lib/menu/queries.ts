@@ -58,6 +58,7 @@ type ProductRow = {
   serves: string | null;
   status: MenuProductStatus;
   display_order: number;
+  is_story_highlight?: boolean;
   variant_groups: VariantGroupRow[] | null;
 };
 
@@ -180,6 +181,7 @@ function mapProduct(row: ProductRow): MenuProduct {
     serves: row.serves,
     status: row.status,
     displayOrder: row.display_order,
+    isStoryHighlight: row.is_story_highlight ?? false,
     variantGroups,
   };
 }
@@ -190,6 +192,14 @@ export async function getPublicMenu(): Promise<PublicMenuResult> {
   }
 
   const supabase = createPublicClient();
+
+  const productSelect = `id, category_id, name, slug, description, base_price, price_note,
+         image_path, image_alt, tags, allergens, serves, status, display_order,
+         is_story_highlight,
+         variant_groups (
+           id, name, display_order, is_required,
+           product_variants ( id, name, price, display_order, is_active )
+         )`;
 
   const [groupsResult, categoriesResult, productsResult, settingsResult] = await Promise.all([
     supabase
@@ -206,14 +216,7 @@ export async function getPublicMenu(): Promise<PublicMenuResult> {
       .order('name'),
     supabase
       .from('products')
-      .select(
-        `id, category_id, name, slug, description, base_price, price_note,
-         image_path, image_alt, tags, allergens, serves, status, display_order,
-         variant_groups (
-           id, name, display_order, is_required,
-           product_variants ( id, name, price, display_order, is_active )
-         )`,
-      )
+      .select(productSelect)
       .in('status', ['published', 'unavailable'])
       .order('display_order')
       .order('name'),
@@ -226,13 +229,37 @@ export async function getPublicMenu(): Promise<PublicMenuResult> {
       .maybeSingle(),
   ]);
 
-  if (groupsResult.error || categoriesResult.error || productsResult.error) {
+  let productData: unknown = productsResult.data;
+  let productError = productsResult.error;
+
+  // Compatibilidade enquanto a migração 0009 não estiver aplicada:
+  // o menu continua a funcionar sem a coluna de destaques.
+  if (productError) {
+    const fallback = await supabase
+      .from('products')
+      .select(
+        `id, category_id, name, slug, description, base_price, price_note,
+         image_path, image_alt, tags, allergens, serves, status, display_order,
+         variant_groups (
+           id, name, display_order, is_required,
+           product_variants ( id, name, price, display_order, is_active )
+         )`,
+      )
+      .in('status', ['published', 'unavailable'])
+      .order('display_order')
+      .order('name');
+
+    productData = fallback.data;
+    productError = fallback.error;
+  }
+
+  if (groupsResult.error || categoriesResult.error || productError) {
     return { status: 'error' };
   }
 
   const groupRows = (groupsResult.data ?? []) as GroupRow[];
   const categoryRows = (categoriesResult.data ?? []) as CategoryRow[];
-  const productRows = ((productsResult.data ?? []) as ProductRow[]).filter(
+  const productRows = ((productData ?? []) as ProductRow[]).filter(
     (row) => row.status === 'published' || row.status === 'unavailable',
   );
 
