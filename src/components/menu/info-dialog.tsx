@@ -112,7 +112,7 @@ export function InfoDialog({
           ) : null}
         </div>
 
-        <div className="px-6 py-5">
+        <div className="paper-surface bg-ivory px-6 py-5">
           <h2 id="info-title" className="sr-only">
             {t('info_title')} {settings.name}
           </h2>

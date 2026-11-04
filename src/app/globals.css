@@ -45,6 +45,18 @@
 }
 
 /* ---------------------------------------------------------------------------
+   Tokens da textura de papel — consumidos por .paper-surface
+   Opacidades: claro = 50%, escuro = 6%
+--------------------------------------------------------------------------- */
+:root {
+  --paper-opacity: 0.5;
+}
+
+[data-theme='dark'] {
+  --paper-opacity: 0.06;
+}
+
+/* ---------------------------------------------------------------------------
    Variáveis consumidas pelos componentes shadcn/ui.
 --------------------------------------------------------------------------- */
 :root {
@@ -257,13 +269,6 @@
 }
 
 @layer utilities {
-  /* Textura de papel a 4% — aplicar sobre o fundo marfim. */
-  .texture-paper {
-    background-image: url("/brand/06-textura-papel.jpg");
-    background-repeat: repeat;
-    background-size: 512px 512px;
-  }
-
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -271,6 +276,26 @@
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Base de papel: pseudo-elemento atrás do conteúdo, dentro de um
+     stacking context local para nunca ficar atrás do fundo do body. */
+  .paper-surface {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .paper-surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url("/brand/06-textura-papel.jpg?v=2");
+    background-repeat: repeat;
+    background-size: 512px 512px;
+    opacity: var(--paper-opacity);
+    pointer-events: none;
+    border-radius: inherit;
   }
 }
 

@@ -269,21 +269,17 @@ export function MenuExperience({
 
   return (
     <div className="relative flex min-h-[100vh] flex-col">
-      <div
-        aria-hidden="true"
-        className="texture-paper pointer-events-none absolute inset-0 opacity-[0.04]"
-      />
-
       <div className="relative flex flex-1 flex-col">
-        {showClosedBand && openState ? (
-          <div className="border-b border-sand-line bg-sand/60">
-            <p className="mx-auto w-full max-w-[1100px] px-4 py-2 text-center text-xs text-ink-2 sm:px-6">
-              {openState.label}
-            </p>
-          </div>
-        ) : null}
+        <div className="paper-surface flex flex-1 flex-col">
+          {showClosedBand && openState ? (
+            <div className="border-b border-sand-line bg-sand/60">
+              <p className="mx-auto w-full max-w-[1100px] px-4 py-2 text-center text-xs text-ink-2 sm:px-6">
+                {openState.label}
+              </p>
+            </div>
+          ) : null}
 
-        <div className="mx-auto flex w-full max-w-[1100px] flex-1 items-start gap-10 px-4 sm:px-6">
+          <div className="mx-auto flex w-full max-w-[1100px] flex-1 items-start gap-10 px-4 sm:px-6">
           <aside className="sticky top-[57px] hidden max-h-[calc(100vh-57px)] w-[220px] shrink-0 overflow-y-auto py-6 lg:block">
             <nav aria-label={t('nav_categories')}>
               {groups.map((group) => (
@@ -341,7 +337,7 @@ export function MenuExperience({
           <main className="min-w-0 flex-1 pb-16">
             <h1 className="sr-only">{t('menu_h1')}</h1>
 
-            <div className="sticky top-[57px] z-20 -mx-4 border-b border-line bg-ivory/95 px-4 backdrop-blur-md sm:-mx-6 sm:px-6 lg:hidden">
+            <div className="sticky top-[57px] z-20 -mx-4 border-b border-line bg-ivory/85 px-4 backdrop-blur-md sm:-mx-6 sm:px-6 lg:hidden">
               <GroupTabs
                 groups={groups}
                 activeSlug={activeGroup.slug}
@@ -465,6 +461,7 @@ export function MenuExperience({
             </section>
           </main>
         </div>
+        </div>
 
         <footer className="border-t border-line">
           <div className="mx-auto flex w-full max-w-[1100px] flex-col gap-1 px-4 py-6 text-xs text-ink-2 sm:flex-row sm:items-center sm:justify-between sm:px-6">
@@ -472,6 +469,12 @@ export function MenuExperience({
             <div className="flex items-center gap-3">
               <p>{t('footer_location')}</p>
               <span aria-hidden="true" className="h-3 w-px bg-line" />
+              <p>
+                {t('footer_credit_prefix')}{' '}
+                <a href="https://docflex-site.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium transition-colors hover:text-strong">
+                  DOCFLEX ANGOLA
+                </a>
+              </p>
               <Link
                 href="/admin"
                 className="inline-flex items-center gap-1 text-ink-2 transition-colors hover:text-strong"

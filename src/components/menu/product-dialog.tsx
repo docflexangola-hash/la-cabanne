@@ -129,7 +129,7 @@ export function ProductDialog({
           )}
         </div>
 
-        <div className="p-5 sm:p-6 lg:p-8">
+        <div className="paper-surface bg-ivory p-5 sm:p-6 lg:p-8">
           <h2
             id={`product-title-${product.id}`}
             className="pr-10 font-display text-[34px] leading-[1.1] text-strong"

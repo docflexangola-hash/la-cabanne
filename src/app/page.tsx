@@ -25,11 +25,6 @@ export default async function HomePage() {
   if (menu.status === 'ok' && totalProducts > 0) {
     return (
       <div className="relative flex min-h-dvh flex-col">
-        <div
-          aria-hidden="true"
-          className="texture-paper pointer-events-none absolute inset-0 opacity-[0.04]"
-        />
-
         <div className="relative flex flex-1 flex-col">
           <PublicHeader settings={menu.settings} />
           <HeroWelcome />
@@ -52,18 +47,15 @@ export default async function HomePage() {
 
   return (
     <div className="relative flex min-h-dvh flex-col">
-      <div
-        aria-hidden="true"
-        className="texture-paper pointer-events-none absolute inset-0 opacity-[0.04]"
-      />
-
       <div className="relative flex flex-1 flex-col">
         <PublicHeader />
         <HeroWelcome />
 
-        <main id="menu" className="mx-auto w-full max-w-[1100px] flex-1 px-4 pb-16 scroll-mt-[57px] sm:px-6">
-          <EmptyMenuState variant={menu.status === 'error' ? 'error' : 'preparing'} />
-        </main>
+        <div className="paper-surface flex-1">
+          <main id="menu" className="mx-auto w-full max-w-[1100px] flex-1 px-4 pb-16 scroll-mt-[57px] sm:px-6">
+            <EmptyMenuState variant={menu.status === 'error' ? 'error' : 'preparing'} />
+          </main>
+        </div>
 
         <footer className="border-t border-line">
           <div className="mx-auto flex w-full max-w-[1100px] flex-col gap-1 px-4 py-6 text-xs text-ink-2 sm:flex-row sm:items-center sm:justify-between sm:px-6">
@@ -71,6 +63,9 @@ export default async function HomePage() {
             <div className="flex items-center gap-3">
               <p>Benguela, Angola</p>
               <span aria-hidden="true" className="h-3 w-px bg-line" />
+              <p className="text-xs text-ink-2 mt-1">
+                Desenvolvido por <a href="https://docflex-site.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium transition-colors hover:text-strong">DOCFLEX ANGOLA</a>
+              </p>
               <Link
                 href="/admin"
                 className="inline-flex items-center gap-1 text-ink-2 transition-colors hover:text-strong"
