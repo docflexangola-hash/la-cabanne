@@ -3,12 +3,14 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { StoryCard, StoryMiniThumbnail } from '@/components/menu/story-card';
+import { StoryViewer } from '@/components/menu/story-viewer';
 import {
   trackStoryClicked,
   trackStoryMinimized,
   trackStoryViewed,
 } from '@/lib/analytics/client';
 import { useStoryPlayback } from '@/lib/stories/use-playback';
+import { usePreloadImage } from '@/lib/stories/use-preload-image';
 import type { StorySlide } from '@/types/stories';
 
 const MINIMIZED_KEY = 'lc_story_minimized';
@@ -27,6 +29,8 @@ export function StoriesWidget({
   onOpenProduct,
 }: StoriesWidgetProps) {
   const [menuVisible, setMenuVisible] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [holdPaused, setHoldPaused] = useState(false);
   // Inicializa minimized a partir do sessionStorage via função de initial value (roda em render, não em effect)
   const [minimized, setMinimized] = useState(() => {
     try {
@@ -36,13 +40,17 @@ export function StoriesWidget({
     }
   });
 
-  const { index, progressKey } = useStoryPlayback({
+  const { index, progressKey, next, previous } = useStoryPlayback({
     length: slides.length,
     intervalSeconds,
     active: enabled && menuVisible && !minimized,
+    paused: holdPaused,
   });
 
   const slide = slides[index];
+  const nextSlide = slides.length > 1 ? slides[(index + 1) % slides.length] : null;
+
+  usePreloadImage(menuVisible || expanded ? nextSlide?.imageUrl : null);
 
   useEffect(() => {
     const target = document.getElementById('menu');
@@ -95,6 +103,7 @@ export function StoriesWidget({
 
   const minimize = useCallback(
     (track: boolean) => {
+      setHoldPaused(false);
       setMinimized(true);
 
       try {
@@ -111,6 +120,7 @@ export function StoriesWidget({
   );
 
   const reopen = useCallback(() => {
+    setHoldPaused(false);
     setMinimized(false);
 
     try {
@@ -133,6 +143,8 @@ export function StoriesWidget({
         categorySlug: current.categorySlug,
       });
 
+      setHoldPaused(false);
+      setExpanded(false);
       onOpenProduct(current);
       // Ao abrir o produto, o widget recolhe para a miniatura.
       minimize(false);
@@ -140,13 +152,38 @@ export function StoriesWidget({
     [minimize, onOpenProduct],
   );
 
-  if (!enabled || !menuVisible || slides.length === 0 || !slide) {
+  if (!enabled || slides.length === 0 || !slide) {
+    return null;
+  }
+
+  if (!menuVisible && !expanded) {
     return null;
   }
 
   return (
     <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+12px)] left-3 z-40 sm:bottom-4 sm:left-4">
-      {minimized ? (
+      {expanded ? (
+        <StoryViewer
+          slides={slides}
+          index={index}
+          intervalSeconds={intervalSeconds}
+          progressKey={progressKey}
+          paused={holdPaused}
+          onClose={() => {
+            setHoldPaused(false);
+            setExpanded(false);
+          }}
+          onNext={next}
+          onPrevious={previous}
+          onMinimize={() => {
+            setHoldPaused(false);
+            setExpanded(false);
+            minimize(true);
+          }}
+          onOpenProduct={handleOpenProduct}
+          onHoldChange={setHoldPaused}
+        />
+      ) : minimized ? (
         <StoryMiniThumbnail slide={slide} onOpen={reopen} />
       ) : (
         <StoryCard
@@ -155,6 +192,7 @@ export function StoriesWidget({
           intervalSeconds={intervalSeconds}
           progressKey={progressKey}
           onMinimize={() => minimize(true)}
+          onExpand={() => setExpanded(true)}
           onOpenProduct={handleOpenProduct}
         />
       )}

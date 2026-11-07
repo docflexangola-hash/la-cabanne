@@ -1,8 +1,10 @@
 'use client';
 
-import { Minimize2 } from 'lucide-react';
+import { Maximize2, Minimize2 } from 'lucide-react';
 import Image from 'next/image';
 
+import { StoryProgress } from '@/components/menu/story-progress';
+import { useTranslation } from '@/lib/i18n/i18n-context';
 import { cn } from '@/lib/utils';
 import type { StorySlide } from '@/types/stories';
 
@@ -12,10 +14,14 @@ type StoryCardProps = {
   intervalSeconds: number;
   progressKey: number;
   onMinimize?: () => void;
+  onExpand?: () => void;
   onOpenProduct?: (slide: StorySlide) => void;
   className?: string;
   showMinimize?: boolean;
 };
+
+const controlClass =
+  'flex size-6 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-colors hover:bg-black/70';
 
 export function StoryCard({
   slides,
@@ -23,10 +29,12 @@ export function StoryCard({
   intervalSeconds,
   progressKey,
   onMinimize,
+  onExpand,
   onOpenProduct,
   className,
   showMinimize = true,
 }: StoryCardProps) {
+  const { t } = useTranslation();
   const slide = slides[index];
 
   if (!slide) {
@@ -34,12 +42,12 @@ export function StoryCard({
   }
 
   const interactive = Boolean(slide.product && onOpenProduct);
-  const safeIndex = Math.min(Math.max(index, 0), Math.max(slides.length - 1, 0));
+  const hasControls = Boolean(onExpand) || (showMinimize && onMinimize);
 
   return (
     <div
       role="group"
-      aria-label="Stories do menu"
+      aria-label={t('stories_label')}
       className={cn(
         'relative aspect-[9/16] w-[118px] shrink-0 overflow-hidden rounded-xl bg-deep shadow-[0_14px_40px_rgba(0,0,0,0.35)] ring-1 ring-white/25 sm:w-[140px]',
         className,
@@ -54,41 +62,44 @@ export function StoryCard({
         className="object-cover"
       />
 
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex gap-1 bg-gradient-to-b from-black/55 to-transparent p-1.5 pb-5">
-        {slides.map((item, position) => (
-          <span
-            key={item.key}
-            className="h-[2px] flex-1 overflow-hidden rounded-full bg-white/35"
-          >
-            {position < safeIndex ? (
-              <span className="block h-full w-full bg-white" />
-            ) : position === safeIndex ? (
-              <span
-                key={`${safeIndex}-${progressKey}`}
-                className="story-progress-fill block h-full bg-white"
-                style={{ animationDuration: `${Math.max(1, intervalSeconds)}s` }}
-              />
-            ) : null}
-          </span>
-        ))}
-      </div>
+      <StoryProgress
+        slides={slides}
+        index={index}
+        intervalSeconds={intervalSeconds}
+        progressKey={progressKey}
+      />
 
-      {showMinimize && onMinimize ? (
-        <button
-          type="button"
-          onClick={onMinimize}
-          aria-label="Minimizar stories"
-          className="absolute top-2 right-2 z-20 flex size-6 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
-        >
-          <Minimize2 aria-hidden="true" className="size-3.5" />
-        </button>
+      {hasControls ? (
+        <div className="absolute top-2 right-2 z-20 flex gap-1">
+          {onExpand ? (
+            <button
+              type="button"
+              onClick={onExpand}
+              aria-label={t('expand_stories')}
+              className={controlClass}
+            >
+              <Maximize2 aria-hidden="true" className="size-3.5" />
+            </button>
+          ) : null}
+
+          {showMinimize && onMinimize ? (
+            <button
+              type="button"
+              onClick={onMinimize}
+              aria-label={t('minimize_stories')}
+              className={controlClass}
+            >
+              <Minimize2 aria-hidden="true" className="size-3.5" />
+            </button>
+          ) : null}
+        </div>
       ) : null}
 
       {interactive && slide.product ? (
         <button
           type="button"
           onClick={() => onOpenProduct?.(slide)}
-          aria-label={`Ver ${slide.product.name} no menu`}
+          aria-label={`${t('view_product_in_menu')}: ${slide.product.name}`}
           className="absolute inset-0 z-[15] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-white"
         />
       ) : null}
@@ -103,11 +114,13 @@ export function StoryMiniThumbnail({
   slide: StorySlide;
   onOpen: () => void;
 }) {
+  const { t } = useTranslation();
+
   return (
     <button
       type="button"
       onClick={onOpen}
-      aria-label="Abrir stories"
+      aria-label={t('open_stories')}
       className="relative size-12 overflow-hidden rounded-full border-2 border-white/90 bg-deep shadow-xl ring-1 ring-black/15 transition-transform hover:scale-105"
     >
       <Image

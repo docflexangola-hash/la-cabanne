@@ -23,6 +23,17 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     price_tax_note:
       'Preço com IVA incluído. Consulte a equipa para informação sobre alergénios.',
 
+    // Stories
+    stories_label: 'Stories do menu',
+    open_stories: 'Abrir stories',
+    expand_stories: 'Expandir stories',
+    minimize_stories: 'Minimizar stories',
+    close_stories: 'Fechar stories',
+    previous_story: 'Story anterior',
+    next_story: 'Próximo story',
+    view_in_menu: 'Ver no menu',
+    view_product_in_menu: 'Ver produto no menu',
+
     // Estado vazio
     still_no_products: 'Ainda sem produtos nesta categoria',
     new_soon: 'Novos produtos serão publicados em breve.',
@@ -100,6 +111,17 @@ export const dictionaries: Record<Locale, Record<string, string>> = {
     allergens: 'Allergens:',
     price_tax_note:
       'Price includes VAT. Ask our team for allergen information.',
+
+    // Stories
+    stories_label: 'Menu stories',
+    open_stories: 'Open stories',
+    expand_stories: 'Expand stories',
+    minimize_stories: 'Minimize stories',
+    close_stories: 'Close stories',
+    previous_story: 'Previous story',
+    next_story: 'Next story',
+    view_in_menu: 'View in menu',
+    view_product_in_menu: 'View product in menu',
 
     // Empty state
     still_no_products: 'No dishes in this category yet',
