@@ -4,7 +4,6 @@ import { X } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
 
-import { MonogramPlaceholder } from '@/components/menu/monogram-placeholder';
 import { trackProductEngagement } from '@/lib/analytics/client';
 import { useTranslation } from '@/lib/i18n/i18n-context';
 import { formatKz } from '@/lib/menu/format';
@@ -120,11 +119,12 @@ export function ProductDialog({
             />
           ) : (
             <Image
-              src="/images/placeholder.svg"
-              alt={product.imageAlt ?? product.name}
+              src="/images/07-ilustracao-vazia.svg"
+              alt=""
+              aria-hidden="true"
               fill
               sizes="(min-width: 1024px) 440px, 100vw"
-              className="object-cover"
+              className="object-contain p-6 sm:p-10"
             />
           )}
         </div>
