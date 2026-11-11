@@ -55,3 +55,12 @@ Thumbs.db
 /keys.md
 
 .vercel
+
+# ferramentas de agentes (configuração local)
+/.agents/
+/.claude/
+/skills.json
+/skills-lock.json
+
+# artefactos locais
+/tempdiff.txt
