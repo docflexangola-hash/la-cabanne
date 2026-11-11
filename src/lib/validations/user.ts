@@ -33,6 +33,19 @@ export const changePasswordSchema = z
     path: ['confirmPassword'],
   });
 
+export const setPasswordSchema = z
+  .object({
+    password: z
+      .string()
+      .min(12, { message: 'A palavra-passe deve ter pelo menos 12 caracteres' }),
+    confirmPassword: z.string().min(1, { message: 'Confirme a palavra-passe' }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'As palavras-passe não coincidem',
+    path: ['confirmPassword'],
+  });
+
 export type InviteUserInput = z.infer<typeof inviteUserSchema>;
 export type UpdateProfileInput = z.infer<typeof updateProfileSchema>;
 export type ChangePasswordInput = z.infer<typeof changePasswordSchema>;
+export type SetPasswordInput = z.infer<typeof setPasswordSchema>;

@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { requireAdmin, requireStaff } from '@/lib/auth/guard';
+import { getSiteUrl } from '@/lib/env';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import {
@@ -28,10 +29,12 @@ export async function inviteUser(input: InviteUserInput): Promise<ActionResponse
 
   const adminClient = createAdminClient();
 
-  // Invite user by email using Supabase Auth Admin
+  // Invite user by email using Supabase Auth Admin.
+  // O link do email volta para /convite, onde a pessoa define a palavra-passe.
   const { data: authData, error: inviteError } =
     await adminClient.auth.admin.inviteUserByEmail(parsed.data.email, {
       data: { display_name: parsed.data.displayName },
+      redirectTo: `${getSiteUrl().replace(/\/+$/, '')}/convite`,
     });
 
   if (inviteError || !authData.user) {
