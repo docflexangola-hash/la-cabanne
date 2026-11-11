@@ -5,6 +5,7 @@ import { EmptyMenuState } from '@/components/menu/empty-menu-state';
 import { HeroWelcome } from '@/components/menu/hero-welcome';
 import { MenuExperience } from '@/components/menu/menu-experience';
 import { PublicHeader } from '@/components/menu/public-header';
+import { DOCFLEX_LINKTREE_URL } from '@/lib/constants/site';
 import { getPublicMenu } from '@/lib/menu/queries';
 import { getPublicStoryConfig } from '@/lib/stories/queries';
 
@@ -64,7 +65,7 @@ export default async function HomePage() {
               <p>Benguela, Angola</p>
               <span aria-hidden="true" className="h-3 w-px bg-line" />
               <p className="text-xs text-ink-2 mt-1">
-                Desenvolvido por <a href="https://docflex-site.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium transition-colors hover:text-strong">DOCFLEX ANGOLA</a>
+                Desenvolvido por <a href={DOCFLEX_LINKTREE_URL} target="_blank" rel="noopener noreferrer" className="font-medium transition-colors hover:text-strong">DOCFLEX ANGOLA</a>
               </p>
               <Link
                 href="/admin"

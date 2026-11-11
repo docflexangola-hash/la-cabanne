@@ -366,6 +366,27 @@
     }
   }
 
+  /* Confirmação breve ao adicionar um item ao pedido */
+  .order-toast {
+    animation: order-toast 2200ms var(--ease-editorial) forwards;
+  }
+
+  @keyframes order-toast {
+    0% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    12%,
+    80% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+
   /* Visualizador de stories em ecrã inteiro */
   .story-viewer {
     position: fixed;

@@ -8,6 +8,7 @@ import {
   Menu,
   MessageSquare,
   Moon,
+  ReceiptText,
   Settings,
   Sun,
   Tags,
@@ -55,7 +56,10 @@ const NAV_SECTIONS: NavSection[] = [
   },
   {
     label: 'Clientes',
-    items: [{ href: '/admin/feedback', label: 'Feedback', icon: MessageSquare }],
+    items: [
+      { href: '/admin/orders', label: 'Pedidos', icon: ReceiptText },
+      { href: '/admin/feedback', label: 'Feedback', icon: MessageSquare },
+    ],
   },
   {
     label: 'Sistema',

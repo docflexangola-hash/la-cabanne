@@ -8,6 +8,8 @@ import { CategoryChips } from '@/components/menu/category-chips';
 import { FeedbackDialog } from '@/components/menu/feedback-dialog';
 import { GroupTabs } from '@/components/menu/group-tabs';
 import { MonogramPlaceholder } from '@/components/menu/monogram-placeholder';
+import { OrderFab } from '@/components/menu/order-fab';
+import { OrderSheet } from '@/components/menu/order-sheet';
 import { ProductDialog } from '@/components/menu/product-dialog';
 import { ProductRow } from '@/components/menu/product-row';
 import { StoriesWidget } from '@/components/menu/stories-widget';
@@ -18,9 +20,11 @@ import {
   trackMenuOpened,
   trackProductOpened,
 } from '@/lib/analytics/client';
+import { DOCFLEX_LINKTREE_URL } from '@/lib/constants/site';
 import { useTranslation } from '@/lib/i18n/i18n-context';
 import { localizeGroups } from '@/lib/i18n/menu-en';
 import { getOpenState } from '@/lib/menu/hours';
+import { OrderProvider, useOrder } from '@/lib/orders/context';
 import { buildStorySlides } from '@/lib/stories/build';
 import { useIsClient } from '@/lib/use-is-client';
 import { cn } from '@/lib/utils';
@@ -75,6 +79,26 @@ function scrollToTarget(target: ScrollTarget) {
 }
 
 export function MenuExperience({
+  groups,
+  settings,
+  storyConfig,
+}: {
+  groups: MenuGroup[];
+  settings: RestaurantSettings | null;
+  storyConfig: StoryConfig;
+}) {
+  return (
+    <OrderProvider>
+      <MenuExperienceContent
+        groups={groups}
+        settings={settings}
+        storyConfig={storyConfig}
+      />
+    </OrderProvider>
+  );
+}
+
+function MenuExperienceContent({
   groups: groupsProp,
   settings,
   storyConfig,
@@ -84,6 +108,8 @@ export function MenuExperience({
   storyConfig: StoryConfig;
 }) {
   const { locale, t } = useTranslation();
+  const { addItem } = useOrder();
+  const [orderSheetOpen, setOrderSheetOpen] = useState(false);
   const groups = useMemo(() => localizeGroups(groupsProp, locale), [groupsProp, locale]);
 
   // Semente determinística — definida uma vez no effect
@@ -265,6 +291,21 @@ export function MenuExperience({
     });
   }
 
+  function handleQuickAdd(product: MenuProduct) {
+    if (product.basePrice === null) {
+      return;
+    }
+
+    addItem({
+      productId: product.id,
+      variantIds: [],
+      productName: product.name,
+      variantLabel: null,
+      unitPrice: product.basePrice,
+      quantity: 1,
+    });
+  }
+
   const showClosedBand = Boolean(openState && !openState.open);
 
   return (
@@ -393,6 +434,7 @@ export function MenuExperience({
                             <ProductRow
                               key={item.id}
                               product={item}
+                              onQuickAdd={handleQuickAdd}
                               onOpen={(selected) => {
                                 setActiveProduct({
                                   product: selected,
@@ -471,7 +513,7 @@ export function MenuExperience({
               <span aria-hidden="true" className="h-3 w-px bg-line" />
               <p>
                 {t('footer_credit_prefix')}{' '}
-                <a href="https://docflex-site.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium transition-colors hover:text-strong">
+                <a href={DOCFLEX_LINKTREE_URL} target="_blank" rel="noopener noreferrer" className="font-medium transition-colors hover:text-strong">
                   DOCFLEX ANGOLA
                 </a>
               </p>
@@ -503,6 +545,10 @@ export function MenuExperience({
             onOpenProduct={handleStoryProductOpen}
           />
         ) : null}
+
+        <OrderFab onOpen={() => setOrderSheetOpen(true)} />
+
+        {orderSheetOpen ? <OrderSheet onClose={() => setOrderSheetOpen(false)} /> : null}
 
         <FeedbackDialog open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
       </div>

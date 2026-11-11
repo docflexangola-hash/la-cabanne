@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           Informação legal
         </p>
         <h1 className="font-display text-3xl text-deep">Política de Privacidade</h1>
-        <p className="text-sm text-ink-2">Última actualização: 2026-10-25</p>
+        <p className="text-sm text-ink-2">Última actualização: 2026-11-11</p>
       </header>
 
       <div className="space-y-8 text-sm leading-relaxed text-ink">
@@ -46,6 +46,13 @@ export default function PrivacyPage() {
             fornecer dados identificativos.
           </p>
           <p>
+            <strong>Pedidos:</strong> ao enviar uma rodada, é guardado um identificador
+            aleatório do dispositivo e da sessão (não a identidade da pessoa) para
+            agrupar as rodadas da mesma visita e permitir ao restaurante acompanhar o
+            serviço. A mesa é opcional. O histórico do cliente fica apenas no próprio
+            telemóvel; no servidor fica o registo do que foi pedido.
+          </p>
+          <p>
             <strong>Analytics anónimos:</strong> podem ser registados eventos de
             utilização agregados, sem cookies, sem identificação direta, sem
             geolocalização e sem recolha de dados sensíveis.
@@ -62,6 +69,7 @@ export default function PrivacyPage() {
           <ul className="list-disc space-y-2 pl-5">
             <li>Apresentação do cardápio e informações do estabelecimento.</li>
             <li>Tratamento de feedback para melhoria do serviço.</li>
+            <li>Registo de pedidos para acompanhamento do serviço no estabelecimento.</li>
             <li>Monitorização agregada e anónima para melhoria da experiência.</li>
             <li>Gestão de conteúdos e segurança do painel administrativo.</li>
           </ul>
@@ -80,6 +88,7 @@ export default function PrivacyPage() {
           <h2 className="font-display text-xl text-deep">5. Prazo de conservação</h2>
           <ul className="list-disc space-y-2 pl-5">
             <li>Feedback: conservado pelo tempo necessário para tratamento, podendo ser arquivado.</li>
+            <li>Pedidos: conservados pelo tempo necessário ao serviço e à gestão do estabelecimento.</li>
             <li>Registos de analytics agregados: anonimizados ou apagados conforme regras de retenção.</li>
             <li>Logs administrativos: mantidos para fins de auditoria e segurança.</li>
           </ul>

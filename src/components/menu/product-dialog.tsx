@@ -8,6 +8,7 @@ import { trackProductEngagement } from '@/lib/analytics/client';
 import { useTranslation } from '@/lib/i18n/i18n-context';
 import { formatKz } from '@/lib/menu/format';
 import { getSelectedPrice } from '@/lib/menu/pricing';
+import { useOrder } from '@/lib/orders/context';
 import { cn } from '@/lib/utils';
 import type { MenuProduct } from '@/types/menu';
 
@@ -24,6 +25,7 @@ export function ProductDialog({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { t } = useTranslation();
+  const { addItem } = useOrder();
   const unavailable = product.status === 'unavailable';
 
   const [selection, setSelection] = useState<Record<string, string>>(() =>
@@ -85,10 +87,43 @@ export function ProductDialog({
 
   const price = getSelectedPrice(product, selection);
 
+  const selectedVariants = product.variantGroups
+    .map(
+      (group) =>
+        group.variants.find((variant) => variant.id === selection[group.id]) ??
+        group.variants[0],
+    )
+    .filter((variant): variant is NonNullable<typeof variant> => Boolean(variant));
+
+  const canAdd = !unavailable && price !== null;
+
   function handleBackdropClick(event: MouseEvent<HTMLDialogElement>) {
     if (event.target === dialogRef.current) {
       dialogRef.current?.close();
     }
+  }
+
+  function handleAdd() {
+    if (!canAdd || price === null) {
+      return;
+    }
+
+    addItem({
+      productId: product.id,
+      variantIds: selectedVariants.map((variant) => variant.id),
+      productName: product.name,
+      variantLabel:
+        selectedVariants.length > 0
+          ? selectedVariants
+              .map((variant) => variant.name)
+              .join(' · ')
+              .slice(0, 120)
+          : null,
+      unitPrice: price,
+      quantity: 1,
+    });
+
+    dialogRef.current?.close();
   }
 
   return (
@@ -207,6 +242,15 @@ export function ProductDialog({
               {price !== null ? formatKz(price) : (product.priceNote ?? t('on_request'))}
             </span>
           </div>
+
+          <button
+            type="button"
+            onClick={handleAdd}
+            disabled={!canAdd}
+            className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-sm bg-deep px-5 text-sm font-medium text-hero-fg transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {t('order_add')}
+          </button>
 
           {product.allergens.length > 0 ? (
             <p className="mt-3 text-xs leading-relaxed text-ink-2">
