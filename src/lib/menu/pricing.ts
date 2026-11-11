@@ -1,5 +1,29 @@
 import type { MenuProduct } from '@/types/menu';
 
+type PricedVariantGroup = { variants: Array<{ price: number }> };
+
+/**
+ * Preço de entrada a partir dos grupos de variantes: soma do preço mais baixo
+ * de cada grupo (normalmente existe apenas um grupo: o tamanho).
+ *
+ * Usado também ao gravar um produto com variantes, para preencher `base_price`
+ * (a regra `products_price_present` exige sempre um preço ou nota).
+ */
+export function getStartingPriceFromVariantGroups(
+  groups: PricedVariantGroup[],
+): number | null {
+  const priced = groups.filter((group) => group.variants.length > 0);
+
+  if (priced.length === 0) {
+    return null;
+  }
+
+  return priced.reduce(
+    (total, group) => total + Math.min(...group.variants.map((variant) => variant.price)),
+    0,
+  );
+}
+
 /**
  * Preço de entrada apresentado na lista. Com variantes, é a soma do preço
  * mais baixo de cada grupo (normalmente existe apenas um grupo: o tamanho).
@@ -9,16 +33,12 @@ export function getStartingPrice(product: MenuProduct): {
   from: boolean;
 } {
   const groups = product.variantGroups.filter((group) => group.variants.length > 0);
+  const variantAmount = getStartingPriceFromVariantGroups(groups);
 
-  if (groups.length > 0) {
-    const amount = groups.reduce(
-      (total, group) => total + Math.min(...group.variants.map((variant) => variant.price)),
-      0,
-    );
-
+  if (variantAmount !== null) {
     const varies = groups.length > 1 || groups.some((group) => group.variants.length > 1);
 
-    return { amount, from: varies };
+    return { amount: variantAmount, from: varies };
   }
 
   if (product.basePrice !== null) {

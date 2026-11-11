@@ -115,6 +115,15 @@ function parseVariantsString(str) {
   return groups;
 }
 
+function getVariantStartingPrice(groups) {
+  const priced = groups.filter((group) => group.variants.length > 0);
+  if (priced.length === 0) return null;
+  return priced.reduce(
+    (total, group) => total + Math.min(...group.variants.map((variant) => variant.price)),
+    0,
+  );
+}
+
 async function fetchAll(table, select) {
   const res = await fetch(`${restUrl}/${table}?select=${encodeURIComponent(select)}`, { headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` } });
   if (!res.ok) throw new Error(`Erro ao ler ${table}: ${res.status}`);
@@ -269,7 +278,9 @@ async function run() {
       name: produto,
       slug: prodSlug,
       description: rowObj.descricao || null,
-      basePrice: hasPrice ? precoKz : null,
+      // A base de dados exige sempre um preço ou nota; com variantes guardamos
+      // o preço de entrada para a regra products_price_present.
+      basePrice: hasPrice ? precoKz : getVariantStartingPrice(variantGroups),
       priceNote: hasPriceNote ? String(notaPreco).trim() : null,
       imagePath: rowObj.imagem || null,
       imageAlt: rowObj.imagem_alt || null,

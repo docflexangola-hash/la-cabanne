@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { requireStaff } from '@/lib/auth/guard';
+import { getStartingPriceFromVariantGroups } from '@/lib/menu/pricing';
 import { createClient } from '@/lib/supabase/server';
 import {
   productSchema,
@@ -43,6 +44,13 @@ export async function createProduct(input: ProductInput): Promise<ActionResponse
   const publishedAt =
     parsed.data.status === 'published' ? new Date().toISOString() : null;
 
+  // Produtos com variantes não têm preço fixo: guardamos o preço de entrada
+  // (soma do preço mais baixo de cada grupo) para satisfazer a regra
+  // `products_price_present` e manter a lista do admin com um valor.
+  const basePrice =
+    parsed.data.basePrice ??
+    getStartingPriceFromVariantGroups(parsed.data.variantGroups);
+
   const { data: product, error } = await supabase
     .from('products')
     .insert({
@@ -50,7 +58,7 @@ export async function createProduct(input: ProductInput): Promise<ActionResponse
       name: parsed.data.name,
       slug: parsed.data.slug,
       description: parsed.data.description || null,
-      base_price: parsed.data.basePrice ?? null,
+      base_price: basePrice,
       price_note: parsed.data.priceNote || null,
       image_path: parsed.data.imagePath || null,
       image_alt: parsed.data.imageAlt || null,
@@ -136,6 +144,12 @@ export async function updateProduct(
     publishedAt = new Date().toISOString();
   }
 
+  // Ver comentário em createProduct: com variantes, `base_price` recebe o
+  // preço de entrada em vez de ficar nulo.
+  const basePrice =
+    parsed.data.basePrice ??
+    getStartingPriceFromVariantGroups(parsed.data.variantGroups);
+
   const { error } = await supabase
     .from('products')
     .update({
@@ -143,7 +157,7 @@ export async function updateProduct(
       name: parsed.data.name,
       slug: parsed.data.slug,
       description: parsed.data.description || null,
-      base_price: parsed.data.basePrice ?? null,
+      base_price: basePrice,
       price_note: parsed.data.priceNote || null,
       image_path: parsed.data.imagePath || null,
       image_alt: parsed.data.imageAlt || null,
